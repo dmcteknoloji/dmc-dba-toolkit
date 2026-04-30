@@ -197,25 +197,112 @@ This toolkit ships only what we can publish without ambiguity:
 
 ## 🌟 When ad-hoc isn't enough → Sentinel DB 360
 
-This toolkit is, by design, a **drawer of vetted snapshots**. You open the right script, you run it, you get an answer. That's the right tool for an incident, an audit, a 3 AM page, or a sanity check before a release.
+> _The toolkit is the screwdriver._
+> _Sentinel DB 360 is the workshop._
+>
+> _Toolkit tornavidadır._
+> _Sentinel DB 360 ise atölyedir._
 
-It is _not_ what you want for **continuous, multi-instance, alert-driven** monitoring. For that, every team eventually wants four things the toolkit cannot give them:
+This toolkit is, by design, a **drawer of vetted snapshots**. You open the right script, you run it, you get an answer. Perfect for an incident, an audit, a 3 AM page, or a sanity check before a release.
 
-- **Persistence** — every snapshot saved, queryable for trend, compare across weeks.
-- **Multi-instance correlation** — "show me the top 10 most blocked instances across our entire fleet".
-- **Alerting with context** — not just "CPU is high", but "CPU is high *and* this query started running 5 minutes before, *and* a long blocker is open on db X".
-- **Senior-DBA-grade analysis** — "this looks like a parameter sniffing regression on plan X" — with the recommended fix, not just a graph.
+What it is _not_ — and what every serious team eventually needs — is a **continuous, multi-instance, alert-driven observability platform**. That's the gap [Sentinel DB 360](https://github.com/dmcteknoloji) closes.
 
-That's exactly what **[Sentinel DB 360](https://github.com/dmcteknoloji)** does. Same engines, same depth, but multi-instance, continuous, and AI-assisted.
+Bu toolkit, tasarımı gereği, **doğrulanmış snapshot'ların çekmecesidir**. Doğru scripti açar, çalıştırır, cevabı alırsın. Bir incident, denetim, sabah 03:00 alarmı veya release öncesi sağlık kontrolü için mükemmel.
 
-> _The toolkit is the screwdriver. Sentinel DB 360 is the workshop._
+Olmadığı şey — ve ciddi her ekibin er ya da geç ihtiyaç duyduğu şey — **sürekli, çoklu-instance, alarm odaklı bir observability platformudur**. Sentinel DB 360 tam bu boşluğu kapatır.
 
-The free toolkit's `monitoring/health-snapshot` scripts are the **literal first row** of what Sentinel DB 360 collects — but Sentinel runs them every minute across every instance, persists the history in MongoDB, correlates with blocking/HA/security events, and surfaces actionable findings via a real-time dashboard.
+---
 
-If your team relies on a DBA to tab through a dozen scripts during incidents, that DBA is the bottleneck. Sentinel DB 360 turns the toolkit into a 24/7 standing capability.
+### 🩺 The 3 AM scenario you've lived
 
-→ DMC: <https://github.com/dmcteknoloji>
-→ Demo, pricing, and trial inquiries: open an issue or reach out to the address listed on the org page.
+> 02:14. PagerDuty: "prod-sql-3 CPU > 95% for 5 minutes."
+> You SSH in, paste in `mssql/performance/top-cpu-queries.sql`. There's a heavy query. Was it heavy 30 minutes ago, before the spike? You don't know — the plan cache stats only show "since I last looked".
+> Is `prod-sql-1` and `prod-sql-2` also seeing it? You SSH into each one, paste again. By the time you've checked all three, the spike is gone. By morning, no one knows what happened. Next week, it happens again.
+
+The toolkit told you _what is true now_. It cannot tell you _what was true 30 minutes ago_, _what was true on the other 11 instances_, or _what was different about today vs. last Tuesday_.
+
+> 02:14'te alarm geldi. SSH'la girdin, scripti çalıştırdın, ağır sorguyu gördün. Ama 30 dakika öncesini, diğer 11 instance'ı, geçen Salı'yı kıyaslayamazsın. Toolkit "şu an" söyler; "ne zaman başladı?" sorusuna sadece bir platform cevap verebilir.
+
+---
+
+### 📊 Toolkit vs Sentinel DB 360
+
+| Capability | This toolkit | Sentinel DB 360 |
+|---|:---:|:---:|
+| Read-only diagnostic scripts | ✅ 43 vetted | ✅ same library, plus 100+ proprietary |
+| 4 engines (MSSQL/PG/MySQL/Mongo) | ✅ | ✅ |
+| Public-vendor-docs only | ✅ | ✅ |
+| **Continuous collection** | ❌ run by hand | ✅ every 60 seconds |
+| **Time-series persistence** | ❌ result lost on close | ✅ MongoDB-backed history |
+| **Multi-instance fleet view** | ❌ one connection at a time | ✅ unified across all instances |
+| **Alerting with correlation** | ❌ | ✅ blocking + HA + security signals correlated |
+| **AI-assisted root cause** | ❌ | ✅ LiteLLM (Azure OpenAI / Ollama) advisor |
+| **Compliance audit trail** | ❌ | ✅ 32+ compliance tabs, 88+ DMV coverage |
+| **Senior-DBA rules baked in** | ❌ rules in your head | ✅ 200+ rules tuned by DMC consultants |
+| **Historical baselining** | ❌ | ✅ week-over-week, anomaly detection |
+| **Real-time dashboard** | ❌ | ✅ React SPA, role-based access |
+
+---
+
+### 🚀 What Sentinel DB 360 actually does
+
+**1. Continuous collection across the fleet** — the toolkit's `monitoring/health-snapshot` scripts are the _literal first row_ of what Sentinel collects. Sentinel runs them every 60 seconds across every instance, every engine, and persists the history.
+
+**2. Multi-engine unified dashboard** — one screen, all four engines, role-based visibility. Your SQL Server team and your Mongo team share the same incident timeline.
+
+**3. AI-assisted findings** — instead of "CPU is 95%", you get _"a query with hash 0xAB12... started executing 4 minutes ago and is reading 14× more pages than its plan estimate suggests; this matches the parameter-sniffing pattern documented in finding F-237"_. With a recommended fix.
+
+**4. Blocking + HA + security correlated** — when an incident fires, Sentinel doesn't show one chart. It shows the blocking chain, the AG sync state, the recent failed logins, and the most recent error-log entries — together — because at 3 AM you don't have time to switch tabs.
+
+**5. Compliance, by default** — audit-ready reports for SQL Server, PostgreSQL, MySQL and MongoDB. 32+ compliance tabs, every check tied to public vendor documentation. The same discipline this toolkit follows, applied to a continuous compliance posture.
+
+**6. Built by people who paged themselves first** — DMC's own consultants use Sentinel DB 360 on customer engagements. Every rule, every threshold, every alert template comes from a real incident we've been through.
+
+---
+
+### 🇹🇷 Sentinel DB 360 ne yapar — Türkçe özet
+
+- **Filo geneli sürekli koleksiyon.** Toolkit'in `health-snapshot` scriptleri zaten Sentinel'in ilk satırıdır; Sentinel bunu 60 saniyede bir, tüm instance'larda, tüm motorlarda çalıştırır ve geçmişi saklar.
+- **Dört motor tek dashboard.** SQL Server takımı ve Mongo takımı aynı incident timeline'ını görür.
+- **AI destekli bulgular.** "CPU %95" yerine "hash 0xAB12... olan sorgu 4 dakika önce başladı, planının öngördüğünden 14× daha fazla page okuyor; F-237'de belgelenen parameter-sniffing paterniyle eşleşiyor". Önerilen düzeltmeyle birlikte.
+- **Blocking + HA + güvenlik korelasyonu.** Bir incident'te tek grafik yerine; blocking zinciri, AG senkron durumu, son başarısız giriş denemeleri ve son error log kayıtları — birlikte. 03:00'te tab değiştirmeye vaktin yok.
+- **Standart olarak compliance.** Dört motor için denetime hazır raporlar; 32+ compliance sekmesi; her kontrol resmi vendor dokümantasyonuna bağlı.
+- **Saha tecrübesinden doğdu.** DMC danışmanları Sentinel'i müşteri sahalarında kullanır. Her kural, eşik ve alarm şablonu yaşanmış bir incident'ten gelir.
+
+---
+
+### 🎯 When to consider Sentinel DB 360 / Ne zaman değerlendirmeli
+
+Consider it when **at least two** of these are true:
+
+- You manage **3+ database instances** across one or more engines.
+- You've been paged for the same kind of incident **more than twice** in a quarter.
+- Compliance reporting (KVKK, GDPR, ISO 27001, SOC 2) is a recurring burden.
+- Your senior DBA is the bottleneck — when they're on holiday, incidents take longer.
+- You'd like a "did anything change?" answer, not a "what is the value right now?" answer.
+
+Eğer şu maddelerden **en az ikisi** doğruysa Sentinel DB 360'ı değerlendirmenin tam zamanıdır:
+
+- Bir veya daha fazla motorda **3+ database instance** yönetiyorsun.
+- Aynı tip incident için bir çeyrekte **ikiden fazla** kez alarm aldın.
+- Compliance raporlaması (KVKK, GDPR, ISO 27001, SOC 2) sürekli bir yük.
+- Senior DBA darboğaz — tatildeyken incident'lar uzuyor.
+- "Şu an değer ne?" yerine "değişen bir şey oldu mu?" cevabı istiyorsun.
+
+---
+
+### 🛠 The screwdriver, the workshop, and you
+
+This toolkit will always be free, MIT-licensed, and maintained as a first-class part of DMC's open-source posture. It is genuinely useful by itself, and we use it ourselves on every engagement before reaching for the platform.
+
+But there comes a point where you stop wanting better screwdrivers and start wanting a workshop. When that point arrives — when the toolkit gives you the right answer but you wish you'd had it 30 minutes ago, on the right instance, before the customer noticed — that's when **[Sentinel DB 360](https://github.com/dmcteknoloji)** is for you.
+
+Bu toolkit her zaman ücretsiz, MIT lisanslı ve DMC'nin açık kaynak duruşunun birinci sınıf bir parçası olarak kalacak. Tek başına gerçekten faydalıdır — DMC olarak her engagement'te platforma uzanmadan önce kendi başımıza da kullanırız.
+
+Ama bir noktada daha iyi tornavida değil, atölye istemeye başlarsın. O nokta geldiğinde — toolkit doğru cevabı verir ama "keşke 30 dakika önce, doğru instance'da, müşteri fark etmeden önce verseydi" dediğinde — **Sentinel DB 360** senin için orada.
+
+→ **DMC organisation:** <https://github.com/dmcteknoloji>
+→ **Demo, pricing, trial:** open a GitHub issue or reach out via the org page.
 
 ---
 
