@@ -4,83 +4,64 @@ A toolkit that doesn't ship is a toolkit that doesn't matter. Versions below are
 
 ---
 
-## v1.0 — SQL Server starter pack ✅
+## v2.0 — All four engines ✅
 
-Released 2026-04-30.
+Released 2026-04-01. **You are here.**
 
-- 5 read-only diagnostic scripts (CPU, waits, blocking, file growth, instance overview).
-- Standard header convention.
-- Compatibility matrix, impact rating, output schema docs.
-- CI: header validator + sqlfluff lint.
+- **24 read-only diagnostic scripts** — 6 per engine (SQL Server, PostgreSQL, MySQL, MongoDB).
+- Standard header convention with optional `Inspired by`, `Maintainer`, `Last updated` fields.
+- Compatibility matrix expanded to four engines and their managed-cloud variants.
+- CI: header validator (with `.js` support) + `sqlfluff` lint + Markdown link check.
+- Sources policy formalised — public vendor docs only, attribution mandatory.
 
 ---
 
-## v1.1 — SQL Server depth
+## v2.1 — Per-engine depth pack
 
-Target: +6 weeks.
+Target: +12 weeks.
 
-- `mssql/performance/missing-indexes.sql`
-- `mssql/performance/plan-cache-bloat.sql`
-- `mssql/performance/parameter-sniffing-suspects.sql`
-- `mssql/blocking/deadlock-last-24h.sql` (parses `system_health` extended events)
-- `mssql/storage/log-vlf-count.sql`
-- `mssql/storage/largest-tables.sql`
-- `mssql/storage/tempdb-pressure.sql`
+**SQL Server**
 - `mssql/security/sysadmin-audit.sql`
 - `mssql/security/tde-status.sql`
-- `mssql/security/orphaned-users.sql`
 - `mssql/health/error-log-last-24h.sql`
 - `mssql/health/backup-chain-health.sql`
 - `mssql/ha/ag-status.sql`
 - `mssql/ha/replication-lag.sql`
-- `mssql/ha/quorum-and-listener.sql`
+
+**PostgreSQL**
+- `postgresql/performance/index-usage-and-bloat.sql`
+- `postgresql/security/role-audit.sql`
+- `postgresql/health/connection-pressure.sql`
+
+**MySQL**
+- `mysql/performance/io-and-buffer-pool.sql`
+- `mysql/storage/innodb-fragmentation.sql`
+- `mysql/security/user-audit.sql`
+
+**MongoDB**
+- `mongodb/sharding/balancer-status.js`
+- `mongodb/sharding/chunk-distribution.js`
+- `mongodb/security/user-audit.js`
 
 ---
 
-## v1.2 — PostgreSQL starter pack
+## v2.2 — Optional unified output mode
 
-Target: +12 weeks. Same 5-script structure, mirrored conventions.
+Target: +20 weeks.
 
-- `postgresql/performance/top-cpu-queries.sql` (`pg_stat_statements`)
-- `postgresql/performance/wait-events-summary.sql`
-- `postgresql/blocking/blocking-chain.sql` (`pg_locks` + `pg_stat_activity` recursive CTE)
-- `postgresql/storage/bloat-and-vacuum.sql`
-- `postgresql/health/instance-overview.sql`
+- Each script gains a `--json` mode that emits a per-row JSON document with vendor-neutral keys.
+- Reference Python exporter (`scripts/export_to_parquet.py`) that writes any script's output to Parquet for downstream analytics.
+- Compatibility matrix becomes a generated artefact, not hand-maintained.
 
 ---
 
-## v1.3 — MySQL starter pack
-
-Target: +16 weeks.
-
-- `mysql/performance/top-cpu-queries.sql` (`performance_schema.events_statements_summary_by_digest`)
-- `mysql/performance/innodb-row-lock-waits.sql`
-- `mysql/blocking/blocking-chain.sql` (`performance_schema.data_lock_waits`)
-- `mysql/storage/largest-tables.sql`
-- `mysql/health/instance-overview.sql`
-
----
-
-## v1.4 — MongoDB starter pack
-
-Target: +20 weeks. Distributed as `.js` files (mongosh) following the same header convention.
-
-- `mongodb/performance/current-op.js`
-- `mongodb/performance/profiler-slow-ops.js`
-- `mongodb/blocking/long-running-ops.js`
-- `mongodb/storage/coll-stats.js`
-- `mongodb/health/replica-set-status.js`
-
----
-
-## v2.0 — Cross-engine unification
+## v3.0 — Runbooks per symptom
 
 Target: +1 year.
 
-- Every starter script across all four engines emits a **unified output shape** (same column names, same types, same units).
-- Optional JSON output mode for piping into monitoring/automation.
-- Reference exporter (Python) that produces Parquet from any script's output.
-- Compatibility matrix becomes a generated artefact, not hand-maintained.
+- Markdown runbooks shipped under `runbooks/`, each one symptom-first ("CPU pegged at 100%", "Replica falling behind", "Bloat eating the disk").
+- Each runbook references the relevant toolkit scripts at each step, in order.
+- A reader on a phone, at 2 AM, can follow a runbook end-to-end.
 
 ---
 

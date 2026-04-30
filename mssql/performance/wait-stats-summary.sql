@@ -7,13 +7,21 @@
 -- ║  Impact        : 🟢 Light  (single DMV scan)                      ║
 -- ║  Permissions   : VIEW SERVER STATE                               ║
 -- ║  Output schema : see docs/OUTPUT_SCHEMAS.md#wait-stats-summary   ║
+-- ║  Inspired by   : Paul Randal (SQLskills) — public Wait Statistics║
+-- ║                  blog series. Technique credited; code original. ║
+-- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
+-- ║  Last updated  : 2025-05-22                                      ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
 -- Aggregates sys.dm_os_wait_stats into meaningful categories with the
--- usual benign waits filtered out (the well-known "ignore list" from
--- Paul Randal's Wait Statistics work, kept up to date through 2022+).
+-- usual benign waits filtered out.
+--
+-- The "benign waits" list below is widely shared in the community via
+-- Paul Randal's public SQLskills blog series. We re-implemented it here
+-- and keep it current against publicly documented wait types from
+-- Microsoft Learn (sys.dm_os_wait_stats reference). No private content.
 --
 -- Wait stats are cumulative since instance startup or last
 -- DBCC SQLPERF('sys.dm_os_wait_stats', CLEAR). For a snapshot of *current*

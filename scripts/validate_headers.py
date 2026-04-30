@@ -41,14 +41,17 @@ VALID_CATEGORIES = {
     "security",
     "health",
     "ha",
+    "replication",
     "maintenance",
 }
 
 VALID_IMPACTS = ("🟢 Light", "🟡 Medium", "🔴 Heavy")
 
-# Match a line like:  -- ║  Script        : top-cpu-queries                  ║
+# Match a line like:
+#   -- ║  Script        : top-cpu-queries                  ║   (SQL files)
+#   // ║  Script        : current-slow-ops                 ║   (mongosh .js files)
 FIELD_LINE = re.compile(
-    r"^--\s*║\s*(?P<key>[A-Za-z][A-Za-z ]+?)\s*:\s*(?P<value>.+?)\s*║\s*$"
+    r"^(?:--|//)\s*║\s*(?P<key>[A-Za-z][A-Za-z ]+?)\s*:\s*(?P<value>.+?)\s*║\s*$"
 )
 
 SEMVER = re.compile(r"^\d+\.\d+\.\d+$")
@@ -84,7 +87,7 @@ def validate(path: Path) -> list[str]:
             problems.append(f"missing field: {required!r}")
 
     script = fields.get("Script", "")
-    expected = path.stem
+    expected = path.stem  # works for both .sql and .js
     if script and script != expected:
         problems.append(
             f"Script field {script!r} does not match file name {expected!r}"
@@ -128,10 +131,13 @@ def collect_targets(argv: list[str]) -> list[Path]:
         return [Path(p).resolve() for p in argv[1:]]
 
     targets: list[Path] = []
-    for engine_dir in ("mssql", "postgresql", "mysql", "mongodb"):
+    for engine_dir in ("mssql", "postgresql", "mysql"):
         engine_path = REPO_ROOT / engine_dir
         if engine_path.exists():
             targets.extend(sorted(engine_path.rglob("*.sql")))
+    mongo_path = REPO_ROOT / "mongodb"
+    if mongo_path.exists():
+        targets.extend(sorted(mongo_path.rglob("*.js")))
     return targets
 
 

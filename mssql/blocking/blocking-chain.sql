@@ -7,6 +7,8 @@
 -- ║  Impact        : 🟢 Light  (DMV scan, no waits or locks taken)    ║
 -- ║  Permissions   : VIEW SERVER STATE                               ║
 -- ║  Output schema : see docs/OUTPUT_SCHEMAS.md#blocking-chain       ║
+-- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
+-- ║  Last updated  : 2025-06-30                                      ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

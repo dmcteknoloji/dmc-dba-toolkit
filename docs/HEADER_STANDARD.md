@@ -23,14 +23,32 @@ Every `.sql` file in this toolkit starts with the same header. This is the contr
 
 | Field         | Format                                                 | Notes                                                                       |
 | ------------- | ------------------------------------------------------ | --------------------------------------------------------------------------- |
-| `Script`      | kebab-case, matches file name without `.sql`           | One name, one script.                                                       |
+| `Script`      | kebab-case, matches file name without `.sql` / `.js`   | One name, one script.                                                       |
 | `Engine`      | `<engine> <min-version>+ │ <other targets>`            | Use `│` (box drawing vertical) as separator between targets.                |
-| `Category`    | One of: `performance`, `blocking`, `storage`, `security`, `health`, `ha`, `maintenance` | Must match parent folder.                              |
+| `Category`    | One of: `performance`, `blocking`, `storage`, `security`, `health`, `ha`, `replication`, `maintenance` | Must match parent folder.            |
 | `Impact`      | `🟢 Light` / `🟡 Medium` / `🔴 Heavy` + parenthetical    | See [`IMPACT_RATING.md`](./IMPACT_RATING.md).                               |
-| `Permissions` | Comma-separated list of required server/database privs | Be precise. `VIEW SERVER STATE`, not "sysadmin".                            |
+| `Permissions` | Comma-separated list of required server/database privs | Be precise. `VIEW SERVER STATE`, not "sysadmin". For PG, list role/grants.  |
 | `Output schema` | `see docs/OUTPUT_SCHEMAS.md#<anchor>`                | Anchor is the lowercased script name with hyphens.                          |
 | `Version`     | Semantic version, e.g. `1.0.0`                         | Bump on output schema change.                                               |
 | `License`     | `MIT`                                                  | Same as repo. Don't accept contributions under other licences.              |
+
+## Optional fields
+
+| Field          | Format                                              | When to use                                                          |
+| -------------- | --------------------------------------------------- | -------------------------------------------------------------------- |
+| `Inspired by`  | `<Author / Project> — <topic, year>`                | When the technique (not the code) draws on a public source. Multiple sources separated by `;`. Always cite the public reference, not a private gist. |
+| `Tested on`    | `<engine version, edition, platform>`               | When you've verified on a specific build and want to flag it.        |
+
+## Sources policy (the line we don't cross)
+
+This toolkit ships only what we can **legally and ethically** publish:
+
+- **Public vendor documentation only.** Every system view, DMV, catalog table, profiler command and counter referenced in a script must be in the vendor's official, publicly accessible documentation (Microsoft Learn, postgresql.org, dev.mysql.com, mongodb.com/docs).
+- **No NDA, no private previews, no scraped internal docs.** If the only place a query exists is behind an NDA, a closed beta, or someone's internal wiki — it does not ship here.
+- **Inspiration is welcome, copying is not.** Acknowledge the public reference in `Inspired by`. Re-implement the technique in our own words. Do not paste code from sources whose license is incompatible with MIT.
+- **Attribution is mandatory** when a public source clearly shaped the script. Even MIT/BSD-licensed inspirations get a credit line — not because the licence requires it, but because that's how a healthy community works.
+
+This policy is restated, with examples, in [`CONTRIBUTING.md`](../CONTRIBUTING.md#attribution-and-sources-policy).
 
 ## Why box-art?
 

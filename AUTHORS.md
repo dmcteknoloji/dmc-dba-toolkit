@@ -1,0 +1,38 @@
+# Authors
+
+This toolkit is the work of practitioners — people who have actually been on the wrong end of a 3 AM page and lived to write a script about it.
+
+## Creator and lead maintainer
+
+**Çağlar Özenç** — _Microsoft MVP, founder of DMC Bilgi Teknolojileri_
+
+Started this toolkit in April 2025 after one too many incident calls where the answer was buried in a different consultant's USB stick. The goal: build the diagnostic kit a senior DBA would actually trust, with documented schemas, a real CI pipeline, and the discipline to refuse anything that isn't safe to run on a production instance.
+
+- Engagements: enterprise SQL Server, PostgreSQL, MySQL and MongoDB consulting through DMC Bilgi Teknolojileri.
+- Platform: lead architect of [Sentinel DB 360](https://github.com/dmc) — DMC's multi-engine database observability platform.
+- Microsoft MVP — Data Platform.
+
+## Contributors
+
+When you contribute a script that ships, your name appears here. The bar isn't gatekept; the standards are. Read [`CONTRIBUTING.md`](./CONTRIBUTING.md) and open an issue.
+
+<!-- contributors-list -->
+
+_(no external contributors yet — open a PR and be the first)_
+
+## Inspirations and intellectual debts
+
+This toolkit stands on the shoulders of public work that DMC respects deeply. Where a specific technique came from a public source, the source is credited in the script's `Inspired by` header field. Recurring influences worth naming up front:
+
+- **Paul Randal** (SQLskills) — wait statistics methodology and the public "benign waits" guidance.
+- **Brent Ozar** and the First Responder Kit team — modern SQL Server diagnostics conventions.
+- **Adam Machanic** — `sp_WhoIsActive`, the gold standard for active session diagnostics.
+- **Glenn Berry** — the long-running SQL Server Diagnostic Information Queries series.
+- **Ola Hallengren** — the maintenance solution that taught a generation of DBAs what "modular" means.
+- **Greg Sabino Mullane** (Bucardo) — public PostgreSQL bloat estimation SQL.
+- **Nikolay Samokhvalov** — `postgres_dba`'s structured approach to diagnostic reports.
+- **Percona** — Percona Toolkit and the public MySQL/InnoDB monitoring playbook.
+- **MongoDB Inc.** — the official manual and the database profiler reference.
+- **Microsoft Learn** — public DMV documentation, our single source of truth for SQL Server.
+
+We do not copy code. We learn the technique, write our own implementation, and credit the public source. That's how the DBA community has always worked.

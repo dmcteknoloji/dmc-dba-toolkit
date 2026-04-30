@@ -105,6 +105,49 @@ This honesty is the difference between a toolkit and a copy-paste graveyard.
 
 ---
 
+## Attribution and sources policy
+
+This toolkit takes both **legality** and **community ethics** seriously. The line is:
+
+### What we ship
+
+- Queries built only on **public vendor documentation** (Microsoft Learn, postgresql.org, dev.mysql.com, mongodb.com/docs). If a DMV, catalog view, or admin command is not in those docs, do not use it here.
+- Original code, written for this toolkit, in our own style.
+
+### What we do not ship
+
+- Anything that originates from an NDA, closed beta, private preview, or internal vendor wiki.
+- Code copy-pasted from a project whose license is incompatible with MIT (GPL/AGPL/proprietary).
+- Code copy-pasted from blog posts or gists without permission and attribution, even when the technique is widely known.
+
+### When you draw on a public source
+
+Some techniques have a clear public origin — Paul Randal's "benign waits" list, Greg Sabino Mullane's bloat estimation SQL, Mark Callaghan's MySQL counters. **Use the technique, write the code yourself, credit the source.** Two places:
+
+1. **Header** — add an `Inspired by` line:
+   ```sql
+   -- ║  Inspired by   : Paul Randal — Wait Statistics benign list       ║
+   ```
+2. **Inline comment** at the relevant section, with a link or stable reference:
+   ```sql
+   -- benign-wait list adapted from Paul Randal's "SQLskills wait stats"
+   -- public guidance (https://sqlskills.com — public blog series).
+   ```
+
+When in doubt, **over-credit**. It costs nothing and it's how the DBA community has always worked.
+
+### Reviewer's check
+
+Maintainers will reject a PR if:
+
+- The `Inspired by` field references a private/NDA source.
+- A query references a DMV/view that is not in the vendor's public docs.
+- The script clearly mirrors another project's structure but the source isn't credited.
+
+This is not paranoia — it is the only way a multi-vendor toolkit can stay distributable for the long run.
+
+---
+
 ## Code of Conduct
 
 By participating, you agree to follow our [Code of Conduct](./CODE_OF_CONDUCT.md). Be excellent to each other. Disagree on technical grounds, never on personal ones.
