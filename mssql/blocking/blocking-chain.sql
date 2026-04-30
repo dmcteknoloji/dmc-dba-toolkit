@@ -23,7 +23,7 @@
 -- down the chain. is_lead_blocker = 1 marks the same heads, for clients
 -- that prefer a flag over depth filtering.
 
-;WITH blockers AS (
+WITH blockers AS (
     SELECT DISTINCT blocking_session_id AS session_id
     FROM sys.dm_exec_requests
     WHERE blocking_session_id <> 0

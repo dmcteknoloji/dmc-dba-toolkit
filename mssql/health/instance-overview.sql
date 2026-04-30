@@ -35,7 +35,7 @@ DECLARE @uptime_text NVARCHAR(64) = CONCAT(
     RIGHT(CONCAT(N'00', @uptime_min % 60), 2), N'm'
 );
 
-;WITH overview AS (
+WITH overview AS (
     -- ── IDENTITY ─────────────────────────────────────────────────────
     SELECT N'IDENTITY' AS section, N'product_version'   AS metric,
            CAST(SERVERPROPERTY('ProductVersion') AS NVARCHAR(256)) AS value,

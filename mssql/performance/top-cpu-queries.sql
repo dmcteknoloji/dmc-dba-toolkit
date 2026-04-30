@@ -24,7 +24,7 @@
 
 DECLARE @top_n INT = 25;
 
-;WITH ranked AS (
+WITH ranked AS (
     SELECT
         qs.query_hash,
         SUM(qs.execution_count)         AS executions,

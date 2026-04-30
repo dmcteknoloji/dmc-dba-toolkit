@@ -28,7 +28,7 @@
 -- pressure, capture twice with a delay and diff. This script gives you
 -- the "all time" view, which is the right starting point.
 
-;WITH benign AS (
+WITH benign AS (
     SELECT wait_type
     FROM (VALUES
         (N'BROKER_EVENTHANDLER'), (N'BROKER_RECEIVE_WAITFOR'),
