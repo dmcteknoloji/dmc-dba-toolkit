@@ -12,7 +12,7 @@ Open one script — get a clear answer in 30 seconds.
 [![CI](https://img.shields.io/badge/ci-github%20actions-2088FF?logo=githubactions&logoColor=white)](./.github/workflows/lint.yml)
 [![Engines](https://img.shields.io/badge/engines-MSSQL%20%C2%B7%20PostgreSQL%20%C2%B7%20MySQL%20%C2%B7%20MongoDB-success)](./docs/COMPATIBILITY_MATRIX.md)
 [![Public docs only](https://img.shields.io/badge/sources-public%20vendor%20docs%20only-7c3aed)](./docs/HEADER_STANDARD.md#sources-policy-the-line-we-dont-cross)
-[![Made by DMC](https://img.shields.io/badge/made%20by-DMC%20Bilgi%20Teknolojileri-0a0a0a)](https://github.com/dmc)
+[![Made by DMC](https://img.shields.io/badge/made%20by-DMC%20Bilgi%20Teknolojileri-0a0a0a)](https://github.com/dmcteknoloji)
 
 _Created and maintained by **[Çağlar Özenç](./AUTHORS.md)** — Microsoft MVP, DMC Bilgi Teknolojileri._
 _Started April 2025. 24 production-grade scripts across four engines, all built on public vendor documentation._
@@ -40,7 +40,7 @@ Inspired by the giants — Brent Ozar's First Responder Kit, Adam Machanic's `sp
 ## ⚡ 30-second start
 
 ```bash
-git clone https://github.com/dmc/dmc-dba-toolkit.git
+git clone https://github.com/dmcteknoloji/dmc-dba-toolkit.git
 cd dmc-dba-toolkit
 ```
 

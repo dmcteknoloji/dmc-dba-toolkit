@@ -9,7 +9,7 @@ This toolkit is the work of practitioners — people who have actually been on t
 Started this toolkit in April 2025 after one too many incident calls where the answer was buried in a different consultant's USB stick. The goal: build the diagnostic kit a senior DBA would actually trust, with documented schemas, a real CI pipeline, and the discipline to refuse anything that isn't safe to run on a production instance.
 
 - Engagements: enterprise SQL Server, PostgreSQL, MySQL and MongoDB consulting through DMC Bilgi Teknolojileri.
-- Platform: lead architect of [Sentinel DB 360](https://github.com/dmc) — DMC's multi-engine database observability platform.
+- Platform: lead architect of [Sentinel DB 360](https://github.com/dmcteknoloji) — DMC's multi-engine database observability platform.
 - Microsoft MVP — Data Platform.
 
 ## Contributors

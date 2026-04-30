@@ -108,11 +108,11 @@ The first stable release. SQL Server only, but every script vetted in the field.
 
 ---
 
-[Unreleased]: https://github.com/dmc/dmc-dba-toolkit/compare/v2.0.0...HEAD
-[2.0.0]: https://github.com/dmc/dmc-dba-toolkit/releases/tag/v2.0.0
-[1.5.0]: https://github.com/dmc/dmc-dba-toolkit/releases/tag/v1.5.0
-[1.3.0]: https://github.com/dmc/dmc-dba-toolkit/releases/tag/v1.3.0
-[1.0.0]: https://github.com/dmc/dmc-dba-toolkit/releases/tag/v1.0.0
-[0.5.0]: https://github.com/dmc/dmc-dba-toolkit/releases/tag/v0.5.0
-[0.3.0]: https://github.com/dmc/dmc-dba-toolkit/releases/tag/v0.3.0
-[0.1.0]: https://github.com/dmc/dmc-dba-toolkit/releases/tag/v0.1.0
+[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.0.0
+[1.5.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v1.5.0
+[1.3.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v1.3.0
+[1.0.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v1.0.0
+[0.5.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v0.5.0
+[0.3.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v0.3.0
+[0.1.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v0.1.0

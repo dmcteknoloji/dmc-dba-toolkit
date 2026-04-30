@@ -1,6 +1,6 @@
 {
   "ignorePatterns": [
-    { "pattern": "^https://github.com/dmc/" }
+    { "pattern": "^https://github.com/dmcteknoloji/" }
   ],
   "timeout": "20s",
   "retryOn429": true,
