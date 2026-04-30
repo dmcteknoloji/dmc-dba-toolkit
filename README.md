@@ -15,7 +15,9 @@ Open one script — get a clear answer in 30 seconds.
 [![Made by DMC](https://img.shields.io/badge/made%20by-DMC%20Bilgi%20Teknolojileri-0a0a0a)](https://github.com/dmcteknoloji)
 
 _Created and maintained by **[Çağlar Özenç](./AUTHORS.md)** — Microsoft MVP, DMC Bilgi Teknolojileri._
-_Started April 2025. 24 production-grade scripts across four engines, all built on public vendor documentation._
+_Started April 2025. **43 production-grade scripts** across four engines, all built on public vendor documentation._
+
+🇹🇷 _Bilingual: most explanatory blocks include both English and Türkçe._
 
 </div>
 
@@ -62,6 +64,13 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 | [`blocking-chain`](./mssql/blocking/blocking-chain.sql) | Who is blocking whom, and who is the lead? | 🟢 |
 | [`db-file-growth`](./mssql/storage/db-file-growth.sql) | Where is my disk going? Which file is about to autogrow? | 🟢 |
 | [`instance-overview`](./mssql/health/instance-overview.sql) | One-screen summary of this instance. | 🟢 |
+| [`sysadmin-audit`](./mssql/security/sysadmin-audit.sql) | Who effectively has full server control (incl. nested roles)? | 🟢 |
+| [`tde-status`](./mssql/security/tde-status.sql) | Encryption state per database; cert expiry. | 🟢 |
+| [`orphaned-users`](./mssql/security/orphaned-users.sql) | DB users with no matching server login (post-restore). | 🟢 |
+| [`error-log-last-24h`](./mssql/health/error-log-last-24h.sql) | Severity 17+, login failures, IO/memory warnings. | 🟡 |
+| [`backup-chain-health`](./mssql/health/backup-chain-health.sql) | Last full / diff / log backup per DB, gap flagged. | 🟢 |
+| [`ag-status`](./mssql/ha/ag-status.sql) | Always On AG: replicas, sync state, redo/log queues. | 🟢 |
+| [`health-snapshot`](./mssql/monitoring/health-snapshot.sql) | One-row periodic snapshot for cron + a target table. | 🟢 |
 
 ### 🟪 PostgreSQL (`postgresql/`)
 
@@ -69,10 +78,14 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 |---|---|---|
 | [`top-queries`](./postgresql/performance/top-queries.sql) | Which queries dominate cumulative time? | 🟢 |
 | [`wait-events-summary`](./postgresql/performance/wait-events-summary.sql) | What are sessions waiting on, right now? | 🟢 |
+| [`unused-indexes`](./postgresql/performance/unused-indexes.sql) | Which indexes have zero scans since stats reset? | 🟢 |
 | [`blocking-chain`](./postgresql/blocking/blocking-chain.sql) | Lock waits, granted vs requested, who blocks whom. | 🟢 |
 | [`table-bloat-estimate`](./postgresql/storage/table-bloat-estimate.sql) | Which tables are bloated and need attention? | 🟡 |
 | [`replication-status`](./postgresql/replication/replication-status.sql) | Replica lag, slot status, WAL position. | 🟢 |
+| [`role-audit`](./postgresql/security/role-audit.sql) | Who is SUPERUSER, CREATEROLE, BYPASSRLS — incl. nested. | 🟢 |
+| [`connection-pressure`](./postgresql/health/connection-pressure.sql) | Headroom, idle-in-transaction, breakdown by group. | 🟢 |
 | [`instance-overview`](./postgresql/health/instance-overview.sql) | One-screen summary of this cluster. | 🟢 |
+| [`health-snapshot`](./postgresql/monitoring/health-snapshot.sql) | One-row periodic snapshot for cron + a target table. | 🟢 |
 
 ### 🟧 MySQL (`mysql/`)
 
@@ -80,10 +93,14 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 |---|---|---|
 | [`top-queries`](./mysql/performance/top-queries.sql) | Top consumers from `events_statements_summary_by_digest`. | 🟢 |
 | [`innodb-row-lock-waits`](./mysql/performance/innodb-row-lock-waits.sql) | InnoDB row lock contention overview. | 🟢 |
+| [`unused-indexes`](./mysql/performance/unused-indexes.sql) | Indexes never read since startup; size attributed. | 🟢 |
+| [`io-and-buffer-pool`](./mysql/performance/io-and-buffer-pool.sql) | Hit rate, miss/sec, per-instance pool, top IO files. | 🟢 |
 | [`blocking-chain`](./mysql/blocking/blocking-chain.sql) | Who is blocking whom, via `data_lock_waits`. | 🟢 |
 | [`largest-tables`](./mysql/storage/largest-tables.sql) | Top tables by data + index size, fragmentation hint. | 🟢 |
 | [`replication-status`](./mysql/replication/replication-status.sql) | Replica health, lag, threads. | 🟢 |
+| [`user-audit`](./mysql/security/user-audit.sql) | SUPER, GRANT OPTION, dynamic privileges, host wildcards. | 🟢 |
 | [`instance-overview`](./mysql/health/instance-overview.sql) | One-screen summary of this server. | 🟢 |
+| [`health-snapshot`](./mysql/monitoring/health-snapshot.sql) | One-row periodic snapshot for cron + a target table. | 🟢 |
 
 ### 🟩 MongoDB (`mongodb/`, mongosh `.js`)
 
@@ -91,10 +108,14 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 |---|---|---|
 | [`current-slow-ops`](./mongodb/performance/current-slow-ops.js) | What is taking too long *right now*? | 🟢 |
 | [`profiler-summary`](./mongodb/performance/profiler-summary.js) | Aggregate slow ops from `system.profile`. | 🟢 |
-| [`replica-set-status`](./mongodb/replication/replica-set-status.js) | RS health, member states, oplog lag. | 🟢 |
 | [`index-usage`](./mongodb/performance/index-usage.js) | Which indexes are pulling weight, which aren't. | 🟢 |
+| [`replica-set-status`](./mongodb/replication/replica-set-status.js) | RS health, member states, oplog lag. | 🟢 |
 | [`collection-sizes`](./mongodb/storage/collection-sizes.js) | Top collections by storage, index size, doc count. | 🟢 |
+| [`balancer-status`](./mongodb/sharding/balancer-status.js) | Balancer state, recent migrations, per-shard chunks. | 🟢 |
+| [`chunk-distribution`](./mongodb/sharding/chunk-distribution.js) | Chunk balance per collection, jumbo chunks, key shape. | 🟡 |
+| [`user-audit`](./mongodb/security/user-audit.js) | Users with effective root; custom roles nesting danger. | 🟢 |
 | [`instance-overview`](./mongodb/health/instance-overview.js) | One-screen summary of this deployment. | 🟢 |
+| [`health-snapshot`](./mongodb/monitoring/health-snapshot.js) | One-document periodic snapshot for monitoring pipelines. | 🟢 |
 
 > Every script is **read-only**. Every script is **safe on production**. Every script tells you, in its header, exactly what it does and where the technique came from.
 
@@ -171,6 +192,30 @@ This toolkit ships only what we can publish without ambiguity:
 - **v3.0** — Curated runbooks per symptom (CPU pegged, blocking storm, replication broken)
 
 → Detail: [`docs/ROADMAP.md`](./docs/ROADMAP.md)
+
+---
+
+## 🌟 When ad-hoc isn't enough → Sentinel DB 360
+
+This toolkit is, by design, a **drawer of vetted snapshots**. You open the right script, you run it, you get an answer. That's the right tool for an incident, an audit, a 3 AM page, or a sanity check before a release.
+
+It is _not_ what you want for **continuous, multi-instance, alert-driven** monitoring. For that, every team eventually wants four things the toolkit cannot give them:
+
+- **Persistence** — every snapshot saved, queryable for trend, compare across weeks.
+- **Multi-instance correlation** — "show me the top 10 most blocked instances across our entire fleet".
+- **Alerting with context** — not just "CPU is high", but "CPU is high *and* this query started running 5 minutes before, *and* a long blocker is open on db X".
+- **Senior-DBA-grade analysis** — "this looks like a parameter sniffing regression on plan X" — with the recommended fix, not just a graph.
+
+That's exactly what **[Sentinel DB 360](https://github.com/dmcteknoloji)** does. Same engines, same depth, but multi-instance, continuous, and AI-assisted.
+
+> _The toolkit is the screwdriver. Sentinel DB 360 is the workshop._
+
+The free toolkit's `monitoring/health-snapshot` scripts are the **literal first row** of what Sentinel DB 360 collects — but Sentinel runs them every minute across every instance, persists the history in MongoDB, correlates with blocking/HA/security events, and surfaces actionable findings via a real-time dashboard.
+
+If your team relies on a DBA to tab through a dozen scripts during incidents, that DBA is the bottleneck. Sentinel DB 360 turns the toolkit into a 24/7 standing capability.
+
+→ DMC: <https://github.com/dmcteknoloji>
+→ Demo, pricing, and trial inquiries: open an issue or reach out to the address listed on the org page.
 
 ---
 

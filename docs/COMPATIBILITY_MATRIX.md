@@ -20,6 +20,13 @@ Legend:
 | `mssql/blocking/blocking-chain` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `mssql/storage/db-file-growth` | ✅ | ✅ | ✅ | ✅ | ⚠️ | ✅ |
 | `mssql/health/instance-overview` | ✅ | ✅ | ✅ | ✅ | ⚠️ | ✅ |
+| `mssql/security/sysadmin-audit` | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| `mssql/security/tde-status` | ✅ | ✅ | ✅ | ✅ | ⚠️ | ✅ |
+| `mssql/security/orphaned-users` | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| `mssql/health/error-log-last-24h` | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| `mssql/health/backup-chain-health` | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| `mssql/ha/ag-status` | ✅ | ✅ | ✅ | ✅ | ❌ | ⚠️ |
+| `mssql/monitoring/health-snapshot` | ✅ | ✅ | ✅ | ✅ | ⚠️ | ✅ |
 
 ### Notes on Azure SQL DB partial coverage
 
@@ -38,6 +45,10 @@ Legend:
 | `postgresql/storage/table-bloat-estimate` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `postgresql/replication/replication-status` | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ⚠️ |
 | `postgresql/health/instance-overview` | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ⚠️ |
+| `postgresql/performance/unused-indexes` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `postgresql/security/role-audit` | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ⚠️ |
+| `postgresql/health/connection-pressure` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `postgresql/monitoring/health-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ⚠️ |
 
 ### Notes
 - **`top-queries`** requires the `pg_stat_statements` extension. RDS, Aurora and Cloud SQL all enable it via parameter groups.
@@ -56,6 +67,10 @@ Legend:
 | `mysql/storage/largest-tables` | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `mysql/replication/replication-status` | ⚠️ | ✅ | ✅ | ✅ | ✅ |
 | `mysql/health/instance-overview` | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `mysql/performance/unused-indexes` | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `mysql/performance/io-and-buffer-pool` | ⚠️ | ✅ | ✅ | ✅ | ✅ |
+| `mysql/security/user-audit` | ⚠️ | ✅ | ✅ | ✅ | ✅ |
+| `mysql/monitoring/health-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ### Notes
 - **`blocking-chain`** uses `performance_schema.data_locks` and `data_lock_waits`, available from MySQL 8.0. For 5.7, the `INFORMATION_SCHEMA.INNODB_LOCK_WAITS` equivalent is on the v2.1 backlog.
@@ -74,6 +89,10 @@ Legend:
 | `mongodb/replication/replica-set-status` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
 | `mongodb/storage/collection-sizes` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
 | `mongodb/health/instance-overview` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| `mongodb/sharding/balancer-status` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| `mongodb/sharding/chunk-distribution` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| `mongodb/security/user-audit` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| `mongodb/monitoring/health-snapshot` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
 
 ### Notes on Atlas partial coverage
 - Free / Shared (M0–M5) tiers expose a subset of `serverStatus`, `hostInfo`, and `db.runCommand({ collStats })`. The scripts tolerate missing fields (rendering `<n/a>`) rather than throwing.

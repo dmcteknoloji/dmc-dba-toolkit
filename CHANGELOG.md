@@ -10,9 +10,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- v2.1 — per-engine depth pack (security audit, HA/AG status for SQL Server, MySQL deadlock graph, Mongo sharding utilities).
 - v2.2 — optional unified JSON output mode + Parquet exporter.
 - v3.0 — runbooks per symptom, linked to the relevant scripts.
+
+---
+
+## [2.1.0] — 2026-05-01
+
+The depth-pack release. **+19 scripts** (43 total). Adds security, HA, sharding and a minimal monitoring tier — plus a documented bridge to continuous monitoring via Sentinel DB 360.
+
+### Added — Engines
+
+- **SQL Server +6**: `sysadmin-audit`, `tde-status`, `orphaned-users`, `error-log-last-24h`, `backup-chain-health`, `ag-status`.
+- **PostgreSQL +3**: `unused-indexes`, `role-audit`, `connection-pressure`.
+- **MySQL +3**: `unused-indexes`, `user-audit`, `io-and-buffer-pool`.
+- **MongoDB +3**: `balancer-status`, `chunk-distribution`, `user-audit`.
+
+### Added — Monitoring tier
+
+- New `monitoring/` category: one `health-snapshot` per engine — minimal one-row periodic snapshots designed for cron + a target table. Intentionally a teaser for what continuous monitoring looks like; production-grade is what Sentinel DB 360 is for.
+
+### Added — Conventions
+
+- **Bilingual format** (EN + TR) — the "Why this exists" and "Production note" blocks now ship in both languages on new scripts. Existing scripts will be retro-translated in patch releases.
+- New categories accepted by `validate_headers.py`: `sharding`, `monitoring`.
+
+### Changed
+
+- README catalog reorganised; new "Sentinel DB 360" section explains where the toolkit ends and continuous monitoring begins.
+- All scripts pass `scripts/validate_headers.py` (43/43).
 
 ---
 
@@ -108,7 +134,8 @@ The first stable release. SQL Server only, but every script vetted in the field.
 
 ---
 
-[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.1.0
 [2.0.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.0.0
 [1.5.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v1.5.0
 [1.3.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v1.3.0

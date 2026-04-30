@@ -42,6 +42,8 @@ VALID_CATEGORIES = {
     "health",
     "ha",
     "replication",
+    "sharding",
+    "monitoring",
     "maintenance",
 }
 

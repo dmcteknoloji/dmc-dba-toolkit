@@ -6,7 +6,7 @@ A toolkit that doesn't ship is a toolkit that doesn't matter. Versions below are
 
 ## v2.0 — All four engines ✅
 
-Released 2026-04-01. **You are here.**
+Released 2026-04-01.
 
 - **24 read-only diagnostic scripts** — 6 per engine (SQL Server, PostgreSQL, MySQL, MongoDB).
 - Standard header convention with optional `Inspired by`, `Maintainer`, `Last updated` fields.
@@ -16,32 +16,38 @@ Released 2026-04-01. **You are here.**
 
 ---
 
-## v2.1 — Per-engine depth pack
+## v2.1 — Depth pack + monitoring tier ✅
 
-Target: +12 weeks.
+Released 2026-05-01. **You are here.** **+19 scripts, 43 total.**
 
-**SQL Server**
-- `mssql/security/sysadmin-audit.sql`
-- `mssql/security/tde-status.sql`
-- `mssql/health/error-log-last-24h.sql`
-- `mssql/health/backup-chain-health.sql`
-- `mssql/ha/ag-status.sql`
-- `mssql/ha/replication-lag.sql`
+- SQL Server +6: sysadmin-audit, tde-status, orphaned-users, error-log-last-24h, backup-chain-health, ag-status.
+- PostgreSQL +3: unused-indexes, role-audit, connection-pressure.
+- MySQL +3: unused-indexes, user-audit, io-and-buffer-pool.
+- MongoDB +3: balancer-status, chunk-distribution, user-audit.
+- Monitoring tier: one `health-snapshot` per engine (cron-friendly snapshot scripts).
+- Bilingual format (EN + TR) on the explanatory blocks.
+- Sentinel DB 360 bridge — README explains where the toolkit ends and continuous monitoring begins.
 
-**PostgreSQL**
-- `postgresql/performance/index-usage-and-bloat.sql`
-- `postgresql/security/role-audit.sql`
-- `postgresql/health/connection-pressure.sql`
+---
 
-**MySQL**
-- `mysql/performance/io-and-buffer-pool.sql`
-- `mysql/storage/innodb-fragmentation.sql`
-- `mysql/security/user-audit.sql`
+## v2.2 — Bilingual completion + JSON output
 
-**MongoDB**
-- `mongodb/sharding/balancer-status.js`
-- `mongodb/sharding/chunk-distribution.js`
-- `mongodb/security/user-audit.js`
+Target: +8 weeks.
+
+- Retro-translate explanatory blocks of the v2.0 scripts to bilingual format.
+- Optional `--json` mode on every script that emits structured rows, suitable for piping into TSDBs and dashboards.
+- Reference Python exporter (`scripts/export_to_parquet.py`) that runs any script and writes to Parquet.
+
+---
+
+## v2.3 — Second-wave depth scripts
+
+Target: +14 weeks.
+
+- SQL Server: replication-lag (log shipping + AG), tempdb-pressure deep, plan-cache-bloat, parameter-sniffing-suspects.
+- PostgreSQL: index-bloat-estimate, vacuum-progress, longest-running-vacuums, autovacuum-tuning-hints.
+- MySQL: innodb-fragmentation, deadlock-graph (parses `SHOW ENGINE INNODB STATUS` deadlock section), max-conn-history.
+- MongoDB: oplog-window-history, slow-op-distribution, balancer-history.
 
 ---
 
