@@ -195,6 +195,13 @@ This toolkit ships only what we can publish without ambiguity:
 
 ---
 
+## 📖 Recipes & positioning
+
+- **[Recipes / playbooks](./docs/RECIPES.md)** — incident-response workflows that string the toolkit's scripts together: CPU at 100%, blocking storms, replicas falling behind, disk filling, failed login bursts, pre-release sanity checks. Bilingual EN + TR.
+- **[Vs other toolkits](./docs/VS_OTHER_TOOLKITS.md)** — honest positioning vs Brent Ozar's First Responder Kit, `sp_WhoIsActive`, Glenn Berry's diagnostic queries, Ola Hallengren, `postgres_dba`, Percona Toolkit, mtools. Where they shine, where DMC adds value, when to use what.
+
+---
+
 ## 🌟 When ad-hoc isn't enough → Sentinel DB 360
 
 > _The toolkit is the screwdriver._
