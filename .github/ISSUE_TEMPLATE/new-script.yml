@@ -1,0 +1,67 @@
+name: New script proposal
+description: Propose a new diagnostic script for the toolkit.
+labels: ["new-script", "triage"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Proposed file name
+      placeholder: mssql/performance/missing-indexes.sql
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: The DBA question this answers
+      description: One sentence. If you need two, you have two scripts.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - performance
+        - blocking
+        - storage
+        - security
+        - health
+        - ha
+        - maintenance
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Expected impact rating
+      options:
+        - 🟢 Light
+        - 🟡 Medium
+        - 🔴 Heavy
+    validations:
+      required: true
+
+  - type: textarea
+    id: engines
+    attributes:
+      label: Target engines and versions
+      description: Be specific. Speculative versions are not accepted; you must test them.
+
+  - type: textarea
+    id: prior-art
+    attributes:
+      label: Prior art / references
+      description: Link to blog posts, docs, or existing scripts that inspired this.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: This script will be read-only.
+          required: true
+        - label: I am willing to author or co-author this script.
+          required: false

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/dmc/dmc-dba-toolkit/security/advisories/new
+    about: Privately report a security or correctness issue (mutating script labelled read-only, sensitive data leak, etc.)
+  - name: Contribution guide
+    url: https://github.com/dmc/dmc-dba-toolkit/blob/main/CONTRIBUTING.md
+    about: Read the header standard and PR checklist before opening an issue.
