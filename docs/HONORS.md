@@ -36,6 +36,8 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 | **Kevin Kline** | Long-time SQL Server author and community voice — books on SQL standard, performance, career. | _SolarWinds / community_ |
 | **Buck Woody** | Microsoft data platform — broad data architecture, ML on SQL Server, career-shaping talks. | _Microsoft / public_ |
 | **Argenis Fernandez** | Pure Storage / ex-Microsoft — SQL Server on hardware, performance under stress. | _community / conference talks_ |
+| **Kalen Delaney** | "SQL Server Internals" book series — the foundational reference an entire generation of senior DBAs learned the engine from. Long-time MVP. | _SQL Server books / community_ |
+| **Klaus Aschenbrenner** | Long-time MVP — performance, columnstore, in-memory OLTP, AlwaysOn. Public training and deep posts. | [sqlpassion.com](https://www.sqlpassion.com) |
 
 ## 🟪 PostgreSQL
 
@@ -58,6 +60,11 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 | **Stephen Frost** | Security, RLS, role membership — the committer behind much of PG's modern security model. | _Crunchy Data / community_ |
 | **Pavel Stehule** | PL/pgSQL extensions, plpgsql_check — the most-cited Czech voice in PG application development. | [github.com/okbob](https://github.com/okbob) |
 | **Devrim Gündüz** | Long-time Turkish PG community contributor and PG RPM repository maintainer. | [gunduz.org](https://www.gunduz.org) |
+| **Joe Conway** | PostgreSQL committer — Row-Level Security, PL/R extension, security model. Crunchy Data engineer. | _Crunchy Data / pgsql-hackers_ |
+| **Tomas Vondra** | PostgreSQL committer — partitioning, statistics, planner improvements. Conference talks + blog posts that explain *why* the planner does what it does. | _2ndQuadrant / EDB / community_ |
+| **Hubert "depesz" Lubaczewski** | `explain.depesz.com` — the plain-English EXPLAIN ANALYZE tree everyone shares in incident channels. Decade of public PG writing. | [depesz.com](https://www.depesz.com) |
+| **Lætitia Avrot** | Postgres community advocate / EDB — public talks on performance, monitoring, and what real-world PG operations look like. | _EDB / community talks_ |
+| **Selena Deckelmann** | Long-time PG community leader — historically Mozilla, currently Apache Foundation board. The voice that explained PG operations to the wider tech community. | _community / Apache Foundation_ |
 
 ## 🟧 MySQL
 
@@ -110,6 +117,7 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 | **Joe Celko** | "SQL for Smarties" series, decades of practical SQL design wisdom. Teaches you how to think in sets. | _Mountain View / community_ |
 | **Don Chamberlin** | Co-creator of SQL itself (with Raymond Boyce). The reason every script in this repo can be written. | _historical / IBM Research legacy_ |
 | **Allen Holub** | Architectural critic — "Why Microservices Aren't Always the Answer", relational vs NoSQL trade-offs. Teaches DBA-adjacent systems thinking. | [holub.com](https://holub.com) |
+| **Charity Majors** | Honeycomb co-founder — observability writing that re-frames how DBAs think about debuggability, high-cardinality data and "production excellence". DB-adjacent but core to modern operations. | [charity.wtf](https://charity.wtf) · [honeycomb.io/blog](https://www.honeycomb.io/blog) |
 
 ---
 
