@@ -6,13 +6,20 @@ on:
   pull_request:
     branches: [main]
 
+# Opt into Node.js 24 for the JavaScript actions used below.
+# Node 20 is being removed from GitHub-hosted runners in late 2026;
+# this env var avoids a hard break when the deprecation lands and
+# silences the runner-side warning today.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   validate-headers:
     name: Validate script headers
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Run header validator
@@ -27,8 +34,8 @@ jobs:
     # the script's own results are what guarantee correctness.
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install sqlfluff
@@ -40,7 +47,7 @@ jobs:
     name: Markdown link check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
           use-quiet-mode: "yes"

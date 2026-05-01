@@ -259,6 +259,8 @@ db.getSiblingDB("dmc_monitor").health_snapshot.createIndex(
 
 ### Grafana
 
+> 📊 **Pre-built dashboards available:** see [`examples/grafana/`](../examples/grafana/) for one importable JSON per engine (SQL Server, PostgreSQL, MySQL InnoDB pressure, MongoDB replica-set lag). Drop them into Grafana → Dashboards → Import, point at your data source, you're charting in two minutes.
+
 1. Add the database as a data source (PostgreSQL, MySQL, MS SQL — all native plugins).
 2. Create a panel with this query (PostgreSQL example):
 

@@ -16,6 +16,11 @@ Open one script — get a clear answer in 30 seconds.
 [![Public docs only](https://img.shields.io/badge/sources-public%20vendor%20docs%20only-7c3aed)](./docs/HEADER_STANDARD.md#sources-policy-the-line-we-dont-cross)
 [![Made by DMC](https://img.shields.io/badge/made%20by-DMC%20Bilgi%20Teknolojileri-0a0a0a)](https://linkedin.com/company/dmcteknoloji)
 
+[![GitHub stars](https://img.shields.io/github/stars/dmcteknoloji/dmc-dba-toolkit?style=social)](https://github.com/dmcteknoloji/dmc-dba-toolkit/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/dmcteknoloji/dmc-dba-toolkit?style=social)](https://github.com/dmcteknoloji/dmc-dba-toolkit/network/members)
+[![GitHub release](https://img.shields.io/github/v/release/dmcteknoloji/dmc-dba-toolkit?label=latest&sort=semver)](https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/latest)
+[![GitHub last commit](https://img.shields.io/github/last-commit/dmcteknoloji/dmc-dba-toolkit?label=last%20update)](https://github.com/dmcteknoloji/dmc-dba-toolkit/commits/main)
+
 [![Çağlar Özenç on LinkedIn](https://img.shields.io/badge/LinkedIn-Çağlar%20Özenç-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/caglarozenc)
 [![DMC Bilgi Teknolojileri on LinkedIn](https://img.shields.io/badge/LinkedIn-DMC%20Bilgi%20Teknolojileri-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/company/dmcteknoloji)
 

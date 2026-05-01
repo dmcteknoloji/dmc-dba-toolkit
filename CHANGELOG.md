@@ -10,8 +10,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- v2.6 — JSON output mode for monitoring scripts, Grafana dashboard JSON exports.
+- v2.7 — JSON output mode for monitoring scripts (`--json` parameter pattern).
 - v3.0 — runbooks per symptom, linked to the relevant scripts.
+
+---
+
+## [2.6.0] — 2026-05-01
+
+The visibility + ecosystem release. Grafana dashboard JSON exports,
+GitHub topic expansion to the maximum 20, social-proof badges, and
+the CI workflow hardened against the Node 20 deprecation that lands
+in late 2026.
+
+### Added — `examples/grafana/` (4 importable dashboards)
+
+Drop-in Grafana JSON exports that visualise the time-series produced
+by the `monitoring/` snapshot scripts. Tested shape with stable panel
+types only (Stat, Time series) to survive Grafana version drift:
+
+- `examples/grafana/mssql-health.json` — CPU signal wait, PLE,
+  blocked sessions, sessions/requests/blocking time series, batch
+  request throughput.
+- `examples/grafana/postgresql-health.json` — connections breakdown
+  (active / idle / idle-in-xact), cache hit %, oldest xact age,
+  replay lag (standby).
+- `examples/grafana/mysql-innodb-pressure.json` — dirty pages %,
+  buffer pool hit rate, row-lock waiters, pending IO, 24h trends.
+- `examples/grafana/mongodb-replica-lag.json` — worst lag, oplog
+  window, stuck-optime members, healthy secondaries, lag time series
+  (requires Grafana MongoDB plugin, 9+).
+
+`examples/grafana/README.md` walks through the 4-step setup and
+links to the corresponding monitoring snapshot script per engine.
+`docs/MONITORING_GUIDE.md` updated to point at the new examples.
+
+### Added — Visibility
+
+- 4 new GitHub badges in the README hero: `stars`, `forks`,
+  latest `release`, `last update`.
+- GitHub topics expanded to the 20-topic maximum, adding:
+  `bilingual`, `compliance`, `database-monitoring`,
+  `incident-response`, `kvkk`, `mvp`, `security-audit`.
+
+### Changed — CI
+
+- `actions/checkout@v4` → `@v5`, `actions/setup-python@v5` → `@v6`.
+- Workflow `env: FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"` to
+  silence the runner-side deprecation warning and ensure the
+  workflow keeps working when Node 20 is removed from runners.
+- New `.github/dependabot.yml` — weekly Monday updates for
+  GitHub Actions versions (Europe/Istanbul timezone, max 5 open PRs).
+
+**72/72 scripts pass header validation.**
 
 ---
 
@@ -345,7 +395,8 @@ The first stable release. SQL Server only, but every script vetted in the field.
 
 ---
 
-[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.5.0...HEAD
+[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.6.0...HEAD
+[2.6.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.6.0
 [2.5.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.5.0
 [2.4.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.4.0
 [2.3.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.3.0

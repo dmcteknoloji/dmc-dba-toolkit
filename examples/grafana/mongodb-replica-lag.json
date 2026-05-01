@@ -1,0 +1,127 @@
+{
+  "annotations": { "list": [] },
+  "description": "DMC DBA Toolkit — MongoDB replica-set lag. Source: dmc_monitor.replication_lag_snapshot (see mongodb/monitoring/replication-lag-snapshot.js). Requires the MongoDB datasource plugin (Grafana 9+).",
+  "editable": true,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [
+    { "title": "DMC DBA Toolkit", "url": "https://github.com/dmcteknoloji/dmc-dba-toolkit", "type": "link", "icon": "external link", "targetBlank": true },
+    { "title": "Sentinel DB 360", "url": "https://sentineldb360.com", "type": "link", "icon": "external link", "targetBlank": true }
+  ],
+  "panels": [
+    {
+      "datasource": { "type": "mongodb", "uid": "${DS_MONGO}" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "thresholds": { "mode": "absolute", "steps": [
+            { "color": "green", "value": null },
+            { "color": "yellow", "value": 60 },
+            { "color": "red", "value": 300 }
+          ] }
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+      "id": 1,
+      "options": { "colorMode": "background", "graphMode": "area", "textMode": "auto" },
+      "targets": [
+        {
+          "queryText": "{ \"collection\": \"replication_lag_snapshot\", \"pipeline\": [ { \"$sort\": { \"sample_utc\": -1 } }, { \"$limit\": 1 }, { \"$project\": { \"_id\": 0, \"value\": \"$worst_lag_secs\" } } ] }",
+          "refId": "A"
+        }
+      ],
+      "title": "Worst secondary lag (now)",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "mongodb", "uid": "${DS_MONGO}" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": { "mode": "absolute", "steps": [
+            { "color": "red", "value": null },
+            { "color": "yellow", "value": 30 },
+            { "color": "green", "value": 60 }
+          ] },
+          "unit": "m"
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
+      "id": 2,
+      "options": { "colorMode": "background", "graphMode": "area", "textMode": "auto" },
+      "targets": [
+        {
+          "queryText": "{ \"collection\": \"replication_lag_snapshot\", \"pipeline\": [ { \"$sort\": { \"sample_utc\": -1 } }, { \"$limit\": 1 }, { \"$project\": { \"_id\": 0, \"value\": \"$oplog_window_mins\" } } ] }",
+          "refId": "A"
+        }
+      ],
+      "title": "Oplog window (minutes)",
+      "description": "If worst_lag_secs > oplog_window_mins * 60, a behind secondary will need a full resync.",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "mongodb", "uid": "${DS_MONGO}" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": { "mode": "absolute", "steps": [
+            { "color": "green", "value": null },
+            { "color": "yellow", "value": 1 },
+            { "color": "red", "value": 2 }
+          ] }
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
+      "id": 3,
+      "options": { "colorMode": "background", "graphMode": "area", "textMode": "auto" },
+      "targets": [
+        {
+          "queryText": "{ \"collection\": \"replication_lag_snapshot\", \"pipeline\": [ { \"$sort\": { \"sample_utc\": -1 } }, { \"$limit\": 1 }, { \"$project\": { \"_id\": 0, \"value\": \"$stuck_optime_count\" } } ] }",
+          "refId": "A"
+        }
+      ],
+      "title": "Members with stuck optime",
+      "description": "Heartbeat OK, but optime not advancing — invisible failure mode.",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "mongodb", "uid": "${DS_MONGO}" },
+      "fieldConfig": { "defaults": {} },
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 },
+      "id": 4,
+      "options": { "colorMode": "background", "graphMode": "area", "textMode": "auto" },
+      "targets": [
+        {
+          "queryText": "{ \"collection\": \"replication_lag_snapshot\", \"pipeline\": [ { \"$sort\": { \"sample_utc\": -1 } }, { \"$limit\": 1 }, { \"$project\": { \"_id\": 0, \"value\": \"$secondaries_healthy\" } } ] }",
+          "refId": "A"
+        }
+      ],
+      "title": "Healthy secondaries",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "mongodb", "uid": "${DS_MONGO}" },
+      "fieldConfig": { "defaults": { "unit": "s" } },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 4 },
+      "id": 5,
+      "options": { "legend": { "displayMode": "list", "placement": "bottom" }, "tooltip": { "mode": "multi" } },
+      "targets": [
+        {
+          "queryText": "{ \"collection\": \"replication_lag_snapshot\", \"pipeline\": [ { \"$match\": { \"sample_utc\": { \"$gte\": { \"$dateSubtract\": { \"startDate\": \"$$NOW\", \"unit\": \"hour\", \"amount\": 24 } } } } }, { \"$project\": { \"_id\": 0, \"time\": \"$sample_utc\", \"worst_lag\": \"$worst_lag_secs\" } }, { \"$sort\": { \"time\": 1 } } ] }",
+          "refId": "A"
+        }
+      ],
+      "title": "Worst replica lag — last 24h",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": ["dmc", "dba-toolkit", "mongodb", "replication"],
+  "templating": { "list": [] },
+  "time": { "from": "now-24h", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "DMC · MongoDB Replica Lag",
+  "uid": "dmc-mongo-rs",
+  "version": 1
+}

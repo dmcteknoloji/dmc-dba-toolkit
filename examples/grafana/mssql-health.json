@@ -1,0 +1,187 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": { "type": "datasource", "uid": "grafana" },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "DMC DBA Toolkit — SQL Server health snapshot. Source: dmc_monitor.health_snapshot (see mssql/monitoring/health-snapshot.sql).",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [
+    {
+      "title": "DMC DBA Toolkit",
+      "url": "https://github.com/dmcteknoloji/dmc-dba-toolkit",
+      "type": "link",
+      "tags": [],
+      "icon": "external link",
+      "targetBlank": true
+    },
+    {
+      "title": "Sentinel DB 360",
+      "url": "https://sentineldb360.com",
+      "type": "link",
+      "tags": [],
+      "icon": "external link",
+      "targetBlank": true
+    }
+  ],
+  "panels": [
+    {
+      "datasource": { "type": "mssql", "uid": "${DS_MSSQL}" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 25 },
+              { "color": "red", "value": 50 }
+            ]
+          },
+          "unit": "percent"
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+      "id": 1,
+      "options": { "colorMode": "background", "graphMode": "area", "justifyMode": "center", "textMode": "auto" },
+      "targets": [
+        {
+          "rawSql": "SELECT TOP 1 cpu_signal_wait_pct AS [CPU signal wait %] FROM dmc_monitor.health_snapshot ORDER BY sample_utc DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "CPU signal wait % (latest)",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "mssql", "uid": "${DS_MSSQL}" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "yellow", "value": 300 },
+              { "color": "green", "value": 1800 }
+            ]
+          },
+          "unit": "s"
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
+      "id": 2,
+      "options": { "colorMode": "background", "graphMode": "area", "textMode": "auto" },
+      "targets": [
+        {
+          "rawSql": "SELECT TOP 1 page_life_expectancy_secs AS [PLE seconds] FROM dmc_monitor.health_snapshot ORDER BY sample_utc DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "Page Life Expectancy",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "mssql", "uid": "${DS_MSSQL}" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 1 },
+              { "color": "red", "value": 5 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
+      "id": 3,
+      "options": { "colorMode": "background", "graphMode": "area", "textMode": "auto" },
+      "targets": [
+        {
+          "rawSql": "SELECT TOP 1 blocked_sessions AS [Blocked] FROM dmc_monitor.health_snapshot ORDER BY sample_utc DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "Blocked sessions (now)",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "mssql", "uid": "${DS_MSSQL}" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 },
+      "id": 4,
+      "options": { "colorMode": "background", "graphMode": "area", "textMode": "auto" },
+      "targets": [
+        {
+          "rawSql": "SELECT TOP 1 user_sessions AS [User sessions] FROM dmc_monitor.health_snapshot ORDER BY sample_utc DESC",
+          "refId": "A"
+        }
+      ],
+      "title": "User sessions (now)",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "mssql", "uid": "${DS_MSSQL}" },
+      "fieldConfig": { "defaults": { "unit": "short" } },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 },
+      "id": 5,
+      "options": { "legend": { "displayMode": "list", "placement": "bottom" }, "tooltip": { "mode": "multi" } },
+      "targets": [
+        {
+          "rawSql": "SELECT sample_utc AS time, user_sessions, active_requests, blocked_sessions, active_transactions FROM dmc_monitor.health_snapshot WHERE sample_utc > DATEADD(HOUR, -24, GETUTCDATE()) ORDER BY sample_utc",
+          "refId": "A"
+        }
+      ],
+      "title": "Sessions / requests / blocking — last 24h",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "mssql", "uid": "${DS_MSSQL}" },
+      "fieldConfig": { "defaults": { "unit": "short" } },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 },
+      "id": 6,
+      "options": { "legend": { "displayMode": "list", "placement": "bottom" }, "tooltip": { "mode": "multi" } },
+      "targets": [
+        {
+          "rawSql": "SELECT sample_utc AS time, batch_requests_cumulative, sql_compilations_cumulative FROM dmc_monitor.health_snapshot WHERE sample_utc > DATEADD(HOUR, -24, GETUTCDATE()) ORDER BY sample_utc",
+          "refId": "A"
+        }
+      ],
+      "title": "Throughput counters (cumulative) — last 24h",
+      "description": "Diff client-side between adjacent samples to get per-second rate.",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": ["dmc", "dba-toolkit", "sql-server", "health"],
+  "templating": { "list": [] },
+  "time": { "from": "now-24h", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "DMC · SQL Server Health",
+  "uid": "dmc-mssql-health",
+  "version": 1,
+  "weekStart": ""
+}
