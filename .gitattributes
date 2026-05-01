@@ -1,0 +1,21 @@
+# GitHub Linguist hints — make the repo language reflect what the
+# project actually is: a multi-engine SQL diagnostics toolkit.
+
+# MongoDB scripts are mongosh JavaScript — diagnostic queries, not
+# application code. Keep them visible in the repo and on GitHub but
+# exclude from language statistics so SQL stays the dominant language.
+mongodb/**/*.js linguist-detectable=false
+
+# Helper tooling — not part of the diagnostic surface, hide from stats.
+scripts/*.py linguist-detectable=false
+
+# Documentation files don't count toward language stats.
+*.md linguist-documentation=true
+.github/** linguist-vendored=true
+
+# Line endings — tools like sqlfluff and the header validator expect LF.
+*.sql text eol=lf
+*.js  text eol=lf
+*.py  text eol=lf
+*.md  text eol=lf
+*.yml text eol=lf
