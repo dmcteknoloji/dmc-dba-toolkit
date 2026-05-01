@@ -9,6 +9,7 @@
 -- ║  Output schema : see docs/OUTPUT_SCHEMAS.md#blocking-chain       ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2025-06-30                                      ║
+-- ║  Level         : 🌳 Middle   (production-grade, assumes DBA familiarity)           ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

@@ -10,6 +10,7 @@
 -- ║  Inspired by   : pg_blocking_pids() — official PostgreSQL func   ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2025-11-19                                      ║
+-- ║  Level         : 🌳 Middle   (production-grade, assumes DBA familiarity)           ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

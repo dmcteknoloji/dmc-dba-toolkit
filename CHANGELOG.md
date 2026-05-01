@@ -10,8 +10,67 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- v2.3 — depth scripts (replication-lag SQL Server, plan-cache-bloat, parameter-sniffing-suspects, deadlock-graph parser, vacuum-progress detail, sharding-balancer history).
+- v2.4 — JSON output mode for monitoring scripts, Grafana dashboard JSON exports.
 - v3.0 — runbooks per symptom, linked to the relevant scripts.
+
+---
+
+## [2.3.0] — 2026-05-01
+
+The skill-level release. **+8 scripts (56 → 64)** plus a `Level` field
+applied retroactively to every existing script, a new `LEARNING_PATHS.md`
+curriculum doc, and bumped expert depth across all four engines.
+
+### Added — Conventions
+
+- New header field: `Level` (🌱 Newborn / 🌳 Middle / 🦅 Expert).
+  Applied to all 56 existing scripts and required on new ones going forward.
+  Field-level definition lives in `docs/HEADER_STANDARD.md#skill-levels`.
+
+### Added — Newborn tier (4 scripts)
+
+Tutorial-style scripts with extensive bilingual commentary aimed at
+DBAs in their first year:
+
+- `mssql/health/getting-started.sql` — what is a DMV, where am I?
+- `postgresql/health/getting-started.sql` — what are the `pg_stat_*` views?
+- `mysql/health/getting-started.sql` — system variables vs status variables.
+- `mongodb/health/getting-started.js` — admin commands tutorial.
+
+### Added — Expert tier (4 scripts)
+
+Senior-grade depth for practitioners who already know the area:
+
+- `mssql/blocking/deadlock-graph-parser.sql` — XML shredding the
+  system_health Extended Events ring buffer to extract every recent
+  deadlock as a tabular row.
+- `postgresql/blocking/lock-mode-conflict-matrix.sql` — joins
+  `pg_locks` against itself with the official 8×8 conflict matrix
+  to show *why* each block exists, including the held-mode ×
+  requested-mode pair.
+- `mysql/performance/innodb-trx-deep.sql` — `INNODB_TRX` × `data_locks`
+  × `processlist` deep cross-join with verdict text per transaction.
+- `mongodb/performance/oplog-tailing-pattern.js` — reads the last N
+  seconds of `local.oplog.rs`, aggregates by namespace + op type,
+  surfaces multi-document transactions and noisy collections.
+
+### Added — Documentation
+
+- `docs/LEARNING_PATHS.md` — bilingual curriculum: which 8 Newborn
+  scripts to start with, which curated paths to follow as a Middle-tier
+  DBA, which 12 Expert-tier scripts to chase last. Closes with the
+  natural bridge to Sentinel DB 360.
+
+### Changed
+
+- README catalog gains a "Learning paths" entry as the first item in
+  the navigation section.
+- Tagline updated: "64 production-grade scripts across four engines —
+  three skill levels".
+- Header validator (`scripts/validate_headers.py`) tolerates the new
+  `Level` field; existing scripts have been bulk-updated to include it.
+
+**64/64 scripts pass header validation.**
 
 ---
 
@@ -183,7 +242,8 @@ The first stable release. SQL Server only, but every script vetted in the field.
 
 ---
 
-[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.3.0
 [2.2.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.2.0
 [2.1.1]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.1.1
 [2.1.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.1.0

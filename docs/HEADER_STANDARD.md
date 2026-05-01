@@ -36,8 +36,25 @@ Every `.sql` file in this toolkit starts with the same header. This is the contr
 
 | Field          | Format                                              | When to use                                                          |
 | -------------- | --------------------------------------------------- | -------------------------------------------------------------------- |
+| `Level`        | `🌱 Newborn` / `🌳 Middle` / `🦅 Expert`              | Skill level the script targets — see **Skill levels** below.         |
 | `Inspired by`  | `<Author / Project> — <topic, year>`                | When the technique (not the code) draws on a public source. Multiple sources separated by `;`. Always cite the public reference, not a private gist. |
 | `Tested on`    | `<engine version, edition, platform>`               | When you've verified on a specific build and want to flag it.        |
+| `Maintainer`   | `<Name> — <Org>`                                    | First maintainer of record for the script.                           |
+| `Last updated` | `YYYY-MM-DD`                                        | Date the script's logic last changed in a meaningful way.            |
+
+## Skill levels
+
+The toolkit serves three audiences. Every script is tagged with the level it targets:
+
+| Level | Symbol | Audience | Characteristics |
+| --- | :---: | --- | --- |
+| **Newborn** | 🌱 | DBAs in their first year — engineers, analysts, anyone newly responsible for a database. | Heavy bilingual commentary, a "what this is" preamble, output that's interpretable without prior DMV/catalog familiarity. Safe to run blind. |
+| **Middle** | 🌳 | Working DBAs with 2-7 years of experience. The bulk of the toolkit. | Production-grade output, tight commentary, war-story flavour. Reader is expected to know what a DMV / catalog / `serverStatus` is. |
+| **Expert** | 🦅 | Senior DBAs and consultants. | Multi-DMV joins, edge-case handling, deep-internals (deadlock graphs, plan handles, oplog tailing, lock mode conflict matrices). Comments assume reader knows the area. |
+
+A script's level is **independent** of its impact rating (🟢🟡🔴). Impact = "is this safe to run on prod?". Level = "do you need senior knowledge to interpret the output?".
+
+Find the right starting point by skill in [`docs/LEARNING_PATHS.md`](./LEARNING_PATHS.md).
 
 ## Sources policy (the line we don't cross)
 

@@ -11,6 +11,7 @@
 -- ║                  benign-wait list (SQLskills public series).      ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2026-05-01                                      ║
+-- ║  Level         : 🦅 Expert   (output requires deep DMV / internals knowledge)      ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

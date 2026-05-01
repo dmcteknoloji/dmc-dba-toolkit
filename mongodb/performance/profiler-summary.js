@@ -10,6 +10,7 @@
 // ║  Inspired by   : MongoDB Manual — Database Profiler              ║
 // ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 // ║  Last updated  : 2025-09-14                                      ║
+// ║  Level         : 🌳 Middle   (production-grade, assumes DBA familiarity)           ║
 // ║  Version       : 1.0.0                                           ║
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝

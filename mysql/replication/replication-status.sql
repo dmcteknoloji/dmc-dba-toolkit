@@ -11,6 +11,7 @@
 -- ║                  Schema Tables                                    ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2026-03-08                                      ║
+-- ║  Level         : 🌱 Newborn  (safe to run blind, output is self-explanatory)       ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

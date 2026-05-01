@@ -9,6 +9,7 @@
 -- ║  Output schema : see docs/OUTPUT_SCHEMAS.md#instance-overview    ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2025-09-28                                      ║
+-- ║  Level         : 🌱 Newborn  (safe to run blind, output is self-explanatory)       ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

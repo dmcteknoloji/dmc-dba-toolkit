@@ -10,6 +10,7 @@
 -- ║  Inspired by   : PostgreSQL official wait event documentation     ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2025-10-22                                      ║
+-- ║  Level         : 🦅 Expert   (output requires deep DMV / internals knowledge)      ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

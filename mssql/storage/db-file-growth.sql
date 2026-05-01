@@ -9,6 +9,7 @@
 -- ║  Output schema : see docs/OUTPUT_SCHEMAS.md#db-file-growth       ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2025-08-12                                      ║
+-- ║  Level         : 🌱 Newborn  (safe to run blind, output is self-explanatory)       ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

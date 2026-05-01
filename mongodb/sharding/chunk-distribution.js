@@ -11,6 +11,7 @@
 // ║  Inspired by   : config.chunks reference — MongoDB Manual         ║
 // ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 // ║  Last updated  : 2026-04-26                                      ║
+// ║  Level         : 🦅 Expert   (output requires deep DMV / internals knowledge)      ║
 // ║  Version       : 1.0.0                                           ║
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝

@@ -11,6 +11,7 @@
 -- ║                  Learn public reference. Code original.          ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2026-03-24                                      ║
+-- ║  Level         : 🌳 Middle   (production-grade, assumes DBA familiarity)           ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

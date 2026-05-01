@@ -10,6 +10,7 @@
 // ║  Inspired by   : MongoDB Manual — serverStatus, hostInfo, isMaster║
 // ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 // ║  Last updated  : 2026-02-09                                      ║
+// ║  Level         : 🌱 Newborn  (safe to run blind, output is self-explanatory)       ║
 // ║  Version       : 1.0.0                                           ║
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝

@@ -11,6 +11,7 @@
 -- ║                  blog series. Technique credited; code original. ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2025-05-22                                      ║
+-- ║  Level         : 🦅 Expert   (output requires deep DMV / internals knowledge)      ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

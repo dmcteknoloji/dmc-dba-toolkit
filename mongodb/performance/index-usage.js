@@ -10,6 +10,7 @@
 // ║  Inspired by   : MongoDB Manual — $indexStats aggregation stage  ║
 // ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 // ║  Last updated  : 2026-01-18                                      ║
+// ║  Level         : 🌳 Middle   (production-grade, assumes DBA familiarity)           ║
 // ║  Version       : 1.0.0                                           ║
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝

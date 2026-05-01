@@ -10,6 +10,7 @@
 -- ║  Inspired by   : MySQL Reference Manual — InnoDB monitoring      ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2025-08-22                                      ║
+-- ║  Level         : 🌳 Middle   (production-grade, assumes DBA familiarity)           ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

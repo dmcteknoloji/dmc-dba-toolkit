@@ -11,6 +11,7 @@
 // ║                  — MongoDB Manual public reference.               ║
 // ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 // ║  Last updated  : 2026-04-21                                      ║
+// ║  Level         : 🌳 Middle   (production-grade, assumes DBA familiarity)           ║
 // ║  Version       : 1.0.0                                           ║
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝

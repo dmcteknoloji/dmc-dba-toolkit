@@ -11,6 +11,7 @@
 -- ║                  Schema Tables.                                   ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2026-05-01                                      ║
+-- ║  Level         : 🌳 Middle   (production-grade, assumes DBA familiarity)           ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

@@ -11,6 +11,7 @@
 -- ║                  DMV family — Microsoft Learn public docs.        ║
 -- ║  Maintainer    : Çağlar Özenç — DMC Bilgi Teknolojileri          ║
 -- ║  Last updated  : 2026-05-01                                      ║
+-- ║  Level         : 🦅 Expert   (output requires deep DMV / internals knowledge)      ║
 -- ║  Version       : 1.0.0                                           ║
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝

@@ -20,7 +20,7 @@ Open one script — get a clear answer in 30 seconds.
 [![DMC Bilgi Teknolojileri on LinkedIn](https://img.shields.io/badge/LinkedIn-DMC%20Bilgi%20Teknolojileri-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/company/dmcteknoloji)
 
 _Created and maintained by **[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — Microsoft MVP, [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)._
-_Started April 2025. **56 production-grade scripts** across four engines, all built on public vendor documentation._
+_Started April 2025. **64 production-grade scripts** across four engines — three skill levels (🌱 Newborn · 🌳 Middle · 🦅 Expert), all built on public vendor documentation._
 
 🌐 **English** · [Türkçe içerik scriptlerin içinde](./docs/PLAYBOOKS.md) · [Español](./README.es.md) · [Deutsch](./README.de.md) · [日本語](./README.ja.md)
 
@@ -213,10 +213,11 @@ This toolkit ships only what we can publish without ambiguity:
 
 ---
 
-## 📖 Playbooks, monitoring & positioning
+## 📖 Learning paths, playbooks, monitoring & positioning
 
+- **[Learning paths](./docs/LEARNING_PATHS.md)** — start here for a curriculum. Three skill levels (🌱 Newborn / 🌳 Middle / 🦅 Expert) with a curated order of scripts per level. Bilingual EN + TR.
 - **[Playbooks](./docs/PLAYBOOKS.md)** — incident-response workflows that string the toolkit's scripts together: CPU at 100%, blocking storms, replicas falling behind, disk filling, failed login bursts, pre-release sanity checks. Bilingual EN + TR.
-- **[Monitoring guide](./docs/MONITORING_GUIDE.md)** — turn the `monitoring/` snapshots into a poor-man's monitoring stack with SQL Agent / pg_cron / MySQL Event Scheduler / mongosh cron. Includes Grafana / Power BI hookup and the natural bridge to Sentinel DB 360.
+- **[Monitoring guide](./docs/MONITORING_GUIDE.md)** — turn the `monitoring/` snapshots into a poor-man's monitoring stack with SQL Agent / pg_cron / MySQL Event Scheduler / mongosh cron. Grafana / Power BI hookup. Natural bridge to Sentinel DB 360.
 - **[Vs other toolkits](./docs/VS_OTHER_TOOLKITS.md)** — honest positioning vs Brent Ozar's First Responder Kit, `sp_WhoIsActive`, Glenn Berry's diagnostic queries, Ola Hallengren, `postgres_dba`, Percona Toolkit, mtools.
 
 ---
