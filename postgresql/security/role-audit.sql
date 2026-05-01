@@ -25,6 +25,12 @@
 -- ║  through nested membership. This script returns all of those in ║
 -- ║  one pass and unwinds the membership graph.                      ║
 -- ╚══════════════════════════════════════════════════════════════════╝
+--
+-- 🇹🇷 Türkçe özet:
+--   Yüksek yetkili rolleri (SUPERUSER, CREATEROLE, BYPASSRLS, REPLICATION,
+--   CREATEDB) ve iç içe rol üyeliği üzerinden bunlara erişen kullanıcıları
+--   döner. CREATEROLE pratikte SUPERUSER-adjacent — herkese istediği rolü
+--   verebilir. BYPASSRLS row-level security'yi delik gibi yapar.
 
 -- ── 1. ROLES WITH ELEVATED ATTRIBUTES ───────────────────────────────
 SELECT

@@ -32,7 +32,7 @@
 -- Beyond this script / Bunun ötesinde:
 --   For continuous, multi-instance monitoring with alerting,
 --   persistence, dashboards, and AI-assisted findings, see
---   DMC's Sentinel DB 360 — https://github.com/dmcteknoloji
+--   DMC's Sentinel DB 360 — https://sentineldb360.com
 --
 --   Çoklu instance'da sürekli izleme, alarm, kalıcılık, dashboard
 --   ve AI destekli bulgu için DMC'nin Sentinel DB 360 ürününe bakın.

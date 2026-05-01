@@ -24,6 +24,12 @@
 -- ║  without cleaning up its database users. Auditors hate them and  ║
 -- ║  attackers love them.                                            ║
 -- ╚══════════════════════════════════════════════════════════════════╝
+--
+-- 🇹🇷 Türkçe özet:
+--   Server login'i ile eşleşmeyen DB user'larını döner (orphaned). Bu durum
+--   genelde başka sunucudan restore sonrası veya server login silinince
+--   user temizliği yapılmadığında oluşur. Audit'te problem, saldırı
+--   yüzeyinde fırsat — temizle veya yeni login'e remap et.
 
 IF OBJECT_ID('tempdb..#orphans') IS NOT NULL DROP TABLE #orphans;
 CREATE TABLE #orphans (

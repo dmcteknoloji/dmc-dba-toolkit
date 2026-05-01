@@ -14,6 +14,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   SQL Server instance'ı için tek-ekran özeti: kimlik (sürüm, edition,
+--   uptime), kaynaklar (CPU, bellek, max server memory), iş yükü (oturumlar,
+--   aktif istekler, blocked sayısı) ve backup zinciri. Azure SQL DB single
+--   üzerinde MachineName / OS DMV'leri yoktur — script o satırları atlar.
+--
 -- A one-screen summary of this SQL Server instance: who it is, what it's
 -- running on, how long it has been up, what its workload looks like, and
 -- whether its backups are recent.

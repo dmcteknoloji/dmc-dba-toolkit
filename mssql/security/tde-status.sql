@@ -22,6 +22,12 @@
 -- ║  running — usually unintended. This script translates the        ║
 -- ║  numeric state into plain English alongside key health.          ║
 -- ╚══════════════════════════════════════════════════════════════════╝
+--
+-- 🇹🇷 Türkçe özet:
+--   TDE encryption_state'in 8 değerini düz İngilizceye çevirir + key/cert
+--   thumbprint'leri ve son tarih. State 2'de >24 saat takılı kalan DB
+--   muhtemelen sıkışmıştır; state 5 (decryption) genelde istemsizdir.
+--   Sertifika expiry < 90 gün ise rotation planı zamanı.
 
 SELECT
     DB_NAME(dek.database_id)                              AS database_name,

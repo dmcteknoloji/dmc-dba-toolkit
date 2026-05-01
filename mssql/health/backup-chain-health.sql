@@ -25,6 +25,12 @@
 -- ║  and last log backup, and flags the gaps that should make you    ║
 -- ║  uncomfortable.                                                  ║
 -- ╚══════════════════════════════════════════════════════════════════╝
+--
+-- 🇹🇷 Türkçe özet:
+--   Her online DB için son full / diff / log backup zamanlarını ve gecikme
+--   uyarılarını döner. SIMPLE recovery + log backup history kombinasyonu
+--   no-op olarak işaretlenir. FULL recovery'de log backup yoksa log dosyası
+--   sonsuza kadar büyür — kritik flag.
 
 WITH last_backups AS (
     SELECT

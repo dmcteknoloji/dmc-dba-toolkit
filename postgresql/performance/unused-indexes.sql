@@ -25,6 +25,12 @@
 -- ║  you don't drop an index three days after a node restart wiped  ║
 -- ║  its counters.                                                   ║
 -- ╚══════════════════════════════════════════════════════════════════╝
+--
+-- 🇹🇷 Türkçe özet:
+--   pg_stat_user_indexes üzerinden 0 scan olan indeksleri döner. Stats
+--   reset yaşı kritiktir — DB dün gece restart olduysa her indeks unused
+--   görünür. UNIQUE / PRIMARY KEY indeksleri korunur (drop edilemez).
+--   <7 gün stats yaşında düşük usage'a "henüz erken" der.
 
 WITH stats_age AS (
     SELECT

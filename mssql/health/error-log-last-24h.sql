@@ -24,6 +24,12 @@
 -- ║  This script does the time and severity filtering server-side.   ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   Son 24 saatteki SQL Server error log girdilerini severity'ye göre
+--   tagleyerek döner: 17+ severity, login failures, IO/storage uyarıları,
+--   memory pressure, deadlock, backup hataları. xp_readerrorlog parametre
+--   filtresi sunucu tarafında çalıştırılır — SSMS GUI'sinden hızlı.
+--
 -- Walks the *current* error log file (number 0). To check older logs,
 -- change the @log_file argument. SQL Server retains 6 historical logs
 -- by default; many shops bump this to 30 — which buys a month of

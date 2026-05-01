@@ -15,6 +15,12 @@
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝
 //
+// 🇹🇷 Türkçe özet:
+//   Threshold'tan (default 1s) uzun süredir çalışan aktif operasyonları
+//   $currentOp aggregation stage'i ile döner — db.currentOp() shell
+//   helper'ının modern yapılandırılmış muadili. SECS_RUNNING shell değişkeni
+//   ile threshold ezilir. Internal op'lar ve replication noise filtrelenir.
+//
 // Returns currently active operations that have been running longer
 // than a threshold (default 1 second). Uses the $currentOp aggregation
 // stage — the modern, structured replacement for the legacy

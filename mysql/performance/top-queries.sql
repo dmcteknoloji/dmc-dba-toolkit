@@ -16,6 +16,13 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   performance_schema.events_statements_summary_by_digest üzerinden
+--   kümülatif latency'ye göre en pahalı sorguları döner. Digest table'ı
+--   shape'e göre normalize eder (parametre değerleri tek satıra düşer).
+--   Pre-flight: performance_schema = ON, max_digest_length > 0.
+--   Tüm zamanlar pikosaniye → ms'e çevrilir.
+--
 -- Returns the top queries by cumulative latency from
 -- performance_schema.events_statements_summary_by_digest. The digest
 -- table normalizes by query shape, so different parameter values for

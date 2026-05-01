@@ -15,6 +15,12 @@
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝
 //
+// 🇹🇷 Türkçe özet:
+//   rs.status() çıktısının okunabilir özeti: hangi üye primary, hangileri
+//   secondary, kim ulaşılamıyor, lag (saniye), oplog penceresi (resync
+//   afford edebilir miyiz?), election config (priority, votes). Sağlıklı
+//   heartbeat arkasında sıkışmış optime patern'ini de işaretler.
+//
 // What this is for:
 //   `rs.status()` returns a deeply nested document that's hard to read on
 //   a phone at 2 AM. This script extracts the four things that actually

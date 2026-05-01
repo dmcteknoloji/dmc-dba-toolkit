@@ -15,6 +15,12 @@
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝
 //
+// 🇹🇷 Türkçe özet:
+//   system.profile capped collection'ından son slow op'ları namespace +
+//   operation shape'e göre toplar. Pre-flight: db.setProfilingLevel(1,
+//   {slowms: 100}) ile profiler aktif olmalı. Capped collection 1MB
+//   default — yoğun cluster'da saniyeler içinde döner; 64MB'a çıkar.
+//
 // What this is for:
 //   When the app team comes to you saying "Mongo is slow today" — but
 //   currentOp is empty because the slow ops finished before you logged

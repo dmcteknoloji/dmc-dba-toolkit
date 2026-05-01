@@ -23,6 +23,12 @@
 -- ║  which replica is primary, are all replicas synchronizing, and   ║
 -- ║  is any database not joined to the AG it belongs to?             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
+--
+-- 🇹🇷 Türkçe özet:
+--   Always On Availability Group durumunu üç bölümde döner: AG kimliği,
+--   replica health (sync state, connected state), DB-seviyesi sync state
+--   + log_send_queue / redo_queue (geride kalma göstergeleri). Always On
+--   kapalıysa script bilgilendirme satırıyla erken döner.
 
 -- Quick guard — Always On may be disabled on this instance.
 IF SERVERPROPERTY('IsHadrEnabled') IS NULL

@@ -23,6 +23,12 @@
 -- ║  buys you), uptime (so you know if the data is trustworthy),    ║
 -- ║  and a verdict that respects PRIMARY/UNIQUE constraints.         ║
 -- ╚══════════════════════════════════════════════════════════════════╝
+--
+-- 🇹🇷 Türkçe özet:
+--   sys.schema_unused_indexes (sys schema'nın hazır görünümü) üzerinden
+--   instance açılışından beri hiç okunmamış indeksleri döner. Üç katkı:
+--   indeks boyutu (ne kazanırsın), uptime (veriye güven derecesi),
+--   PRIMARY/UNIQUE koruması. Uptime <7 gün → "henüz erken".
 
 SELECT
     sui.object_schema                                              AS schema_name,

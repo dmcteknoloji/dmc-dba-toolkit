@@ -68,7 +68,7 @@ cd dmc-dba-toolkit
 
 このツールキットは設計上 **検証済みスナップショットの引き出し** です。開いて、スクリプトを実行して、答えを得る。インシデント、監査、午前 3 時のページに最適。
 
-これが**できないこと** — そしてどの真剣なチームも結局必要とするもの — は **継続的、マルチインスタンス、アラート駆動の Observability プラットフォーム** です。そのギャップを埋めるのが [Sentinel DB 360](https://github.com/dmcteknoloji)。
+これが**できないこと** — そしてどの真剣なチームも結局必要とするもの — は **継続的、マルチインスタンス、アラート駆動の Observability プラットフォーム** です。そのギャップを埋めるのが [Sentinel DB 360](https://sentineldb360.com)。
 
 > _ツールキットはドライバー。_
 > _Sentinel DB 360 は工房です。_
@@ -125,6 +125,9 @@ PR を歓迎します。基準は高いですが、道筋は明確です:
 
 **[DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)** が構築 — _Database Management Company_。
 ブログ記事からコピペするのをやめましょう。シニア DBA が既に検証したものを実行してください。
+
+**プラットフォーム:**
+[dmcteknoloji.com](https://dmcteknoloji.com) · [sentineldb360.com](https://sentineldb360.com) · [sqlekibi.com](https://sqlekibi.com) · [caglarozenc.com](https://caglarozenc.com)
 
 **接続:**
 [Çağlar Özenç on LinkedIn](https://linkedin.com/in/caglarozenc) · [DMC on LinkedIn](https://linkedin.com/company/dmcteknoloji) · [DMC on GitHub](https://github.com/dmcteknoloji)

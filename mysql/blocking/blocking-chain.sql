@@ -15,6 +15,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   sys.innodb_lock_waits üzerinden "kim kimi bekliyor?" sorusunun anlık
+--   cevabı (MySQL 8.0+). 5.7'de information_schema.innodb_lock_waits
+--   farklı kolon adlarıyla var — bu script v2.1 backlog. Waiter ve blocker'ın
+--   host/user/query metni processlist'ten join'lenir.
+--
 -- Returns who is waiting on whom right now using performance_schema's
 -- data_lock_waits + data_locks views (MySQL 8.0+). On 5.7, the
 -- equivalent information_schema.innodb_lock_waits view exists but with

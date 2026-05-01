@@ -17,6 +17,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   pg_class.relpages + pg_stats column istatistikleri ile tablo bloat
+--   tahmini. Tahmin — kesin ölçüm için pgstattuple extension lazım.
+--   Yüksek-churn şemada >%30 bloat genelde autovacuum geride kaldı
+--   demektir, gerçek veri büyümesi değil.
+--
 -- Estimates table bloat using pg_class.relpages and pg_stats column
 -- statistics. This is fast and runs against any production cluster
 -- safely. It is an *estimate* — for ground truth, install the

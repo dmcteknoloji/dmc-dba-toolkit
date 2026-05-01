@@ -15,6 +15,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   MySQL server için tek-ekran özet: kimlik (sürüm, hostname, server_id,
+--   read_only flag), uptime, iş yükü (threads_connected, slow_queries,
+--   aborted_clients), InnoDB headline (buffer pool, dirty pages, hit rate).
+--   read_only=ON → bu büyük olasılıkla replikadır.
+--
 -- One-screen summary of this MySQL server: identity (version, edition,
 -- read-only mode), workload (connections, slow queries, queries per
 -- second proxy), and InnoDB headline metrics (buffer pool, dirty pages).

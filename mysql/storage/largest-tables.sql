@@ -15,6 +15,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   information_schema.TABLES üzerinden en büyük tabloları (data + index
+--   boyutu) döner. InnoDB için DATA_LENGTH ve INDEX_LENGTH tahmindir;
+--   kesin sayı için önce ANALYZE TABLE çalıştır. data_free_pct fragmantasyon
+--   göstergesidir — InnoDB shared tablespace'te yorumlamak zordur.
+--
 -- Returns the largest tables by total on-disk size (data + index),
 -- with a fragmentation hint via DATA_FREE.
 --

@@ -16,6 +16,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   Üç bölüm: ROLE (primary mi standby mi?), STANDBYS (bağlı replikalar
+--   ve lag), SLOTS (fiziksel/mantıksal slot'lar, tutulan WAL). Tam görünüm
+--   primary'de çalıştırıldığında elde edilir. Pasif (active=false) slot
+--   WAL'ı sonsuza kadar tutar — diski doldurur.
+--
 -- Three sections in one result set:
 --   1. ROLE          — am I a primary or a standby?
 --   2. STANDBYS      — pg_stat_replication: connected replicas, lag.

@@ -6,9 +6,18 @@ contact_links:
   - name: Contribution guide
     url: https://github.com/dmcteknoloji/dmc-dba-toolkit/blob/main/CONTRIBUTING.md
     about: Read the header standard and PR checklist before opening an issue.
-  - name: DMC Bilgi Teknolojileri on LinkedIn
+  - name: Sentinel DB 360 — continuous monitoring platform
+    url: https://sentineldb360.com
+    about: For demos, pricing, and trial of the platform that runs the toolkit's monitoring scripts continuously.
+  - name: DMC Bilgi Teknolojileri (corporate site)
+    url: https://dmcteknoloji.com
+    about: Consulting, partnership, and enterprise inquiries.
+  - name: SQL Ekibi — Turkish SQL Server community
+    url: https://sqlekibi.com
+    about: Türkçe içerik, makale, konferans — Türkiye'deki SQL Server topluluğu.
+  - name: DMC on LinkedIn
     url: https://linkedin.com/company/dmcteknoloji
-    about: Reach out for consulting, Sentinel DB 360 demos, or partnership inquiries.
-  - name: Çağlar Özenç on LinkedIn
-    url: https://linkedin.com/in/caglarozenc
-    about: Connect with the maintainer directly.
+    about: Follow DMC on LinkedIn.
+  - name: Çağlar Özenç (personal site)
+    url: https://caglarozenc.com
+    about: Personal blog, speaking engagements, MVP work.

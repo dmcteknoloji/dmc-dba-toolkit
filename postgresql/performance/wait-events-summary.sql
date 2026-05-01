@@ -15,6 +15,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   Aktif backend'leri wait event'e göre gruplar — anlık snapshot. SQL
+--   Server'dan farkı: pg_stat_activity kümülatif değil, sadece şu anı
+--   yansıtır. Trend için periyodik örneklemeli toplama gerekir.
+--   state_age ile sıkışmış idle-in-transaction'ı yakalar.
+--
 -- Snapshot of currently active backends grouped by their wait event,
 -- with state and duration. Unlike the equivalent SQL Server script
 -- (which uses cumulative DMV counters), Postgres exposes wait events as

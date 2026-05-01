@@ -68,7 +68,7 @@ cd dmc-dba-toolkit
 
 Dieses Toolkit ist per Design **eine Schublade geprüfter Snapshots**. Du öffnest es, führst ein Skript aus, bekommst eine Antwort. Perfekt für einen Incident, ein Audit, eine Pager-Meldung um 3 Uhr morgens.
 
-Was es **nicht** ist — und was jedes ernsthafte Team irgendwann braucht — ist eine **kontinuierliche, multi-Instanz, alarm-getriebene Observability-Plattform**. Diese Lücke schließt [Sentinel DB 360](https://github.com/dmcteknoloji).
+Was es **nicht** ist — und was jedes ernsthafte Team irgendwann braucht — ist eine **kontinuierliche, multi-Instanz, alarm-getriebene Observability-Plattform**. Diese Lücke schließt [Sentinel DB 360](https://sentineldb360.com).
 
 > _Das Toolkit ist der Schraubenzieher._
 > _Sentinel DB 360 ist die Werkstatt._
@@ -125,6 +125,9 @@ PRs willkommen. Die Latte ist hoch, der Weg klar:
 
 Gebaut von **[DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)** — _Database Management Company_.
 Hör auf, aus Blog-Posts zu kopieren. Führe etwas aus, das ein Senior-DBA bereits geprüft hat.
+
+**Unsere Plattformen:**
+[dmcteknoloji.com](https://dmcteknoloji.com) · [sentineldb360.com](https://sentineldb360.com) · [sqlekibi.com](https://sqlekibi.com) · [caglarozenc.com](https://caglarozenc.com)
 
 **Vernetzen:**
 [Çağlar Özenç auf LinkedIn](https://linkedin.com/in/caglarozenc) · [DMC auf LinkedIn](https://linkedin.com/company/dmcteknoloji) · [DMC auf GitHub](https://github.com/dmcteknoloji)

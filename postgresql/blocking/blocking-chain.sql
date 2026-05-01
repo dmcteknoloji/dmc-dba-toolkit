@@ -15,6 +15,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   Anlık blocking zincirini pg_blocking_pids() ile recursive CTE üzerinden
+--   döner. Lead blocker (kendisi bloklanmamış olan) anchor'dır; kurbanlar
+--   alta dizilir. xact_age ve query_age idle-in-transaction patern'ini
+--   yakalamak için kritik kolonlar.
+--
 -- Returns the current blocking chain on the cluster, with chain depth
 -- and lead-blocker identification. Uses pg_blocking_pids(), the
 -- recommended way to detect lock waiters since PostgreSQL 9.6, and walks

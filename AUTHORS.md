@@ -8,16 +8,28 @@ This toolkit is the work of practitioners — people who have actually been on t
 
 Started this toolkit in April 2025 after one too many incident calls where the answer was buried in a different consultant's USB stick. The goal: build the diagnostic kit a senior DBA would actually trust, with documented schemas, a real CI pipeline, and the discipline to refuse anything that isn't safe to run on a production instance.
 
+- **Personal site:** [caglarozenc.com](https://caglarozenc.com)
 - **LinkedIn:** [linkedin.com/in/caglarozenc](https://linkedin.com/in/caglarozenc)
 - **GitHub org:** [github.com/dmcteknoloji](https://github.com/dmcteknoloji)
 - **Engagements:** enterprise SQL Server, PostgreSQL, MySQL and MongoDB consulting through DMC Bilgi Teknolojileri.
-- **Platform:** lead architect of [Sentinel DB 360](https://github.com/dmcteknoloji) — DMC's multi-engine database observability platform.
+- **Platform:** lead architect of [Sentinel DB 360](https://sentineldb360.com) — DMC's multi-engine database observability platform.
+- **Community:** [SQL Ekibi](https://sqlekibi.com) — Turkish-language SQL Server community and content hub.
 - **Microsoft MVP** — Data Platform.
 
 ### DMC Bilgi Teknolojileri (Database Management Company)
 
+- **Site:** [dmcteknoloji.com](https://dmcteknoloji.com)
 - **LinkedIn:** [linkedin.com/company/dmcteknoloji](https://linkedin.com/company/dmcteknoloji)
 - **GitHub:** [github.com/dmcteknoloji](https://github.com/dmcteknoloji)
+
+### Our public platforms · Bizim açık platformlarımız
+
+| Platform | URL | Purpose |
+|---|---|---|
+| **DMC Bilgi Teknolojileri** | [dmcteknoloji.com](https://dmcteknoloji.com) | Corporate site — services, contact, pricing inquiries. |
+| **Sentinel DB 360** | [sentineldb360.com](https://sentineldb360.com) | The continuous, multi-instance, alert-driven version of this toolkit. |
+| **SQL Ekibi** | [sqlekibi.com](https://sqlekibi.com) | Turkish-language SQL Server community. Articles, recipes, conferences. |
+| **Çağlar Özenç** | [caglarozenc.com](https://caglarozenc.com) | Personal site — speaking engagements, MVP work, blog. |
 
 ## Contributors
 

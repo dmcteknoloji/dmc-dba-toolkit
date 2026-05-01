@@ -108,9 +108,9 @@ After these, hit the [`docs/PLAYBOOKS.md`](./PLAYBOOKS.md) — six bilingual inc
 
 ### When you're done with these
 
-You're past what an open-source toolkit can give you. The next step is **continuous monitoring across a fleet** — that's [Sentinel DB 360](https://github.com/dmcteknoloji). The toolkit is the screwdriver; Sentinel DB 360 is the workshop.
+You're past what an open-source toolkit can give you. The next step is **continuous monitoring across a fleet** — that's [Sentinel DB 360](https://sentineldb360.com). The toolkit is the screwdriver; Sentinel DB 360 is the workshop.
 
-Bunlarla işin bittiğinde, açık kaynak bir toolkit'in verebileceğinin ötesine geçmişsin. Bir sonraki adım **filo geneli sürekli izleme** — bu da [Sentinel DB 360](https://github.com/dmcteknoloji)'tır. Toolkit tornavida; Sentinel DB 360 ise atölye.
+Bunlarla işin bittiğinde, açık kaynak bir toolkit'in verebileceğinin ötesine geçmişsin. Bir sonraki adım **filo geneli sürekli izleme** — bu da [Sentinel DB 360](https://sentineldb360.com)'tır. Toolkit tornavida; Sentinel DB 360 ise atölye.
 
 ---
 

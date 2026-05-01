@@ -15,6 +15,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   pg_stat_statements üzerinden en çok zaman tüketen sorguları döner.
+--   PG 13+ kolon adları (total_exec_time, planning_time vb.) kullanılır.
+--   Pre-flight: pg_stat_statements extension yüklü olmalı; managed
+--   servislerde (RDS, Aurora, Cloud SQL) parametre grubuyla aktif edilir.
+--
 -- Returns the top queries by cumulative execution time from the
 -- pg_stat_statements extension. Requires the extension to be installed
 -- and shared_preload_libraries to include 'pg_stat_statements' (default

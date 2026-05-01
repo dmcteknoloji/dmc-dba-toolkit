@@ -15,6 +15,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   PostgreSQL cluster için tek-ekran özet: kimlik (sürüm, role, data
+--   directory, max_connections, shared_buffers, work_mem, autovacuum),
+--   iş yükü (DB sayısı, bağlantılar, idle-in-xact, en eski xact yaşı).
+--   Managed servislerde data_directory gizlidir — "<not exposed>" döner.
+--
 -- One-screen summary of this PostgreSQL cluster: identity (version, data
 -- directory, role), workload (databases, connections, longest running
 -- transaction), and a few stability-relevant settings (max_connections,

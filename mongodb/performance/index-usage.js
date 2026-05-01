@@ -15,6 +15,12 @@
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝
 //
+// 🇹🇷 Türkçe özet:
+//   Hedef DB'deki tüm collection'lar için $indexStats agregasyonu — hangi
+//   indeks ne kadar erişim almış. Counter'lar mongod restart'ta sıfırlanır
+//   (BÜYÜK uyarı). Replica set'te primary VE her secondary'de çalıştır;
+//   okuma trafiği secondary'ye düşmüş olabilir.
+//
 // What this is for:
 //   Every Mongo deployment over a year old has indexes nobody remembers
 //   creating. They cost RAM in the working set and write amplification

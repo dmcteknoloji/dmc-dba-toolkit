@@ -23,6 +23,12 @@
 -- ║  many connections are stuck in 'idle in transaction', and what  ║
 -- ║  is the oldest one.                                              ║
 -- ╚══════════════════════════════════════════════════════════════════╝
+--
+-- 🇹🇷 Türkçe özet:
+--   Üç bölüm: HEADROOM (max_connections kullanım yüzdesi), BY_GROUP (DB
+--   × user × app_name × state kırılımı), IDLE_IN_XACT (kilit tutan ve
+--   vacuum'u bloklayan idle-in-transaction oturumlarının detayı). %85
+--   üstü kullanım = yeni session reddi riski yaklaşıyor.
 
 -- ── 1. HEADROOM ─────────────────────────────────────────────────────
 SELECT

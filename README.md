@@ -232,7 +232,7 @@ This toolkit ships only what we can publish without ambiguity:
 
 This toolkit is, by design, a **drawer of vetted snapshots**. You open the right script, you run it, you get an answer. Perfect for an incident, an audit, a 3 AM page, or a sanity check before a release.
 
-What it is _not_ — and what every serious team eventually needs — is a **continuous, multi-instance, alert-driven observability platform**. That's the gap [Sentinel DB 360](https://github.com/dmcteknoloji) closes.
+What it is _not_ — and what every serious team eventually needs — is a **continuous, multi-instance, alert-driven observability platform**. That's the gap [Sentinel DB 360](https://sentineldb360.com) closes.
 
 Bu toolkit, tasarımı gereği, **doğrulanmış snapshot'ların çekmecesidir**. Doğru scripti açar, çalıştırır, cevabı alırsın. Bir incident, denetim, sabah 03:00 alarmı veya release öncesi sağlık kontrolü için mükemmel.
 
@@ -322,7 +322,7 @@ Eğer şu maddelerden **en az ikisi** doğruysa Sentinel DB 360'ı değerlendirm
 
 This toolkit will always be free, MIT-licensed, and maintained as a first-class part of DMC's open-source posture. It is genuinely useful by itself, and we use it ourselves on every engagement before reaching for the platform.
 
-But there comes a point where you stop wanting better screwdrivers and start wanting a workshop. When that point arrives — when the toolkit gives you the right answer but you wish you'd had it 30 minutes ago, on the right instance, before the customer noticed — that's when **[Sentinel DB 360](https://github.com/dmcteknoloji)** is for you.
+But there comes a point where you stop wanting better screwdrivers and start wanting a workshop. When that point arrives — when the toolkit gives you the right answer but you wish you'd had it 30 minutes ago, on the right instance, before the customer noticed — that's when **[Sentinel DB 360](https://sentineldb360.com)** is for you.
 
 Bu toolkit her zaman ücretsiz, MIT lisanslı ve DMC'nin açık kaynak duruşunun birinci sınıf bir parçası olarak kalacak. Tek başına gerçekten faydalıdır — DMC olarak her engagement'te platforma uzanmadan önce kendi başımıza da kullanırız.
 
@@ -365,6 +365,9 @@ Found a script that mutates state, leaks data, or misbehaves on a specific editi
 
 Built by **[DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)** — _Database Management Company_.
 Stop pasting from blog posts. Run something a senior DBA already vetted.
+
+**Our platforms:**
+[dmcteknoloji.com](https://dmcteknoloji.com) · [sentineldb360.com](https://sentineldb360.com) · [sqlekibi.com](https://sqlekibi.com) · [caglarozenc.com](https://caglarozenc.com)
 
 **Connect:**
 [Çağlar Özenç on LinkedIn](https://linkedin.com/in/caglarozenc) · [DMC on LinkedIn](https://linkedin.com/company/dmcteknoloji) · [DMC on GitHub](https://github.com/dmcteknoloji)

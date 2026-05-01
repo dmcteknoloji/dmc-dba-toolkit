@@ -16,6 +16,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   Optimizer'ın istediği eksik indeksleri user_seeks * avg_total_user_cost
+--   * (avg_user_impact / 100) formülüyle skorlar. DMV instance restart'ta
+--   veya plan cache flush'ta sıfırlanır — sıralamayı "cache son ısındığından
+--   beri" olarak oku. CREATE INDEX üretmez; önce incele, sonra tasarla.
+--
 -- Returns the missing indexes the optimiser has been wishing for, ranked
 -- by an "impact score" derived from user_seeks * (avg_total_user_cost
 -- * (avg_user_impact / 100.0)) — the canonical formula from Microsoft's

@@ -23,6 +23,12 @@
 -- ║  AD group is in a custom role that's a member of sysadmin.      ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   sysadmin rolünün etkili üyeliğini döner: doğrudan üyeler + iç içe rol
+--   üyeliğiyle ulaşılabilen herkes. Azure SQL Database (single) sürümünde
+--   sunucu seviyesinde rol kavramı yok; o edition'da bilgilendirme satırı
+--   döner. Disabled login'ler audit'te hâlâ sayılır — flag'lenir.
+--
 -- Returns the effective sysadmin membership: direct grants plus everyone
 -- reachable through nested role membership. Each row also flags whether
 -- the principal is currently disabled (a common mistake — a disabled

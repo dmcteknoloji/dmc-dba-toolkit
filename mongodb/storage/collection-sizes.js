@@ -15,6 +15,12 @@
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝
 //
+// 🇹🇷 Türkçe özet:
+//   Hedef DB'deki collection'lar için collStats — logical size, on-disk
+//   storageSize, totalIndexSize, freeStorageSize (WT only — fragmantasyon),
+//   avgObjSize, doc count. storageSize ≠ size: WiredTiger sıkıştırır.
+//   Yüksek freeStorageSize → compact() veya rolling resync düşünülmeli.
+//
 // What this is for:
 //   You have a 1.2 TB MongoDB and the storage bill is going up. Where is
 //   the data? collStats per collection is the answer, but running it

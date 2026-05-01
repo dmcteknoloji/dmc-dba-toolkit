@@ -15,6 +15,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   InnoDB row-lock baskısını iki açıdan döner: kümülatif global_status
+--   sayaçları (instance açılışından beri) + per-table data_locks görünümü
+--   (MySQL 8.0+). 5.7'de data_locks yoktur — sadece kümülatif bölüm dolu.
+--   Anlık deadlock için SHOW ENGINE INNODB STATUS\G hâlâ canonical.
+--
 -- Returns InnoDB row-lock contention overview from two angles:
 --   1. Cumulative counters from global status (since startup).
 --   2. Currently held / requested locks per table from

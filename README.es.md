@@ -68,7 +68,7 @@ Abre cualquier archivo `.sql` (o `.js` para MongoDB) en tu cliente favorito. Lee
 
 Este toolkit es, por diseño, **un cajón de snapshots verificados**. Lo abres, ejecutas un script, obtienes una respuesta. Perfecto para un incidente, una auditoría, un alerta a las 3 AM.
 
-Lo que **no** es — y lo que cualquier equipo serio termina necesitando — es una **plataforma de observabilidad continua, multi-instancia, basada en alertas**. Esa es la brecha que cierra [Sentinel DB 360](https://github.com/dmcteknoloji).
+Lo que **no** es — y lo que cualquier equipo serio termina necesitando — es una **plataforma de observabilidad continua, multi-instancia, basada en alertas**. Esa es la brecha que cierra [Sentinel DB 360](https://sentineldb360.com).
 
 > _El toolkit es el destornillador._
 > _Sentinel DB 360 es el taller._
@@ -125,6 +125,9 @@ PRs bienvenidos. La barra es alta pero el camino es claro:
 
 Construido por **[DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)** — _Database Management Company_.
 Deja de pegar desde blog posts. Ejecuta algo que un DBA senior ya validó.
+
+**Nuestras plataformas:**
+[dmcteknoloji.com](https://dmcteknoloji.com) · [sentineldb360.com](https://sentineldb360.com) · [sqlekibi.com](https://sqlekibi.com) · [caglarozenc.com](https://caglarozenc.com)
 
 **Conecta:**
 [Çağlar Özenç en LinkedIn](https://linkedin.com/in/caglarozenc) · [DMC en LinkedIn](https://linkedin.com/company/dmcteknoloji) · [DMC en GitHub](https://github.com/dmcteknoloji)

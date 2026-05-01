@@ -279,7 +279,7 @@ DirectQuery to the database; the snapshot tables work directly.
 
 ### Sentinel DB 360
 
-If you've gotten this far and you're enjoying the dashboards but the operational overhead is starting to bite, that's exactly what [Sentinel DB 360](https://github.com/dmcteknoloji) automates. It collects this same shape of data continuously, persists it, baselines it, and surfaces anomalies — without a single SQL Agent job, pg_cron schedule, or mongosh cron entry.
+If you've gotten this far and you're enjoying the dashboards but the operational overhead is starting to bite, that's exactly what [Sentinel DB 360](https://sentineldb360.com) automates. It collects this same shape of data continuously, persists it, baselines it, and surfaces anomalies — without a single SQL Agent job, pg_cron schedule, or mongosh cron entry.
 
 ---
 
@@ -292,7 +292,7 @@ This guide gets you to ~5 instances, ~6 metrics each, with manual graphing. Beyo
 - **Alerting is left to the visualisation tool** (Grafana alerts, Power BI alerts) — works but is detached from the data ingestion side.
 - **Anomaly detection ("this is 3σ outside normal")** is not in scope here. You'd need to roll your own statistics on top.
 
-This is the natural moment to look at [Sentinel DB 360](https://github.com/dmcteknoloji), which solves all four of those at the platform level.
+This is the natural moment to look at [Sentinel DB 360](https://sentineldb360.com), which solves all four of those at the platform level.
 
 > _The toolkit is the screwdriver._
 > _Sentinel DB 360 is the workshop._

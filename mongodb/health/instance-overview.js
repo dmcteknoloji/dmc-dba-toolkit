@@ -15,6 +15,12 @@
 // ║  License       : MIT                                             ║
 // ╚══════════════════════════════════════════════════════════════════╝
 //
+// 🇹🇷 Türkçe özet:
+//   MongoDB için "hiç görmediğim cluster'da ilk 5 dakika" scripti.
+//   Kimlik, role, sürüm, host, uptime, bağlantı sayısı, anlık op baskısı,
+//   replica set / sharding durumu — tek printout, incident kanalına yapıştır.
+//   Atlas tier'larına ve sharded mongos endpoint'lerine karşı defansif yazılmıştır.
+//
 // What this is for:
 //   The "I just got paged on a Mongo cluster I've never seen before"
 //   first-five-minutes script. Identity, role, version, host, uptime,

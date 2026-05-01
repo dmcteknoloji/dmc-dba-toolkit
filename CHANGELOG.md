@@ -10,8 +10,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- v2.4 — JSON output mode for monitoring scripts, Grafana dashboard JSON exports.
+- v2.5 — JSON output mode for monitoring scripts, Grafana dashboard JSON exports.
 - v3.0 — runbooks per symptom, linked to the relevant scripts.
+
+---
+
+## [2.4.0] — 2026-05-01
+
+The bilingual completion + ecosystem release. Every script now carries
+a Turkish summary alongside its English content, and the four DMC
+platform domains are linked from every README.
+
+### Changed — Bilingual completion (TR mirror retroactive)
+
+- All 34 v1.0 / v2.0 scripts that previously had English-only prose
+  now carry a `🇹🇷 Türkçe özet` block immediately after the box-art
+  header. Each summary is 4-5 lines, specific to the script's actual
+  behaviour and caveats. Existing English content is preserved.
+- **64/64 scripts have TR content** — closes the gap between newer
+  scripts (v2.1+, bilingual by convention) and the original v1.0/v2.0.
+
+### Added — DMC platform ecosystem references
+
+Linked from every README, `AUTHORS.md`, and the issue-template menu:
+
+- [`dmcteknoloji.com`](https://dmcteknoloji.com) — DMC corporate site.
+- [`sentineldb360.com`](https://sentineldb360.com) — Sentinel DB 360,
+  the continuous-monitoring platform.
+- [`sqlekibi.com`](https://sqlekibi.com) — SQL Ekibi, Turkish-language
+  SQL Server community.
+- [`caglarozenc.com`](https://caglarozenc.com) — personal site of the
+  toolkit's maintainer.
+
+### Changed — Sentinel DB 360 link target
+
+Every Markdown link of the form
+`[Sentinel DB 360](https://github.com/dmcteknoloji)` now points at
+`https://sentineldb360.com` — the actual product page. The DMC
+organisation link (`github.com/dmcteknoloji`) is unchanged and
+correctly points at the source repository home.
+
+**64/64 scripts pass header validation.**
 
 ---
 
@@ -242,7 +281,8 @@ The first stable release. SQL Server only, but every script vetted in the field.
 
 ---
 
-[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.4.0...HEAD
+[2.4.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.4.0
 [2.3.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.3.0
 [2.2.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.2.0
 [2.1.1]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.1.1

@@ -14,6 +14,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   Her veri ve log dosyası için boyut, kullanım, autogrowth ayarlarını döner.
+--   Azure SQL Database (single) edition'ında sys.master_files kısıtlı —
+--   EngineEdition = 5 ise sys.database_files'a düşer ve sadece geçerli DB'yi
+--   raporlar. used_mb hesabı için FILEPROPERTY her DB'de ayrı çalışmalı.
+--
 -- Returns size, used space, free space and the configured autogrowth
 -- pattern for every data and log file the instance can see.
 --

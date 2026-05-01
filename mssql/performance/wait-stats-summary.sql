@@ -16,6 +16,13 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   sys.dm_os_wait_stats'i anlamlı kategorilere toplar (Lock / Latch /
+--   Buffer IO / IO / CPU / Memory / Network / Compilation). Zararsız
+--   (benign) bekleme tipleri filtreden geçer; Paul Randal'ın yıllardır
+--   yayınladığı public liste temel alınır. Kümülatif görünümdür —
+--   anlık baskı için iki örnek alıp diff'le.
+--
 -- Aggregates sys.dm_os_wait_stats into meaningful categories with the
 -- usual benign waits filtered out.
 --

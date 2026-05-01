@@ -14,6 +14,13 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   Anlık blocking zincirini chain depth ve lead-blocker tespitiyle döner.
+--   Blocking yapan ama kendisi bloklanmamış oturumlardan başlayan recursive
+--   CTE ile zinciri yürür. chain_depth = 0 satırı zincirin başıdır — herkesin
+--   nihayetinde beklediği oturum. is_lead_blocker = 1 aynı bilgiyi flag
+--   olarak verir.
+--
 -- Returns the current blocking chain on the instance, with chain depth
 -- and lead-blocker identification. Uses a recursive CTE rooted at sessions
 -- that are blocking somebody but are not themselves blocked (the lead

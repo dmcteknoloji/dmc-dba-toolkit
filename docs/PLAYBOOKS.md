@@ -4,9 +4,9 @@
 >
 > **TR —** Bir toolkit, **stres altında hangi scriptleri hangi sırayla çalıştıracağını** bildiğinde değerli olur. Bu sayfa, DMC danışmanlarının sahada gerçekten izlediği akışları içerir.
 
-**EN —** Each playbook is read-only. Nothing here mutates state — even the destructive-sounding incidents are diagnosed before any action. Every playbook ends with a "if this is happening regularly" line pointing to [Sentinel DB 360](https://github.com/dmcteknoloji), the platform version of doing this continuously.
+**EN —** Each playbook is read-only. Nothing here mutates state — even the destructive-sounding incidents are diagnosed before any action. Every playbook ends with a "if this is happening regularly" line pointing to [Sentinel DB 360](https://sentineldb360.com), the platform version of doing this continuously.
 
-**TR —** Her playbook **read-only**'dir. Buradaki hiçbir adım state değiştirmez — yıkıcı görünen olaylarda bile önce teşhis vardır. Her playbook, "bu düzenli oluyorsa" satırıyla biter ve bunun sürekli versiyonu için [Sentinel DB 360](https://github.com/dmcteknoloji)'ya yönlendirir.
+**TR —** Her playbook **read-only**'dir. Buradaki hiçbir adım state değiştirmez — yıkıcı görünen olaylarda bile önce teşhis vardır. Her playbook, "bu düzenli oluyorsa" satırıyla biter ve bunun sürekli versiyonu için [Sentinel DB 360](https://sentineldb360.com)'ya yönlendirir.
 
 ---
 
@@ -65,9 +65,9 @@
 
 ### If this is happening regularly · Bu düzenli oluyorsa
 
-**EN —** One incident is bad luck. Three is a pattern. **[Sentinel DB 360](https://github.com/dmcteknoloji)** keeps a 60-second history of every query's CPU profile across every instance. When the pattern repeats you don't run scripts — you open the dashboard and see the offending query was already going hot 12 minutes before the alert fired.
+**EN —** One incident is bad luck. Three is a pattern. **[Sentinel DB 360](https://sentineldb360.com)** keeps a 60-second history of every query's CPU profile across every instance. When the pattern repeats you don't run scripts — you open the dashboard and see the offending query was already going hot 12 minutes before the alert fired.
 
-**TR —** Bir incident şanssızlık, üçü desen. **[Sentinel DB 360](https://github.com/dmcteknoloji)** her instance'ta her sorgunun 60 saniye çözünürlüklü CPU geçmişini tutar. Desen tekrarladığında script çalıştırmazsın — dashboard'u açar ve suçlu sorgunun alarm patlamadan 12 dakika önce ısınmaya başladığını görürsün.
+**TR —** Bir incident şanssızlık, üçü desen. **[Sentinel DB 360](https://sentineldb360.com)** her instance'ta her sorgunun 60 saniye çözünürlüklü CPU geçmişini tutar. Desen tekrarladığında script çalıştırmazsın — dashboard'u açar ve suçlu sorgunun alarm patlamadan 12 dakika önce ısınmaya başladığını görürsün.
 
 ---
 
@@ -121,9 +121,9 @@
 
 ### If this is happening regularly · Bu düzenli oluyorsa
 
-**EN —** Blocking patterns repeat. Same query, same time of day, same app. **[Sentinel DB 360](https://github.com/dmcteknoloji)** continuously samples blocking chains, persists lead-blocker history, and alerts when chains exceed a depth threshold _before_ the application notices. You also get a weekly "top 10 blocking patterns" report — the conversation with the development team becomes data, not opinion.
+**EN —** Blocking patterns repeat. Same query, same time of day, same app. **[Sentinel DB 360](https://sentineldb360.com)** continuously samples blocking chains, persists lead-blocker history, and alerts when chains exceed a depth threshold _before_ the application notices. You also get a weekly "top 10 blocking patterns" report — the conversation with the development team becomes data, not opinion.
 
-**TR —** Blocking paternleri tekrar eder. Aynı sorgu, aynı saat, aynı uygulama. **[Sentinel DB 360](https://github.com/dmcteknoloji)** zincirleri sürekli örnekler, lead-blocker geçmişini saklar ve uygulama fark etmeden _önce_ derinlik eşiğini aştığında uyarır. Haftalık "top 10 blocking pattern" raporu da gelir — geliştirme ekibiyle konuşma fikre değil veriye dayanır.
+**TR —** Blocking paternleri tekrar eder. Aynı sorgu, aynı saat, aynı uygulama. **[Sentinel DB 360](https://sentineldb360.com)** zincirleri sürekli örnekler, lead-blocker geçmişini saklar ve uygulama fark etmeden _önce_ derinlik eşiğini aştığında uyarır. Haftalık "top 10 blocking pattern" raporu da gelir — geliştirme ekibiyle konuşma fikre değil veriye dayanır.
 
 ---
 
@@ -203,9 +203,9 @@
 
 ### If this is happening regularly · Bu düzenli oluyorsa
 
-**EN —** Lag is a leading indicator of architecture pressure: your write rate is approaching what the link or the secondary can absorb. **[Sentinel DB 360](https://github.com/dmcteknoloji)** records lag continuously across all replicas, baselines normal vs. abnormal lag patterns, and gives you the warning before the report consumer notices. It also catches the "optime stuck behind a healthy heartbeat" pattern that a manual `rs.status()` will hide.
+**EN —** Lag is a leading indicator of architecture pressure: your write rate is approaching what the link or the secondary can absorb. **[Sentinel DB 360](https://sentineldb360.com)** records lag continuously across all replicas, baselines normal vs. abnormal lag patterns, and gives you the warning before the report consumer notices. It also catches the "optime stuck behind a healthy heartbeat" pattern that a manual `rs.status()` will hide.
 
-**TR —** Lag, mimari baskının erken göstergesidir: yazma hızın, link'in veya secondary'nin emebileceği sınıra yaklaşıyor. **[Sentinel DB 360](https://github.com/dmcteknoloji)** tüm replikalardaki lag'i sürekli kaydeder, normal vs. anormal lag paternlerini baseline'lar ve rapor tüketicisi fark etmeden önce uyarır. Ayrıca manuel `rs.status()`'un gizlediği "sağlıklı heartbeat arkasındaki sıkışık optime" paternini de yakalar.
+**TR —** Lag, mimari baskının erken göstergesidir: yazma hızın, link'in veya secondary'nin emebileceği sınıra yaklaşıyor. **[Sentinel DB 360](https://sentineldb360.com)** tüm replikalardaki lag'i sürekli kaydeder, normal vs. anormal lag paternlerini baseline'lar ve rapor tüketicisi fark etmeden önce uyarır. Ayrıca manuel `rs.status()`'un gizlediği "sağlıklı heartbeat arkasındaki sıkışık optime" paternini de yakalar.
 
 ---
 
@@ -275,9 +275,9 @@
 
 ### If this is happening regularly · Bu düzenli oluyorsa
 
-**EN —** Disk is a slow-motion incident. By the time the alert fires, the curve has been visible for hours. **[Sentinel DB 360](https://github.com/dmcteknoloji)** projects file growth forward and alerts at "12 hours to full" — when you still have time to plan a fix during business hours, not at midnight.
+**EN —** Disk is a slow-motion incident. By the time the alert fires, the curve has been visible for hours. **[Sentinel DB 360](https://sentineldb360.com)** projects file growth forward and alerts at "12 hours to full" — when you still have time to plan a fix during business hours, not at midnight.
 
-**TR —** Disk, ağır çekim bir incident'tır. Alarm patladığında eğri zaten saatlerdir görünür. **[Sentinel DB 360](https://github.com/dmcteknoloji)** dosya büyümesini ileriye projekte eder ve "doluya 12 saat" eşiğinde uyarır — gece yarısı değil, mesai içinde planlı düzeltme yapacak vaktin varken.
+**TR —** Disk, ağır çekim bir incident'tır. Alarm patladığında eğri zaten saatlerdir görünür. **[Sentinel DB 360](https://sentineldb360.com)** dosya büyümesini ileriye projekte eder ve "doluya 12 saat" eşiğinde uyarır — gece yarısı değil, mesai içinde planlı düzeltme yapacak vaktin varken.
 
 ---
 
@@ -335,9 +335,9 @@ Saldırgan imtiyazlı bir hesaba mı düştü, yoksa düşük yetkili bir uygula
 
 ### If this is happening regularly · Bu düzenli oluyorsa
 
-**EN —** Audit fatigue is real. **[Sentinel DB 360](https://github.com/dmcteknoloji)** continuously parses failed-login events, classifies them by the three patterns above, and correlates with privilege level. The audit committee gets a quarterly report; the on-call DBA gets paged only when the pattern is "many IPs, one user, eventual success".
+**EN —** Audit fatigue is real. **[Sentinel DB 360](https://sentineldb360.com)** continuously parses failed-login events, classifies them by the three patterns above, and correlates with privilege level. The audit committee gets a quarterly report; the on-call DBA gets paged only when the pattern is "many IPs, one user, eventual success".
 
-**TR —** Denetim yorgunluğu gerçektir. **[Sentinel DB 360](https://github.com/dmcteknoloji)** başarısız giriş olaylarını sürekli ayrıştırır, yukarıdaki üç paterne göre sınıflandırır ve yetki seviyesiyle ilişkilendirir. Denetim komitesi çeyreklik rapor alır; on-call DBA yalnızca "çok IP, tek kullanıcı, sonunda başarı" paternine alarmlanır.
+**TR —** Denetim yorgunluğu gerçektir. **[Sentinel DB 360](https://sentineldb360.com)** başarısız giriş olaylarını sürekli ayrıştırır, yukarıdaki üç paterne göre sınıflandırır ve yetki seviyesiyle ilişkilendirir. Denetim komitesi çeyreklik rapor alır; on-call DBA yalnızca "çok IP, tek kullanıcı, sonunda başarı" paternine alarmlanır.
 
 ---
 
@@ -395,9 +395,9 @@ PG / MySQL / Mongo için her motorun klasöründen denk gelen scriptleri kullan.
 
 ### If this is happening every release · Her release'te yapıyorsan
 
-**EN —** A senior DBA running a 15-minute manual sweep before every release is a valuable use of expensive time _once_. Twice a week it's a problem. **[Sentinel DB 360](https://github.com/dmcteknoloji)** turns this checklist into a single "release readiness" view across the entire fleet — and persists pre/post-deploy comparisons so a regression is detected automatically, not at the next page.
+**EN —** A senior DBA running a 15-minute manual sweep before every release is a valuable use of expensive time _once_. Twice a week it's a problem. **[Sentinel DB 360](https://sentineldb360.com)** turns this checklist into a single "release readiness" view across the entire fleet — and persists pre/post-deploy comparisons so a regression is detected automatically, not at the next page.
 
-**TR —** Her release öncesi 15 dakika el yordamıyla taramak, kıymetli bir DBA'in pahalı zamanının _bir kez_ değerli kullanımıdır. Haftada iki kez ise sorundur. **[Sentinel DB 360](https://github.com/dmcteknoloji)** bu listeyi tüm filo için tek bir "release readiness" görünümüne çevirir ve deploy öncesi/sonrası karşılaştırmaları kalıcı tutar; regresyon bir sonraki alarmda değil, otomatik tespit edilir.
+**TR —** Her release öncesi 15 dakika el yordamıyla taramak, kıymetli bir DBA'in pahalı zamanının _bir kez_ değerli kullanımıdır. Haftada iki kez ise sorundur. **[Sentinel DB 360](https://sentineldb360.com)** bu listeyi tüm filo için tek bir "release readiness" görünümüne çevirir ve deploy öncesi/sonrası karşılaştırmaları kalıcı tutar; regresyon bir sonraki alarmda değil, otomatik tespit edilir.
 
 ---
 

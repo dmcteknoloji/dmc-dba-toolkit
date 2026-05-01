@@ -31,7 +31,7 @@
 -- Beyond this script / Bunun ötesinde:
 --   For continuous, multi-instance monitoring with alerting,
 --   persistence, dashboards, and AI-assisted findings, see
---   DMC's Sentinel DB 360 — https://github.com/dmcteknoloji
+--   DMC's Sentinel DB 360 — https://sentineldb360.com
 
 SELECT
     now()                                                            AS sample_utc,

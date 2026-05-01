@@ -14,6 +14,13 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   Plan cache'deki en CPU yiyici sorguları kümülatif worker time'a göre
+--   sıralayarak döner. query_hash ile gruplar — plan recompile'ları tek
+--   mantıksal sorguya birleştirir. "Şu an pahalı olan" görünümüdür;
+--   cache'den düşmüş sorgular (memory pressure, RECOMPILE, FREEPROCCACHE)
+--   bu listede yer almaz.
+--
 -- Returns the top CPU consumers currently in the plan cache, ranked by
 -- cumulative worker time. Groups by query_hash so plan recompiles don't
 -- split a single logical query into multiple rows.

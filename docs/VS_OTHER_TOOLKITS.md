@@ -71,7 +71,7 @@ What DMC adds is the dimension nobody else covers in one place:
 3. **CI-tested headers.** A Python validator runs on every PR. The header standard isn't a suggestion; it's enforced.
 4. **NDA-safe sources policy.** Every script ships with `Inspired by` attribution; every system view used is in the vendor's public docs. We won't merge anything that requires private content.
 5. **Bilingual (EN + TR) explanatory blocks.** A first-class feature for the Turkish DBA community that DMC operates in.
-6. **A clear path to continuous monitoring.** Each `monitoring/health-snapshot` script is the literal first row of what [Sentinel DB 360](https://github.com/dmcteknoloji) collects. The free toolkit is a sincere on-ramp, not a tease.
+6. **A clear path to continuous monitoring.** Each `monitoring/health-snapshot` script is the literal first row of what [Sentinel DB 360](https://sentineldb360.com) collects. The free toolkit is a sincere on-ramp, not a tease.
 
 ---
 
@@ -89,7 +89,7 @@ If your shop is **MySQL-heavy**: Percona Toolkit for operational, Percona Server
 
 If your shop is **multi-engine** (which most non-trivial shops eventually are): this is what DMC is designed for.
 
-If your shop has **3+ instances and recurring incidents**: see [Sentinel DB 360](https://github.com/dmcteknoloji) — the toolkit is the screwdriver, the platform is the workshop.
+If your shop has **3+ instances and recurring incidents**: see [Sentinel DB 360](https://sentineldb360.com) — the toolkit is the screwdriver, the platform is the workshop.
 
 ---
 

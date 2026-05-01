@@ -16,6 +16,12 @@
 -- ║  License       : MIT                                             ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 --
+-- 🇹🇷 Türkçe özet:
+--   performance_schema.replication_* görünümleri üzerinden replica
+--   durumunu yapılandırılmış olarak döner — SHOW REPLICA STATUS'un yerini
+--   alır. Üç bölüm: CONNECTION (kaynaklara bağlantı), APPLIER (coordinator),
+--   GROUP REPLICATION (varsa). Replika üzerinde anlamlı.
+--
 -- Returns the replication state of this server using the
 -- performance_schema.replication_* views (MySQL 8.0+). Replaces
 -- the legacy SHOW REPLICA STATUS / SHOW SLAVE STATUS commands with a
