@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/dmc-aidriven-database-operations.png" alt="DMC — Database Management Company" width="380">
+<img src="./assets/dmc-aidriven-database-operations.png" alt="DMC — Database Management Company">
 
 # 🛡️ DMC DBA Toolkit
 
