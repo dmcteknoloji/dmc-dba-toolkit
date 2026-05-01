@@ -20,7 +20,7 @@ Open one script — get a clear answer in 30 seconds.
 [![DMC Bilgi Teknolojileri on LinkedIn](https://img.shields.io/badge/LinkedIn-DMC%20Bilgi%20Teknolojileri-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/company/dmcteknoloji)
 
 _Created and maintained by **[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — Microsoft MVP, [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)._
-_Started April 2025. **64 production-grade scripts** across four engines — three skill levels (🌱 Newborn · 🌳 Middle · 🦅 Expert), all built on public vendor documentation._
+_Started April 2025. **72 production-grade scripts** across four engines — three skill levels (🌱 Newborn · 🌳 Middle · 🦅 Expert), all built on public vendor documentation._
 
 🌐 **English** · [Türkçe içerik scriptlerin içinde](./docs/PLAYBOOKS.md) · [Español](./README.es.md) · [Deutsch](./README.de.md) · [日本語](./README.ja.md)
 
@@ -80,6 +80,12 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 | [`wait-pressure-snapshot`](./mssql/monitoring/wait-pressure-snapshot.sql) | Per-category wait time, ready for time-series graphing. | 🟢 |
 | [`blocking-snapshot`](./mssql/monitoring/blocking-snapshot.sql) | Blocked sessions, lead blocker, longest wait, dominant wait. | 🟢 |
 | [`tempdb-pressure-snapshot`](./mssql/monitoring/tempdb-pressure-snapshot.sql) | TempDB usage, version store, allocation contention. | 🟢 |
+| [`io-stall-snapshot`](./mssql/monitoring/io-stall-snapshot.sql) | Per-file IO stall + average ms-per-IO latency. | 🟢 |
+| [`memory-grant-snapshot`](./mssql/monitoring/memory-grant-snapshot.sql) | Outstanding memory grants + workspace pressure. | 🟢 |
+| [`failed-login-analysis`](./mssql/security/failed-login-analysis.sql) | Last-24h failed logins, three triage patterns. | 🟡 |
+| [`page-life-and-memory-pressure`](./mssql/health/page-life-and-memory-pressure.sql) | Per-NUMA-node PLE + top memory clerks + workspace headline. | 🟢 |
+| [`deadlock-graph-parser`](./mssql/blocking/deadlock-graph-parser.sql) | system_health XE ring buffer XML → tabular deadlock rows. | 🟡 |
+| [`getting-started`](./mssql/health/getting-started.sql) | 🌱 Newborn: what is a DMV, where am I? Tutorial style. | 🟢 |
 
 ### 🟪 PostgreSQL (`postgresql/`)
 
@@ -98,6 +104,10 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 | [`query-throughput-snapshot`](./postgresql/monitoring/query-throughput-snapshot.sql) | Commits, rollbacks, blks_hit/read, BG writer activity. | 🟢 |
 | [`vacuum-pressure-snapshot`](./postgresql/monitoring/vacuum-pressure-snapshot.sql) | Worst dead-tuple ratio, xid age, oldest xmin holder. | 🟢 |
 | [`replication-lag-snapshot`](./postgresql/monitoring/replication-lag-snapshot.sql) | Worst standby lag bytes/secs, slot WAL retention. | 🟢 |
+| [`io-and-buffer-snapshot`](./postgresql/monitoring/io-and-buffer-snapshot.sql) | pg_stat_io (PG 16+) + pg_stat_bgwriter writeback efficiency. | 🟢 |
+| [`checkpoint-bgwriter-efficiency`](./postgresql/health/checkpoint-bgwriter-efficiency.sql) | Checkpoint vs bgwriter vs backend write ratios + tuning verdicts. | 🟢 |
+| [`lock-mode-conflict-matrix`](./postgresql/blocking/lock-mode-conflict-matrix.sql) | pg_locks self-join with the 8×8 conflict matrix. | 🟢 |
+| [`getting-started`](./postgresql/health/getting-started.sql) | 🌱 Newborn: pg_stat_*, pg_is_in_recovery() tutorial. | 🟢 |
 
 ### 🟧 MySQL (`mysql/`)
 
@@ -116,6 +126,9 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 | [`query-throughput-snapshot`](./mysql/monitoring/query-throughput-snapshot.sql) | Questions, com_*, slow_queries, aborted_clients. | 🟢 |
 | [`innodb-pressure-snapshot`](./mysql/monitoring/innodb-pressure-snapshot.sql) | Buffer pool, dirty %, row lock waits, IO pending. | 🟢 |
 | [`replication-lag-snapshot`](./mysql/monitoring/replication-lag-snapshot.sql) | Lag seconds, applier state, last error. | 🟢 |
+| [`innodb-deep-status`](./mysql/health/innodb-deep-status.sql) | Semaphores, buffer pool deep, redo log, history list, AHI. | 🟡 |
+| [`innodb-trx-deep`](./mysql/performance/innodb-trx-deep.sql) | INNODB_TRX × data_locks × processlist for every live txn. | 🟡 |
+| [`getting-started`](./mysql/health/getting-started.sql) | 🌱 Newborn: system vs status variables tutorial. | 🟢 |
 
 ### 🟩 MongoDB (`mongodb/`, mongosh `.js`)
 
@@ -134,6 +147,9 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 | [`query-throughput-snapshot`](./mongodb/monitoring/query-throughput-snapshot.js) | Opcounters cumulative, network bytes, active clients. | 🟢 |
 | [`wt-cache-pressure-snapshot`](./mongodb/monitoring/wt-cache-pressure-snapshot.js) | WT cache fill, dirty %, app-thread eviction trend. | 🟢 |
 | [`replication-lag-snapshot`](./mongodb/monitoring/replication-lag-snapshot.js) | Per-secondary lag, oplog window, stuck-optime detection. | 🟢 |
+| [`role-graph`](./mongodb/security/role-graph.js) | Full role inheritance graph + transitive privilege rollup. | 🟢 |
+| [`oplog-tailing-pattern`](./mongodb/performance/oplog-tailing-pattern.js) | Oplog window analysis — write-pattern decoding. | 🟡 |
+| [`getting-started`](./mongodb/health/getting-started.js) | 🌱 Newborn: admin commands tutorial, where am I? | 🟢 |
 
 > Every script is **read-only**. Every script is **safe on production**. Every script tells you, in its header, exactly what it does and where the technique came from.
 
@@ -213,11 +229,12 @@ This toolkit ships only what we can publish without ambiguity:
 
 ---
 
-## 📖 Learning paths, playbooks, monitoring & positioning
+## 📖 Learning paths, playbooks, monitoring, honors & positioning
 
 - **[Learning paths](./docs/LEARNING_PATHS.md)** — start here for a curriculum. Three skill levels (🌱 Newborn / 🌳 Middle / 🦅 Expert) with a curated order of scripts per level. Bilingual EN + TR.
 - **[Playbooks](./docs/PLAYBOOKS.md)** — incident-response workflows that string the toolkit's scripts together: CPU at 100%, blocking storms, replicas falling behind, disk filling, failed login bursts, pre-release sanity checks. Bilingual EN + TR.
 - **[Monitoring guide](./docs/MONITORING_GUIDE.md)** — turn the `monitoring/` snapshots into a poor-man's monitoring stack with SQL Agent / pg_cron / MySQL Event Scheduler / mongosh cron. Grafana / Power BI hookup. Natural bridge to Sentinel DB 360.
+- **[Honors](./docs/HONORS.md)** — the people whose public work shaped this toolkit. Paul Randal, Brent Ozar, Adam Machanic, Glenn Berry, Ola Hallengren, Greg Sabino Mullane, Nikolay Samokhvalov, Mark Callaghan, Jeremy Cole, Andy Pavlo and many more. Plus the Turkish DBA community.
 - **[Vs other toolkits](./docs/VS_OTHER_TOOLKITS.md)** — honest positioning vs Brent Ozar's First Responder Kit, `sp_WhoIsActive`, Glenn Berry's diagnostic queries, Ola Hallengren, `postgres_dba`, Percona Toolkit, mtools.
 
 ---

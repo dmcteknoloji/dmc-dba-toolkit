@@ -89,7 +89,7 @@ After these, hit the [`docs/PLAYBOOKS.md`](./PLAYBOOKS.md) — six bilingual inc
 
 **TR —** Monitoring kurmuşsun. Elle deadlock graph parse etmişsin. Hangi DMV'nin ne zaman bayatladığını biliyorsun. Expert tier senin için — çoklu-DMV join'leri, edge case'ler ve normalde vendor referansını açık tutmayı gerektiren internals soruları. Yorum, alanı zaten bildiğini varsayar.
 
-### The 11 Expert-tier scripts
+### The Expert-tier scripts (16+ and growing)
 
 | # | Script | Why it's expert |
 |---|---|---|
@@ -105,6 +105,14 @@ After these, hit the [`docs/PLAYBOOKS.md`](./PLAYBOOKS.md) — six bilingual inc
 | 10 | [`mongodb/sharding/chunk-distribution.js`](../mongodb/sharding/chunk-distribution.js) | Hot-shard detection + jumbo chunks. |
 | 11 | [`mongodb/performance/oplog-tailing-pattern.js`](../mongodb/performance/oplog-tailing-pattern.js) | Oplog window analysis — write-pattern decoding. |
 | 12 | [`mongodb/monitoring/wt-cache-pressure-snapshot.js`](../mongodb/monitoring/wt-cache-pressure-snapshot.js) | WiredTiger app-thread eviction as the leading indicator. |
+| 13 | [`mssql/security/failed-login-analysis.sql`](../mssql/security/failed-login-analysis.sql) | system_health XE shred + three triage patterns (one-IP-many-users, many-IPs-one-user, many-states). |
+| 14 | [`mssql/monitoring/io-stall-snapshot.sql`](../mssql/monitoring/io-stall-snapshot.sql) | Per-file IO stall + average ms-per-IO latency. |
+| 15 | [`mssql/monitoring/memory-grant-snapshot.sql`](../mssql/monitoring/memory-grant-snapshot.sql) | Outstanding memory grants + parameter-sniffing-suspect detection. |
+| 16 | [`mssql/health/page-life-and-memory-pressure.sql`](../mssql/health/page-life-and-memory-pressure.sql) | Per-NUMA-node PLE + top memory clerks. |
+| 17 | [`postgresql/monitoring/io-and-buffer-snapshot.sql`](../postgresql/monitoring/io-and-buffer-snapshot.sql) | pg_stat_io (PG 16+) + writeback efficiency. |
+| 18 | [`postgresql/health/checkpoint-bgwriter-efficiency.sql`](../postgresql/health/checkpoint-bgwriter-efficiency.sql) | Three-way write accounting + concrete tuning verdicts. |
+| 19 | [`mysql/health/innodb-deep-status.sql`](../mysql/health/innodb-deep-status.sql) | Semaphores, buffer pool internals, redo log, history list, AHI. |
+| 20 | [`mongodb/security/role-graph.js`](../mongodb/security/role-graph.js) | Full role-graph traversal — transitive role expansion for users + roles. |
 
 ### When you're done with these
 

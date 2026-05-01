@@ -10,8 +10,72 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- v2.5 — JSON output mode for monitoring scripts, Grafana dashboard JSON exports.
+- v2.6 — JSON output mode for monitoring scripts, Grafana dashboard JSON exports.
 - v3.0 — runbooks per symptom, linked to the relevant scripts.
+
+---
+
+## [2.5.0] — 2026-05-01
+
+The expert depth + honor roll release. **+8 scripts (64 → 72)** —
+two security expert scripts, three monitoring expert scripts, three
+health expert scripts — plus a new `docs/HONORS.md` crediting the
+people whose public work shaped this toolkit.
+
+### Added — Expert tier (8 new scripts)
+
+**Security**
+- `mssql/security/failed-login-analysis.sql` — XE system_health
+  ring-buffer shredded for last-24h failed logins, with three triage
+  patterns (credential stuffing, distributed brute force, multi-state
+  probing) labelled per (login, host).
+- `mongodb/security/role-graph.js` — full role-inheritance graph
+  with cycle protection, transitive role expansion for users and
+  roles, dangerous-built-in detection.
+
+**Monitoring**
+- `mssql/monitoring/io-stall-snapshot.sql` — per-file IO stall +
+  average ms-per-IO latency from `sys.dm_io_virtual_file_stats`.
+- `mssql/monitoring/memory-grant-snapshot.sql` — outstanding memory
+  grants + workspace pressure + parameter-sniffing-suspect detection.
+- `postgresql/monitoring/io-and-buffer-snapshot.sql` — `pg_stat_io`
+  (PG 16+) with `pg_stat_bgwriter` fallback on PG 13-15.
+
+**Health**
+- `mssql/health/page-life-and-memory-pressure.sql` — per-NUMA-node
+  Page Life Expectancy + top memory clerks + workspace headline.
+- `postgresql/health/checkpoint-bgwriter-efficiency.sql` — three-way
+  dirty-page write accounting (checkpoint vs bgwriter vs backend) +
+  concrete tuning verdicts.
+- `mysql/health/innodb-deep-status.sql` — structured equivalent of
+  `SHOW ENGINE INNODB STATUS`: semaphores, buffer pool internals,
+  redo log, MVCC history list, adaptive hash index.
+
+### Added — `docs/HONORS.md`
+
+A bilingual EN/TR honor roll. SQL Server giants (Paul Randal,
+Brent Ozar, Adam Machanic, Glenn Berry, Ola Hallengren, Erik Darling,
+Kendra Little, Itzik Ben-Gan, Jonathan Kehayias, Aaron Bertrand),
+PostgreSQL voices (Greg Sabino Mullane, Nikolay Samokhvalov,
+Bruce Momjian, Heikki Linnakangas, Robert Haas, Lukas Fittl,
+Michael Christofides), MySQL/InnoDB authorities (Mark Callaghan,
+Jeremy Cole, Peter Zaitsev, Baron Schwartz, Frédéric Descamps),
+MongoDB voices, and cross-cutting contributors (Andy Pavlo,
+Martin Kleppmann, Markus Winand). Plus the Turkish DBA community.
+
+The page is explicitly a "living thank-you ledger" — open to
+additions via PR.
+
+### Changed
+
+- README catalog gains 13 new rows across the four engines.
+- README navigation adds a **Honors** entry between Monitoring and
+  Vs-Other-Toolkits.
+- Tagline updated: "72 production-grade scripts across four engines".
+- LEARNING_PATHS expert section header updated to "16+ and growing"
+  (now lists 20 expert-tier scripts).
+
+**72/72 scripts pass header validation.**
 
 ---
 
@@ -281,7 +345,8 @@ The first stable release. SQL Server only, but every script vetted in the field.
 
 ---
 
-[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.4.0...HEAD
+[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.5.0...HEAD
+[2.5.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.5.0
 [2.4.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.4.0
 [2.3.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.3.0
 [2.2.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.2.0
