@@ -25,6 +25,17 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 | **Jonathan Kehayias** | Extended Events, Wait stats, deadlock graph parsing — public posts that shaped this toolkit. | SQLskills (above) |
 | **Microsoft Tiger Team** | Internals posts, performance-tuning whitepapers, plan-cache deep dives. | [techcommunity.microsoft.com](https://techcommunity.microsoft.com) |
 | **Aaron Bertrand** | Catalog DMV behaviour, T-SQL "Bad Habits to Kick" series, version-by-version differences. | [sqlblog.org](https://sqlblog.org) |
+| **Bob Ward** | Microsoft principal architect — "SQL Server Internals", deep talks on engine, query optimizer, Linux port, Azure. The book a senior SQL Server person reads cover-to-cover. | _Microsoft, conference talks_ |
+| **Conor Cunningham** | SQL Server query optimizer architect — the few people on earth who can talk about cardinality estimation history with authority. | _Microsoft talks, public posts_ |
+| **Joe Sack** | Query optimizer / Query Store work at Microsoft — clear, practical writing on plan stability and intelligent query processing. | _Microsoft / SQLskills history_ |
+| **Erin Stellato** | SQLskills — Query Store, monitoring, performance tuning practical posts. | [erinstellato.com](https://www.erinstellato.com) |
+| **Pinal Dave** | SQLAuthority — prolific Q&A blog that's saved working DBAs for two decades. The Stack Overflow of T-SQL gotchas. | [sqlauthority.com](https://blog.sqlauthority.com) |
+| **Hugo Kornelis** | Execution plan deep-dive series — operator-by-operator reference at SQLServerFast. | [sqlserverfast.com](https://sqlserverfast.com) |
+| **Niko Neugebauer** | Columnstore Indexes deep-dive series — the canonical public reference on SQL Server columnstore. | [niko-neugebauer.com](https://www.niko-neugebauer.com) |
+| **Grant Fritchey** | "SQL Server Execution Plans" book, performance tuning blog. | [scarydba.com](https://www.scarydba.com) |
+| **Kevin Kline** | Long-time SQL Server author and community voice — books on SQL standard, performance, career. | _SolarWinds / community_ |
+| **Buck Woody** | Microsoft data platform — broad data architecture, ML on SQL Server, career-shaping talks. | _Microsoft / public_ |
+| **Argenis Fernandez** | Pure Storage / ex-Microsoft — SQL Server on hardware, performance under stress. | _community / conference talks_ |
 
 ## 🟪 PostgreSQL
 
@@ -39,6 +50,14 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 | **Robert Treat** | Postgres Open conference. Operational PostgreSQL knowledge. | _Postgres community_ |
 | **Lukas Fittl** | pganalyze blog — query plans, autovacuum behaviour, performance investigation. | [pganalyze.com/blog](https://pganalyze.com/blog) |
 | **Michael Christofides** | pgMustard — explain plan analysis. Postgres.FM podcast (with Nikolay). | [pgmustard.com](https://pgmustard.com) · [postgres.fm](https://postgres.fm) |
+| **Tom Lane** | The single most prolific PostgreSQL committer for decades. Query optimizer, type system, parser. The mailing-list answer that ends every debate. | _pgsql-hackers mailing list_ |
+| **Andres Freund** | Replication, WAL, parallelism, and the public profiler-driven performance work that found systemic issues across the open-source stack. | _pgsql-hackers, public posts_ |
+| **Magnus Hagander** | PostgreSQL community leader — security team, conference organisation, the operational voice on postgresql.org. | [hagander.net/talks](https://www.hagander.net/talks/) |
+| **Peter Geoghegan** | Index AM (B-tree), VACUUM internals, deduplication. The depth of his commits explains a lot of modern PG performance. | _pgsql-hackers, public posts_ |
+| **Simon Riggs** | Replication, recovery, BDR — historically the operational voice of multi-master Postgres. | _2nd Quadrant / EnterpriseDB legacy_ |
+| **Stephen Frost** | Security, RLS, role membership — the committer behind much of PG's modern security model. | _Crunchy Data / community_ |
+| **Pavel Stehule** | PL/pgSQL extensions, plpgsql_check — the most-cited Czech voice in PG application development. | [github.com/okbob](https://github.com/okbob) |
+| **Devrim Gündüz** | Long-time Turkish PG community contributor and PG RPM repository maintainer. | [gunduz.org](https://www.gunduz.org) |
 
 ## 🟧 MySQL
 
@@ -52,6 +71,13 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 | **Baron Schwartz** | "High Performance MySQL" co-author, the book a generation of DBAs learned from. | [xaprb.com](https://xaprb.com) |
 | **Justin Swanhart** | Common Schema, Flexviews — historical MySQL deep tooling. | _GitHub @greenlion_ |
 | **Frédéric Descamps (LeFred)** | Oracle MySQL community manager — InnoDB Cluster, Group Replication explainers. | [lefred.be](https://lefred.be) |
+| **Domas Mituzas** | MySQL @ Wikipedia, then Facebook — long-form public posts on running MySQL at scale, deep historical record. | _historical: dom.as_ |
+| **Vadim Tkachenko** | Co-founder of Percona — performance benchmarking, MyRocks, public posts on tuning under load. | [percona.com/blog](https://www.percona.com/blog) |
+| **Morgan Tocker** | MySQL @ Wikipedia / Percona / PlanetScale — practical operational writing across employers. | _community talks_ |
+| **Ronald Bradford** | Long-time MySQL author, "Effective MySQL" series, decades of operational insight. | _ronaldbradford.com_ |
+| **Bill Karwin** | "SQL Antipatterns" — the book everyone learning relational design should read after Use The Index Luke. | _community_ |
+| **Jay Pipes** | Historical MySQL community leader (MySQL AB era), mentored many of the names above. | _historical_ |
+| **Ovais Tariq** | Percona/Yelp — MySQL ops at scale, replication patterns. | _community talks_ |
 
 ## 🟩 MongoDB
 
@@ -64,6 +90,10 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 | **Henrik Ingo** | MongoDB performance team lead historically; HA and replication patterns. | _MongoDB Inc._ |
 | **Tomas Rückstieß** | mtools — log parser and `mlaunch` test cluster tooling. | [github.com/rueckstiess/mtools](https://github.com/rueckstiess/mtools) |
 | **idealo engineering** | mongodb-slow-operations-profiler — visualisation of slow ops. | [github.com/idealo](https://github.com/idealo) |
+| **Eliot Horowitz** | MongoDB co-founder and long-time CTO — early architecture talks, design rationale. | _MongoDB Inc. legacy_ |
+| **Dwight Merriman** | MongoDB co-founder, public talks on document-model trade-offs and the "why" behind initial design choices. | _MongoDB Inc. legacy_ |
+| **A. Jesse Jiryu Davis** | Driver internals (Python/PyMongo), aggregation pipeline guides, public conference talks on internals. | [emptysqua.re](https://emptysqua.re) |
+| **MongoDB University** | Free structured courses (M001, M201, M312...) — an entire generation of MongoDB DBAs learned the basics here. | [learn.mongodb.com](https://learn.mongodb.com) |
 
 ## 🌐 Cross-cutting / Database thinking
 
@@ -73,6 +103,13 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 | **Martin Kleppmann** | "Designing Data-Intensive Applications" — the book that gives DBA work its broader systems frame. | [martin.kleppmann.com](https://martin.kleppmann.com) |
 | **Use The Index, Luke** (Markus Winand) | The free online book everyone learning indexes should read. | [use-the-index-luke.com](https://use-the-index-luke.com) |
 | **DBeaver / Erik Wramner / many others** | Tool authors, blog post authors, mailing-list answerers whose names we may not know but whose work shaped how we approach problems. | _the broader DBA web_ |
+| **Edgar F. Codd** | The relational model itself. The 1970 paper "A Relational Model of Data for Large Shared Data Banks". The reason this discipline exists. | _historical / academic_ |
+| **Jim Gray** | ACID, transaction processing, "Transaction Processing: Concepts and Techniques" — the foundational text on what a transactional system actually is. | _historical / Microsoft Research legacy_ |
+| **Michael Stonebraker** | INGRES, Postgres, Vertica, VoltDB — multiple production-grade databases over a career. Turing Award. | _MIT / academic_ |
+| **C. J. Date** | "An Introduction to Database Systems" — the textbook that taught us all relational theory cleanly. | _historical / academic_ |
+| **Joe Celko** | "SQL for Smarties" series, decades of practical SQL design wisdom. Teaches you how to think in sets. | _Mountain View / community_ |
+| **Don Chamberlin** | Co-creator of SQL itself (with Raymond Boyce). The reason every script in this repo can be written. | _historical / IBM Research legacy_ |
+| **Allen Holub** | Architectural critic — "Why Microservices Aren't Always the Answer", relational vs NoSQL trade-offs. Teaches DBA-adjacent systems thinking. | [holub.com](https://holub.com) |
 
 ---
 
@@ -81,6 +118,10 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 | Kişi / Topluluk | Ne öğreniriz | Nerede bulunur |
 |---|---|---|
 | **Ömer Faruk Çolakoğlu** | Türkiye'nin en kıdemli SQL Server seslerinden. Yıllar boyu Microsoft MVP — Data Platform. Türkçe makaleler, eğitimler, topluluk önderliği. Bu toolkit'in pek çok teknik karakteri Ömer hocadan öğrenildi. | [linkedin.com/in/omerfarukcolakoglu](https://linkedin.com/in/omerfarukcolakoglu) |
+| **Turgay Şahtiyan** | Microsoft MVP — Data Platform. Türkçe SQL Server bloğu, performance ve internals konularında derin Türkçe içerik. | [turgaysahtiyan.com](https://www.turgaysahtiyan.com) · [linkedin.com/in/turgaysahtiyan](https://linkedin.com/in/turgaysahtiyan) |
+| **Ekrem Önsoy** | Microsoft MVP. SQL Server internals, korumalı sorgular, denetim — Türkçe yıllık derin yazılar. | [ekremonsoy.com](https://www.ekremonsoy.com) · [linkedin.com/in/ekremonsoy](https://linkedin.com/in/ekremonsoy) |
+| **Mehmet Salih Deveci** | SQLServerGeeks Turkey + dba-tr.com — kıdemli Oracle/SQL Server perspektifi, geniş Türkçe DBA yazıları. | [linkedin.com/in/mehmet-salih-deveci](https://linkedin.com/in/mehmet-salih-deveci) |
+| **Çözümpark** | Türk MS topluluğunun kuluçkası — yıllar boyu SQL Server yazılarıyla pek çok DBA'in ilk öğrenme adresi. | [cozumpark.com](https://www.cozumpark.com) |
 | **SQL Ekibi** | Türkçe SQL Server topluluğu — makaleler, eğitimler, konferanslar. DMC ailesinin parçası. | [sqlekibi.com](https://sqlekibi.com) |
 | **Çağlar Özenç** | Bu toolkit'in maintainer'ı. Microsoft MVP — Data Platform. Konferans sunumları, blog. | [caglarozenc.com](https://caglarozenc.com) · [linkedin.com/in/caglarozenc](https://linkedin.com/in/caglarozenc) |
 | **Türkiye Microsoft MVP topluluğu** | Yıllık MVP Summit içerikleri ve yerel etkinlikler — Türkiye'deki MVP'lerin hepsi takip listesinde. | _MVP topluluğu_ |
