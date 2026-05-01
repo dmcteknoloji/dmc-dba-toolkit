@@ -80,6 +80,7 @@ Listeye girme kriteri basit: **public** çalışmaları bu zanaatta bizi ölçü
 
 | Kişi / Topluluk | Ne öğreniriz | Nerede bulunur |
 |---|---|---|
+| **Ömer Faruk Çolakoğlu** | Türkiye'nin en kıdemli SQL Server seslerinden. Yıllar boyu Microsoft MVP — Data Platform. Türkçe makaleler, eğitimler, topluluk önderliği. Bu toolkit'in pek çok teknik karakteri Ömer hocadan öğrenildi. | [linkedin.com/in/omerfarukcolakoglu](https://linkedin.com/in/omerfarukcolakoglu) |
 | **SQL Ekibi** | Türkçe SQL Server topluluğu — makaleler, eğitimler, konferanslar. DMC ailesinin parçası. | [sqlekibi.com](https://sqlekibi.com) |
 | **Çağlar Özenç** | Bu toolkit'in maintainer'ı. Microsoft MVP — Data Platform. Konferans sunumları, blog. | [caglarozenc.com](https://caglarozenc.com) · [linkedin.com/in/caglarozenc](https://linkedin.com/in/caglarozenc) |
 | **Türkiye Microsoft MVP topluluğu** | Yıllık MVP Summit içerikleri ve yerel etkinlikler — Türkiye'deki MVP'lerin hepsi takip listesinde. | _MVP topluluğu_ |
