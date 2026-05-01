@@ -4,13 +4,20 @@ This toolkit is the work of practitioners — people who have actually been on t
 
 ## Creator and lead maintainer
 
-**Çağlar Özenç** — _Microsoft MVP, founder of DMC Bilgi Teknolojileri_
+**[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — _Microsoft MVP, founder of [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)_
 
 Started this toolkit in April 2025 after one too many incident calls where the answer was buried in a different consultant's USB stick. The goal: build the diagnostic kit a senior DBA would actually trust, with documented schemas, a real CI pipeline, and the discipline to refuse anything that isn't safe to run on a production instance.
 
-- Engagements: enterprise SQL Server, PostgreSQL, MySQL and MongoDB consulting through DMC Bilgi Teknolojileri.
-- Platform: lead architect of [Sentinel DB 360](https://github.com/dmcteknoloji) — DMC's multi-engine database observability platform.
-- Microsoft MVP — Data Platform.
+- **LinkedIn:** [linkedin.com/in/caglarozenc](https://linkedin.com/in/caglarozenc)
+- **GitHub org:** [github.com/dmcteknoloji](https://github.com/dmcteknoloji)
+- **Engagements:** enterprise SQL Server, PostgreSQL, MySQL and MongoDB consulting through DMC Bilgi Teknolojileri.
+- **Platform:** lead architect of [Sentinel DB 360](https://github.com/dmcteknoloji) — DMC's multi-engine database observability platform.
+- **Microsoft MVP** — Data Platform.
+
+### DMC Bilgi Teknolojileri (Database Management Company)
+
+- **LinkedIn:** [linkedin.com/company/dmcteknoloji](https://linkedin.com/company/dmcteknoloji)
+- **GitHub:** [github.com/dmcteknoloji](https://github.com/dmcteknoloji)
 
 ## Contributors
 

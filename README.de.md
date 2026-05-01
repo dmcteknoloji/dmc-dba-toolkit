@@ -13,9 +13,12 @@ Ein modernes, opinionated Diagnose-Kit für arbeitende DBAs.
 [![Engines](https://img.shields.io/badge/engines-MSSQL%20%C2%B7%20PostgreSQL%20%C2%B7%20MySQL%20%C2%B7%20MongoDB-success)](./docs/COMPATIBILITY_MATRIX.md)
 [![Public docs only](https://img.shields.io/badge/sources-public%20vendor%20docs%20only-7c3aed)](./docs/HEADER_STANDARD.md#sources-policy-the-line-we-dont-cross)
 
+[![Çağlar Özenç on LinkedIn](https://img.shields.io/badge/LinkedIn-Çağlar%20Özenç-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/caglarozenc)
+[![DMC Bilgi Teknolojileri on LinkedIn](https://img.shields.io/badge/LinkedIn-DMC%20Bilgi%20Teknolojileri-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/company/dmcteknoloji)
+
 🌐 [English](./README.md) · [Español](./README.es.md) · **Deutsch** · [日本語](./README.ja.md)
 
-_Erstellt und gepflegt von **[Çağlar Özenç](./AUTHORS.md)** — Microsoft MVP, DMC Bilgi Teknolojileri._
+_Erstellt und gepflegt von **[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — Microsoft MVP, [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)._
 
 </div>
 
@@ -120,7 +123,10 @@ PRs willkommen. Die Latte ist hoch, der Weg klar:
 
 <div align="center">
 
-Gebaut von **DMC Bilgi Teknolojileri** — _Database Management Company_.
+Gebaut von **[DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)** — _Database Management Company_.
 Hör auf, aus Blog-Posts zu kopieren. Führe etwas aus, das ein Senior-DBA bereits geprüft hat.
+
+**Vernetzen:**
+[Çağlar Özenç auf LinkedIn](https://linkedin.com/in/caglarozenc) · [DMC auf LinkedIn](https://linkedin.com/company/dmcteknoloji) · [DMC auf GitHub](https://github.com/dmcteknoloji)
 
 </div>

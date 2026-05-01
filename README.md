@@ -14,9 +14,12 @@ Open one script — get a clear answer in 30 seconds.
 [![CI](https://img.shields.io/badge/ci-github%20actions-2088FF?logo=githubactions&logoColor=white)](./.github/workflows/lint.yml)
 [![Engines](https://img.shields.io/badge/engines-MSSQL%20%C2%B7%20PostgreSQL%20%C2%B7%20MySQL%20%C2%B7%20MongoDB-success)](./docs/COMPATIBILITY_MATRIX.md)
 [![Public docs only](https://img.shields.io/badge/sources-public%20vendor%20docs%20only-7c3aed)](./docs/HEADER_STANDARD.md#sources-policy-the-line-we-dont-cross)
-[![Made by DMC](https://img.shields.io/badge/made%20by-DMC%20Bilgi%20Teknolojileri-0a0a0a)](https://github.com/dmcteknoloji)
+[![Made by DMC](https://img.shields.io/badge/made%20by-DMC%20Bilgi%20Teknolojileri-0a0a0a)](https://linkedin.com/company/dmcteknoloji)
 
-_Created and maintained by **[Çağlar Özenç](./AUTHORS.md)** — Microsoft MVP, DMC Bilgi Teknolojileri._
+[![Çağlar Özenç on LinkedIn](https://img.shields.io/badge/LinkedIn-Çağlar%20Özenç-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/caglarozenc)
+[![DMC Bilgi Teknolojileri on LinkedIn](https://img.shields.io/badge/LinkedIn-DMC%20Bilgi%20Teknolojileri-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/company/dmcteknoloji)
+
+_Created and maintained by **[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — Microsoft MVP, [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)._
 _Started April 2025. **56 production-grade scripts** across four engines, all built on public vendor documentation._
 
 🌐 **English** · [Türkçe içerik scriptlerin içinde](./docs/PLAYBOOKS.md) · [Español](./README.es.md) · [Deutsch](./README.de.md) · [日本語](./README.ja.md)
@@ -359,8 +362,11 @@ Found a script that mutates state, leaks data, or misbehaves on a specific editi
 
 <div align="center">
 
-Built by **DMC Bilgi Teknolojileri** — _Database Management Company_.
+Built by **[DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)** — _Database Management Company_.
 Stop pasting from blog posts. Run something a senior DBA already vetted.
+
+**Connect:**
+[Çağlar Özenç on LinkedIn](https://linkedin.com/in/caglarozenc) · [DMC on LinkedIn](https://linkedin.com/company/dmcteknoloji) · [DMC on GitHub](https://github.com/dmcteknoloji)
 
 [`AUTHORS.md`](./AUTHORS.md) · [`CONTRIBUTING.md`](./CONTRIBUTING.md) · [`docs/`](./docs)
 

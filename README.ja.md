@@ -13,9 +13,12 @@
 [![Engines](https://img.shields.io/badge/engines-MSSQL%20%C2%B7%20PostgreSQL%20%C2%B7%20MySQL%20%C2%B7%20MongoDB-success)](./docs/COMPATIBILITY_MATRIX.md)
 [![Public docs only](https://img.shields.io/badge/sources-public%20vendor%20docs%20only-7c3aed)](./docs/HEADER_STANDARD.md#sources-policy-the-line-we-dont-cross)
 
+[![Çağlar Özenç on LinkedIn](https://img.shields.io/badge/LinkedIn-Çağlar%20Özenç-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/caglarozenc)
+[![DMC Bilgi Teknolojileri on LinkedIn](https://img.shields.io/badge/LinkedIn-DMC%20Bilgi%20Teknolojileri-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/company/dmcteknoloji)
+
 🌐 [English](./README.md) · [Español](./README.es.md) · [Deutsch](./README.de.md) · **日本語**
 
-_作成・メンテナンス: **[Çağlar Özenç](./AUTHORS.md)** — Microsoft MVP, DMC Bilgi Teknolojileri._
+_作成・メンテナンス: **[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — Microsoft MVP, [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)._
 
 </div>
 
@@ -120,7 +123,10 @@ PR を歓迎します。基準は高いですが、道筋は明確です:
 
 <div align="center">
 
-**DMC Bilgi Teknolojileri** が構築 — _Database Management Company_。
+**[DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)** が構築 — _Database Management Company_。
 ブログ記事からコピペするのをやめましょう。シニア DBA が既に検証したものを実行してください。
+
+**接続:**
+[Çağlar Özenç on LinkedIn](https://linkedin.com/in/caglarozenc) · [DMC on LinkedIn](https://linkedin.com/company/dmcteknoloji) · [DMC on GitHub](https://github.com/dmcteknoloji)
 
 </div>

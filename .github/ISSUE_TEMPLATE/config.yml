@@ -6,3 +6,9 @@ contact_links:
   - name: Contribution guide
     url: https://github.com/dmcteknoloji/dmc-dba-toolkit/blob/main/CONTRIBUTING.md
     about: Read the header standard and PR checklist before opening an issue.
+  - name: DMC Bilgi Teknolojileri on LinkedIn
+    url: https://linkedin.com/company/dmcteknoloji
+    about: Reach out for consulting, Sentinel DB 360 demos, or partnership inquiries.
+  - name: Çağlar Özenç on LinkedIn
+    url: https://linkedin.com/in/caglarozenc
+    about: Connect with the maintainer directly.
