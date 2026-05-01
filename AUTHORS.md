@@ -4,9 +4,11 @@ This toolkit is the work of practitioners — people who have actually been on t
 
 ## Creator and lead maintainer
 
-**[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — _Microsoft MVP, founder of [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)_
+**[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — _Microsoft MVP — Data Platform, founder of [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)_
 
-Started this toolkit in April 2025 after one too many incident calls where the answer was buried in a different consultant's USB stick. The goal: build the diagnostic kit a senior DBA would actually trust, with documented schemas, a real CI pipeline, and the discipline to refuse anything that isn't safe to run on a production instance.
+A long-tenure SQL Server practitioner from Turkey — years of production engagements across SQL Server, PostgreSQL, MySQL and MongoDB; the kind of consultant whose CV is measured in incidents survived rather than slides delivered. Founder of DMC Bilgi Teknolojileri, lead architect of [Sentinel DB 360](https://sentineldb360.com), regular voice in the Turkish SQL Server community via [SQL Ekibi](https://sqlekibi.com).
+
+Started this toolkit in April 2025 after one too many incident calls where the answer was buried in a different consultant's USB stick. The goal: build the diagnostic kit a senior DBA would actually trust, with documented schemas, a real CI pipeline, and the discipline to refuse anything that isn't safe to run on a production instance. The "no AI fluff, voice from the field" tone of every script in this repo is his — distilled from real 3-AM pages, real audit committees, real Nebim/SAP/Logo customers across two decades of sahadan duruş.
 
 - **Personal site:** [caglarozenc.com](https://caglarozenc.com)
 - **LinkedIn:** [linkedin.com/in/caglarozenc](https://linkedin.com/in/caglarozenc)
