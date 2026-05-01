@@ -4,11 +4,15 @@ This toolkit is the work of practitioners — people who have actually been on t
 
 ## Creator and lead maintainer
 
-**[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — _Microsoft MVP — Data Platform, founder of [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)_
+**[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — _Microsoft MVP — Azure SQL & SQL Server (5 consecutive years), founder & CTO of [DMC Bilgi Teknolojileri](https://dmcteknoloji.com)_
 
-A long-tenure SQL Server practitioner from Turkey — years of production engagements across SQL Server, PostgreSQL, MySQL and MongoDB; the kind of consultant whose CV is measured in incidents survived rather than slides delivered. Founder of DMC Bilgi Teknolojileri, lead architect of [Sentinel DB 360](https://sentineldb360.com), regular voice in the Turkish SQL Server community via [SQL Ekibi](https://sqlekibi.com).
+Çağlar entered the industry in 2007 as a software developer and crossed over into data platform work in 2012, when SQL Server became his primary discipline. The early years included leading Pervasive SQL → SQL Server 2000 migration projects — the kind of unglamorous, high-stakes work that teaches the operational instincts this toolkit reflects. He grew that practice into a Cloud & Data Architecture consultancy as PostgreSQL, MySQL and MongoDB joined the standard stack of Turkish enterprises.
 
-Started this toolkit in April 2025 after one too many incident calls where the answer was buried in a different consultant's USB stick. The goal: build the diagnostic kit a senior DBA would actually trust, with documented schemas, a real CI pipeline, and the discipline to refuse anything that isn't safe to run on a production instance. The "no AI fluff, voice from the field" tone of every script in this repo is his — distilled from real 3-AM pages, real audit committees, real Nebim/SAP/Logo customers across two decades of sahadan duruş.
+Today he runs that practice as the founder and CTO of DMC Bilgi Teknolojileri. Microsoft has recognised his contributions with the **MVP — Azure SQL & SQL Server** award **five consecutive years** running, on the basis of hundreds of Turkish-language technical articles, corporate and individual trainings, and conference talks at home and abroad. Lead architect of [Sentinel DB 360](https://sentineldb360.com), the platform that runs continuously what this toolkit captures one script at a time. Long-time contributor to the Turkish SQL Server community through [SQL Ekibi](https://sqlekibi.com).
+
+Started this toolkit in April 2025 after one too many incident calls where the answer was buried in a different consultant's USB stick. The goal: a diagnostic kit a senior DBA would actually trust — documented schemas, a real CI pipeline, and the discipline to refuse anything that isn't safe to run on a production instance.
+
+Based in Istanbul · contact: [caglar@dmcteknoloji.com](mailto:caglar@dmcteknoloji.com)
 
 - **Personal site:** [caglarozenc.com](https://caglarozenc.com)
 - **LinkedIn:** [linkedin.com/in/caglarozenc](https://linkedin.com/in/caglarozenc)
