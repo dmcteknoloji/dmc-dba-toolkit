@@ -15,9 +15,9 @@ Open one script — get a clear answer in 30 seconds.
 [![Made by DMC](https://img.shields.io/badge/made%20by-DMC%20Bilgi%20Teknolojileri-0a0a0a)](https://github.com/dmcteknoloji)
 
 _Created and maintained by **[Çağlar Özenç](./AUTHORS.md)** — Microsoft MVP, DMC Bilgi Teknolojileri._
-_Started April 2025. **43 production-grade scripts** across four engines, all built on public vendor documentation._
+_Started April 2025. **56 production-grade scripts** across four engines, all built on public vendor documentation._
 
-🇹🇷 _Bilingual: most explanatory blocks include both English and Türkçe._
+🌐 **English** · [Türkçe içerik scriptlerin içinde](./docs/PLAYBOOKS.md) · [Español](./README.es.md) · [Deutsch](./README.de.md) · [日本語](./README.ja.md)
 
 </div>
 
@@ -71,6 +71,10 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 | [`backup-chain-health`](./mssql/health/backup-chain-health.sql) | Last full / diff / log backup per DB, gap flagged. | 🟢 |
 | [`ag-status`](./mssql/ha/ag-status.sql) | Always On AG: replicas, sync state, redo/log queues. | 🟢 |
 | [`health-snapshot`](./mssql/monitoring/health-snapshot.sql) | One-row periodic snapshot for cron + a target table. | 🟢 |
+| [`query-throughput-snapshot`](./mssql/monitoring/query-throughput-snapshot.sql) | Batch req/sec, compilation/recompilation rates. | 🟢 |
+| [`wait-pressure-snapshot`](./mssql/monitoring/wait-pressure-snapshot.sql) | Per-category wait time, ready for time-series graphing. | 🟢 |
+| [`blocking-snapshot`](./mssql/monitoring/blocking-snapshot.sql) | Blocked sessions, lead blocker, longest wait, dominant wait. | 🟢 |
+| [`tempdb-pressure-snapshot`](./mssql/monitoring/tempdb-pressure-snapshot.sql) | TempDB usage, version store, allocation contention. | 🟢 |
 
 ### 🟪 PostgreSQL (`postgresql/`)
 
@@ -86,6 +90,9 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 | [`connection-pressure`](./postgresql/health/connection-pressure.sql) | Headroom, idle-in-transaction, breakdown by group. | 🟢 |
 | [`instance-overview`](./postgresql/health/instance-overview.sql) | One-screen summary of this cluster. | 🟢 |
 | [`health-snapshot`](./postgresql/monitoring/health-snapshot.sql) | One-row periodic snapshot for cron + a target table. | 🟢 |
+| [`query-throughput-snapshot`](./postgresql/monitoring/query-throughput-snapshot.sql) | Commits, rollbacks, blks_hit/read, BG writer activity. | 🟢 |
+| [`vacuum-pressure-snapshot`](./postgresql/monitoring/vacuum-pressure-snapshot.sql) | Worst dead-tuple ratio, xid age, oldest xmin holder. | 🟢 |
+| [`replication-lag-snapshot`](./postgresql/monitoring/replication-lag-snapshot.sql) | Worst standby lag bytes/secs, slot WAL retention. | 🟢 |
 
 ### 🟧 MySQL (`mysql/`)
 
@@ -101,6 +108,9 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 | [`user-audit`](./mysql/security/user-audit.sql) | SUPER, GRANT OPTION, dynamic privileges, host wildcards. | 🟢 |
 | [`instance-overview`](./mysql/health/instance-overview.sql) | One-screen summary of this server. | 🟢 |
 | [`health-snapshot`](./mysql/monitoring/health-snapshot.sql) | One-row periodic snapshot for cron + a target table. | 🟢 |
+| [`query-throughput-snapshot`](./mysql/monitoring/query-throughput-snapshot.sql) | Questions, com_*, slow_queries, aborted_clients. | 🟢 |
+| [`innodb-pressure-snapshot`](./mysql/monitoring/innodb-pressure-snapshot.sql) | Buffer pool, dirty %, row lock waits, IO pending. | 🟢 |
+| [`replication-lag-snapshot`](./mysql/monitoring/replication-lag-snapshot.sql) | Lag seconds, applier state, last error. | 🟢 |
 
 ### 🟩 MongoDB (`mongodb/`, mongosh `.js`)
 
@@ -116,6 +126,9 @@ That's it. No installer, no stored procedures dropped on your instance, no CLR, 
 | [`user-audit`](./mongodb/security/user-audit.js) | Users with effective root; custom roles nesting danger. | 🟢 |
 | [`instance-overview`](./mongodb/health/instance-overview.js) | One-screen summary of this deployment. | 🟢 |
 | [`health-snapshot`](./mongodb/monitoring/health-snapshot.js) | One-document periodic snapshot for monitoring pipelines. | 🟢 |
+| [`query-throughput-snapshot`](./mongodb/monitoring/query-throughput-snapshot.js) | Opcounters cumulative, network bytes, active clients. | 🟢 |
+| [`wt-cache-pressure-snapshot`](./mongodb/monitoring/wt-cache-pressure-snapshot.js) | WT cache fill, dirty %, app-thread eviction trend. | 🟢 |
+| [`replication-lag-snapshot`](./mongodb/monitoring/replication-lag-snapshot.js) | Per-secondary lag, oplog window, stuck-optime detection. | 🟢 |
 
 > Every script is **read-only**. Every script is **safe on production**. Every script tells you, in its header, exactly what it does and where the technique came from.
 
@@ -195,10 +208,11 @@ This toolkit ships only what we can publish without ambiguity:
 
 ---
 
-## 📖 Playbooks & positioning
+## 📖 Playbooks, monitoring & positioning
 
 - **[Playbooks](./docs/PLAYBOOKS.md)** — incident-response workflows that string the toolkit's scripts together: CPU at 100%, blocking storms, replicas falling behind, disk filling, failed login bursts, pre-release sanity checks. Bilingual EN + TR.
-- **[Vs other toolkits](./docs/VS_OTHER_TOOLKITS.md)** — honest positioning vs Brent Ozar's First Responder Kit, `sp_WhoIsActive`, Glenn Berry's diagnostic queries, Ola Hallengren, `postgres_dba`, Percona Toolkit, mtools. Where they shine, where DMC adds value, when to use what.
+- **[Monitoring guide](./docs/MONITORING_GUIDE.md)** — turn the `monitoring/` snapshots into a poor-man's monitoring stack with SQL Agent / pg_cron / MySQL Event Scheduler / mongosh cron. Includes Grafana / Power BI hookup and the natural bridge to Sentinel DB 360.
+- **[Vs other toolkits](./docs/VS_OTHER_TOOLKITS.md)** — honest positioning vs Brent Ozar's First Responder Kit, `sp_WhoIsActive`, Glenn Berry's diagnostic queries, Ola Hallengren, `postgres_dba`, Percona Toolkit, mtools.
 
 ---
 

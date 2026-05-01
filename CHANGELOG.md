@@ -10,12 +10,61 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
-- v2.2 — optional unified JSON output mode + Parquet exporter.
+- v2.3 — depth scripts (replication-lag SQL Server, plan-cache-bloat, parameter-sniffing-suspects, deadlock-graph parser, vacuum-progress detail, sharding-balancer history).
 - v3.0 — runbooks per symptom, linked to the relevant scripts.
 
 ---
 
-## [2.1.0] — 2026-05-01
+## [2.2.0] — 2026-05-01
+
+The Continuous Monitoring Snapshot Suite. **+13 monitoring scripts** (43 → 56 total) plus three new translated READMEs and a comprehensive setup guide.
+
+### Added — Monitoring suite (one row per execution; cron-friendly)
+
+**SQL Server +4**
+- `mssql/monitoring/query-throughput-snapshot.sql` — batch req/sec, compilation/recompilation rates, compile-to-batch ratio.
+- `mssql/monitoring/wait-pressure-snapshot.sql` — per-category wait time (CPU, IO, Lock, Latch, Buffer IO, Buffer Latch, Memory, Network, Compilation, Other), signal-wait %, ready for time-series.
+- `mssql/monitoring/blocking-snapshot.sql` — blocked sessions, lead blocker context, longest wait, dominant wait type — turns blocking from "moments" into "patterns".
+- `mssql/monitoring/tempdb-pressure-snapshot.sql` — user/internal/version-store sizes, allocation contention on PFS/GAM/SGAM pages.
+
+**PostgreSQL +3**
+- `postgresql/monitoring/query-throughput-snapshot.sql` — commits, rollbacks, blks_hit/read, BG writer cumulative.
+- `postgresql/monitoring/vacuum-pressure-snapshot.sql` — worst dead-tuple ratio, oldest unfrozen xid age, oldest xmin holder transaction (the "vacuum cliff" predictor).
+- `postgresql/monitoring/replication-lag-snapshot.sql` — worst standby lag in bytes/secs, slot WAL retention, inactive-slot detection.
+
+**MySQL +3**
+- `mysql/monitoring/query-throughput-snapshot.sql` — Questions, Com_*, Slow_queries, Aborted_clients, plus rate-since-startup averages.
+- `mysql/monitoring/innodb-pressure-snapshot.sql` — buffer pool fill, dirty %, hit rate, row lock signals, IO pending — the four dimensions every MySQL DBA wants on a chart.
+- `mysql/monitoring/replication-lag-snapshot.sql` — canonical lag-in-seconds, applier worker state, last error message.
+
+**MongoDB +3**
+- `mongodb/monitoring/query-throughput-snapshot.js` — opcounters cumulative, network bytes, active clients/readers/writers.
+- `mongodb/monitoring/wt-cache-pressure-snapshot.js` — cache fill, dirty %, app-thread eviction (the leading indicator that hides until query latency degrades).
+- `mongodb/monitoring/replication-lag-snapshot.js` — per-secondary lag in seconds, oplog window minutes, stuck-optime detection.
+
+### Added — Multi-language READMEs
+
+- `README.es.md` — Spanish.
+- `README.de.md` — German.
+- `README.ja.md` — Japanese.
+- Language switcher at the top of the main README.
+
+(Scripts remain bilingual EN + TR in their explanatory blocks; the multi-language READMEs cover the orientation surface.)
+
+### Added — Documentation
+
+- `docs/MONITORING_GUIDE.md` — comprehensive setup recipes for SQL Agent / pg_cron / MySQL Event Scheduler / mongosh cron, plus retention strategies and Grafana / Power BI hookup. Bilingual where it matters; ends with the natural bridge to Sentinel DB 360.
+
+### Changed
+
+- README catalog reorganised; new "Playbooks, monitoring & positioning" section linking `PLAYBOOKS.md`, `MONITORING_GUIDE.md`, `VS_OTHER_TOOLKITS.md`.
+- Tagline updated: "56 production-grade scripts across four engines".
+
+**56/56 scripts pass header validation.**
+
+---
+
+## [2.1.1] — 2026-05-01
 
 The depth-pack release. **+19 scripts** (43 total). Adds security, HA, sharding and a minimal monitoring tier — plus a documented bridge to continuous monitoring via Sentinel DB 360.
 
@@ -134,7 +183,9 @@ The first stable release. SQL Server only, but every script vetted in the field.
 
 ---
 
-[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/dmcteknoloji/dmc-dba-toolkit/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.2.0
+[2.1.1]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.1.1
 [2.1.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.1.0
 [2.0.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v2.0.0
 [1.5.0]: https://github.com/dmcteknoloji/dmc-dba-toolkit/releases/tag/v1.5.0

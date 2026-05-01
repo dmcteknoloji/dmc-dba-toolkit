@@ -27,6 +27,10 @@ Legend:
 | `mssql/health/backup-chain-health` | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | `mssql/ha/ag-status` | ✅ | ✅ | ✅ | ✅ | ❌ | ⚠️ |
 | `mssql/monitoring/health-snapshot` | ✅ | ✅ | ✅ | ✅ | ⚠️ | ✅ |
+| `mssql/monitoring/query-throughput-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `mssql/monitoring/wait-pressure-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `mssql/monitoring/blocking-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `mssql/monitoring/tempdb-pressure-snapshot` | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 
 ### Notes on Azure SQL DB partial coverage
 
@@ -49,6 +53,9 @@ Legend:
 | `postgresql/security/role-audit` | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ⚠️ |
 | `postgresql/health/connection-pressure` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `postgresql/monitoring/health-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ⚠️ |
+| `postgresql/monitoring/query-throughput-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `postgresql/monitoring/vacuum-pressure-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `postgresql/monitoring/replication-lag-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ⚠️ |
 
 ### Notes
 - **`top-queries`** requires the `pg_stat_statements` extension. RDS, Aurora and Cloud SQL all enable it via parameter groups.
@@ -71,6 +78,9 @@ Legend:
 | `mysql/performance/io-and-buffer-pool` | ⚠️ | ✅ | ✅ | ✅ | ✅ |
 | `mysql/security/user-audit` | ⚠️ | ✅ | ✅ | ✅ | ✅ |
 | `mysql/monitoring/health-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `mysql/monitoring/query-throughput-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `mysql/monitoring/innodb-pressure-snapshot` | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `mysql/monitoring/replication-lag-snapshot` | ⚠️ | ✅ | ✅ | ✅ | ✅ |
 
 ### Notes
 - **`blocking-chain`** uses `performance_schema.data_locks` and `data_lock_waits`, available from MySQL 8.0. For 5.7, the `INFORMATION_SCHEMA.INNODB_LOCK_WAITS` equivalent is on the v2.1 backlog.
@@ -93,6 +103,9 @@ Legend:
 | `mongodb/sharding/chunk-distribution` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
 | `mongodb/security/user-audit` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
 | `mongodb/monitoring/health-snapshot` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| `mongodb/monitoring/query-throughput-snapshot` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| `mongodb/monitoring/wt-cache-pressure-snapshot` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| `mongodb/monitoring/replication-lag-snapshot` | ✅ | ✅ | ✅ | ✅ | ⚠️ |
 
 ### Notes on Atlas partial coverage
 - Free / Shared (M0–M5) tiers expose a subset of `serverStatus`, `hostInfo`, and `db.runCommand({ collStats })`. The scripts tolerate missing fields (rendering `<n/a>`) rather than throwing.
