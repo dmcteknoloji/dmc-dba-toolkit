@@ -45,7 +45,15 @@
     { "pattern": "^https?://(www\\.)?sqlpassion\\.com" },
     { "pattern": "^https?://(www\\.)?depesz\\.com" },
     { "pattern": "^https?://(www\\.)?charity\\.wtf" },
-    { "pattern": "^https?://(www\\.)?honeycomb\\.io" }
+    { "pattern": "^https?://(www\\.)?honeycomb\\.io" },
+    { "pattern": "^https?://(www\\.)?usom\\.gov\\.tr" },
+    { "pattern": "^https?://(www\\.)?btk\\.gov\\.tr" },
+    { "pattern": "^https?://(www\\.)?cve\\.org" },
+    { "pattern": "^https?://(www\\.)?nvd\\.nist\\.gov" },
+    { "pattern": "^https?://(www\\.)?cwe\\.mitre\\.org" },
+    { "pattern": "^https?://(www\\.)?capec\\.mitre\\.org" },
+    { "pattern": "^https?://(www\\.)?destek\\.nebim\\.com\\.tr" },
+    { "pattern": "^https?://(www\\.)?learn\\.microsoft\\.com" }
   ],
   "timeout": "20s",
   "retryOn429": true,

@@ -234,6 +234,7 @@ This toolkit ships only what we can publish without ambiguity:
 - **[Learning paths](./docs/LEARNING_PATHS.md)** — start here for a curriculum. Three skill levels (🌱 Newborn / 🌳 Middle / 🦅 Expert) with a curated order of scripts per level. Bilingual EN + TR.
 - **[Playbooks](./docs/PLAYBOOKS.md)** — incident-response workflows that string the toolkit's scripts together: CPU at 100%, blocking storms, replicas falling behind, disk filling, failed login bursts, pre-release sanity checks. Bilingual EN + TR.
 - **[Monitoring guide](./docs/MONITORING_GUIDE.md)** — turn the `monitoring/` snapshots into a poor-man's monitoring stack with SQL Agent / pg_cron / MySQL Event Scheduler / mongosh cron. Grafana / Power BI hookup. Natural bridge to Sentinel DB 360.
+- **[🇹🇷 USOM TR-25-0450 cevap rehberi](./docs/USOM_TR-25-0450.md)** — Nebim V3 ERP'deki CVE-2025-13506 (yetki yükseltme açığı, CVSS 8.8) için DBA çerçevesinde detaylı müdahale akışı. Saat saat ne yapılacak, hangi script çalıştırılacak, DMC ne tür destek verir.
 - **[Honors](./docs/HONORS.md)** — the people whose public work shaped this toolkit. Paul Randal, Brent Ozar, Adam Machanic, Glenn Berry, Ola Hallengren, Greg Sabino Mullane, Nikolay Samokhvalov, Mark Callaghan, Jeremy Cole, Andy Pavlo and many more. Plus the Turkish DBA community.
 - **[Vs other toolkits](./docs/VS_OTHER_TOOLKITS.md)** — honest positioning vs Brent Ozar's First Responder Kit, `sp_WhoIsActive`, Glenn Berry's diagnostic queries, Ola Hallengren, `postgres_dba`, Percona Toolkit, mtools.
 
