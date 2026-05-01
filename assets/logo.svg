@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 140" width="480" height="140" role="img" aria-label="DMC — Database Management Company">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="140" rx="16" fill="url(#bg)"/>
+  <rect x="24" y="118" width="60" height="3" rx="1.5" fill="url(#accent)"/>
+  <text x="240" y="78" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-weight="800" font-size="56" fill="#ffffff" letter-spacing="2">DMC</text>
+  <text x="240" y="104" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-weight="500" font-size="11" fill="#9ca3af" letter-spacing="3">DATABASE · MANAGEMENT · COMPANY</text>
+  <text x="240" y="125" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-weight="400" font-size="9" fill="#6b7280" letter-spacing="1">DMC Bilgi Teknolojileri</text>
+</svg>

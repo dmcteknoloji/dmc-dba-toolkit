@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="./assets/logo.svg" alt="DMC — Database Management Company" width="380">
+
 # 🛡️ DMC DBA Toolkit
 
 **マルチエンジン。スキーマ文書化済み。CI テスト済み。デフォルトで読み取り専用。**

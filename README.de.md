@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="./assets/logo.svg" alt="DMC — Database Management Company" width="380">
+
 # 🛡️ DMC DBA Toolkit
 
 **Multi-Engine. Schema-dokumentiert. CI-getestet. Standardmäßig schreibgeschützt.**
