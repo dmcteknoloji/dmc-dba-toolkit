@@ -245,6 +245,32 @@ One row per user table: dead-tuple ratio, rows changed since last analyze, last 
 | `autoanalyze_runs` | `bigint` | Cumulative autoanalyze count. |
 | `verdict` | `text` | Plain-language recommendation. |
 
+## pg-object-privilege-grants
+
+Table and schema grants on user objects, with PUBLIC and re-grantable rights floated to the top. Read-only.
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `section` | `text` | Always `TABLE_GRANT`. |
+| `schema_name` | `name` | Schema of the object. |
+| `object_name` | `name` | Table the grant applies to. |
+| `grantee` | `name` | Role the privilege was granted to (`PUBLIC` = everyone). |
+| `privilege` | `text` | SELECT / INSERT / UPDATE / DELETE / etc. |
+| `is_grantable` | `text` | YES if the grantee can re-grant it. |
+| `granted_by` | `name` | Role that issued the grant. |
+| `verdict` | `text` | Plain-language risk note. |
+
+## pg-connection-security
+
+Security-relevant connection settings plus live SSL usage, one row per item. Read-only.
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `section` | `text` | `SETTING` or `CONNECTIONS`. |
+| `item` | `text` | Setting name, or `encrypted_sessions`. |
+| `value` | `text` | The setting value, or `<encrypted> of <total>` sessions. |
+| `verdict` | `text` | Plain-language posture note. |
+
 ---
 
 # 🟧 MySQL
@@ -341,6 +367,31 @@ Ranks tables by reclaimable space (data_free), absolute and as a share of the ta
 | `free_pct` | `decimal` | Free space as percent of total. |
 | `suggested_action` | `text` | OPTIMIZE TABLE statement, or NULL. Text only. |
 | `verdict` | `varchar` | Plain-language recommendation. |
+
+## mysql-schema-privilege-grants
+
+Schema- and table-scoped grants on user databases, with re-grantable and write/DDL privileges floated to the top. Read-only.
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `section` | `varchar` | `SCHEMA_GRANT` or `TABLE_GRANT`. |
+| `grantee` | `varchar` | Account the privilege was granted to (`'user'@'host'`). |
+| `schema_name` | `varchar` | Database the grant applies to. |
+| `object_name` | `varchar` | Table name, or `*` for a schema-level grant. |
+| `privilege` | `varchar` | SELECT / INSERT / UPDATE / DROP / etc. |
+| `is_grantable` | `varchar` | YES if the grantee can re-grant it. |
+| `verdict` | `varchar` | Plain-language risk note. |
+
+## mysql-tls-and-transport-security
+
+Transport-security posture: TLS availability, offered versions, `require_secure_transport`, and accounts with no SSL requirement. Read-only.
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `section` | `varchar` | `GLOBAL` or `ACCOUNTS`. |
+| `item` | `varchar` | Variable name, or `accounts_without_ssl_requirement`. |
+| `value` | `varchar` | The variable value, or the count of such accounts. |
+| `verdict` | `varchar` | Plain-language posture note. |
 
 ---
 

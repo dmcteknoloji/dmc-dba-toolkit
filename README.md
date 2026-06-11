@@ -13,7 +13,7 @@ Open one script — get a clear answer in 30 seconds.
 [![SQL Lint](https://img.shields.io/badge/lint-sqlfluff-1f6feb)](./.sqlfluff)
 [![CI](https://img.shields.io/badge/ci-github%20actions-2088FF?logo=githubactions&logoColor=white)](./.github/workflows/lint.yml)
 [![Execution tests](https://github.com/dmcteknoloji/dmc-dba-toolkit/actions/workflows/test.yml/badge.svg)](./.github/workflows/test.yml)
-[![Browse the catalogue](https://img.shields.io/badge/catalogue-browse%20all%2077%20scripts-2f81f7)](https://dmcteknoloji.github.io/dmc-dba-toolkit/)
+[![Browse the catalogue](https://img.shields.io/badge/catalogue-browse%20all%2081%20scripts-2f81f7)](https://dmcteknoloji.github.io/dmc-dba-toolkit/)
 [![Engines](https://img.shields.io/badge/engines-MSSQL%20%C2%B7%20PostgreSQL%20%C2%B7%20MySQL%20%C2%B7%20MongoDB-success)](./docs/COMPATIBILITY_MATRIX.md)
 [![Public docs only](https://img.shields.io/badge/sources-public%20vendor%20docs%20only-7c3aed)](./docs/HEADER_STANDARD.md#sources-policy-the-line-we-dont-cross)
 [![Made by DMC](https://img.shields.io/badge/made%20by-DMC%20Bilgi%20Teknolojileri-0a0a0a)](https://linkedin.com/company/dmcteknoloji)
@@ -27,7 +27,7 @@ Open one script — get a clear answer in 30 seconds.
 [![DMC Bilgi Teknolojileri on LinkedIn](https://img.shields.io/badge/LinkedIn-DMC%20Bilgi%20Teknolojileri-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/company/dmcteknoloji)
 
 _Created and maintained by **[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — Microsoft MVP, [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)._
-_Started April 2025. **77 production-grade scripts** across four engines — three skill levels (🌱 Newborn · 🌳 Middle · 🦅 Expert), all built on public vendor documentation._
+_Started April 2025. **81 production-grade scripts** across four engines — three skill levels (🌱 Newborn · 🌳 Middle · 🦅 Expert), all built on public vendor documentation._
 
 🌐 **English** · [Türkçe içerik scriptlerin içinde](./docs/PLAYBOOKS.md) · [Español](./README.es.md) · [Deutsch](./README.de.md) · [日本語](./README.ja.md)
 
@@ -129,6 +129,8 @@ Most toolkits that say "tested" mean linted. This one runs **every script agains
 | [`table-bloat-estimate`](./postgresql/storage/table-bloat-estimate.sql) | Which tables are bloated and need attention? | 🟡 |
 | [`replication-status`](./postgresql/replication/replication-status.sql) | Replica lag, slot status, WAL position. | 🟢 |
 | [`role-audit`](./postgresql/security/role-audit.sql) | Who is SUPERUSER, CREATEROLE, BYPASSRLS — incl. nested. | 🟢 |
+| [`object-privilege-grants`](./postgresql/security/object-privilege-grants.sql) | What can they reach? Table/schema grants, PUBLIC flagged. | 🟢 |
+| [`connection-security`](./postgresql/security/connection-security.sql) | TLS, scram vs md5, and live encrypted-session count. | 🟢 |
 | [`connection-pressure`](./postgresql/health/connection-pressure.sql) | Headroom, idle-in-transaction, breakdown by group. | 🟢 |
 | [`instance-overview`](./postgresql/health/instance-overview.sql) | One-screen summary of this cluster. | 🟢 |
 | [`health-snapshot`](./postgresql/monitoring/health-snapshot.sql) | One-row periodic snapshot for cron + a target table. | 🟢 |
@@ -153,6 +155,8 @@ Most toolkits that say "tested" mean linted. This one runs **every script agains
 | [`largest-tables`](./mysql/storage/largest-tables.sql) | Top tables by data + index size, fragmentation hint. | 🟢 |
 | [`replication-status`](./mysql/replication/replication-status.sql) | Replica health, lag, threads. | 🟢 |
 | [`user-audit`](./mysql/security/user-audit.sql) | SUPER, GRANT OPTION, dynamic privileges, host wildcards. | 🟢 |
+| [`schema-privilege-grants`](./mysql/security/schema-privilege-grants.sql) | Schema/table grants — re-grantable and write rights flagged. | 🟢 |
+| [`tls-and-transport-security`](./mysql/security/tls-and-transport-security.sql) | TLS posture + accounts with no SSL requirement. | 🟢 |
 | [`instance-overview`](./mysql/health/instance-overview.sql) | One-screen summary of this server. | 🟢 |
 | [`health-snapshot`](./mysql/monitoring/health-snapshot.sql) | One-row periodic snapshot for cron + a target table. | 🟢 |
 | [`query-throughput-snapshot`](./mysql/monitoring/query-throughput-snapshot.sql) | Questions, com_*, slow_queries, aborted_clients. | 🟢 |

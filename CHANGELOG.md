@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Security parity** for PostgreSQL and MySQL (4 read-only scripts, 77 → 81): PostgreSQL `object-privilege-grants` (table/schema ACLs, PUBLIC flagged) and `connection-security` (TLS / scram / live SSL usage); MySQL `schema-privilege-grants` (scoped grants, re-grantable and write rights flagged) and `tls-and-transport-security` (transport posture + accounts with no SSL requirement). Brings both engines' `security` tier in line with SQL Server's depth.
 - **`maintenance` category** filled across all four engines (5 read-only scripts, 72 → 77): SQL Server `index-fragmentation` and `statistics-health`, PostgreSQL `autovacuum-and-analyze-health`, MySQL `table-fragmentation`, MongoDB `compaction-candidates`. Each diagnoses a maintenance need and prints a suggested command as text; none mutate state.
 - **One-command runner** (`bin/dmc-dba`): runs a single category or the whole suite read-only against a live engine, then writes a self-contained HTML report (and Markdown) with per-script pass/fail, impact and timing. Connection via standard env vars or a full client-command override.
 - **Execution-test CI** (`.github/workflows/test.yml`): every script is now *executed* against a freshly-started SQL Server 2022, PostgreSQL 16, MySQL 8 and MongoDB 7 on every push, not just linted. A script that stops running on a supported engine turns the badge red.
