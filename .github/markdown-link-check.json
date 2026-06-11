@@ -1,6 +1,7 @@
 {
   "ignorePatterns": [
     { "pattern": "^https://github.com/dmcteknoloji/" },
+    { "pattern": "^https://dmcteknoloji\\.github\\.io/" },
     { "pattern": "^https?://(www\\.)?linkedin\\.com/" },
     { "pattern": "^https?://(www\\.)?dmcteknoloji\\.com" },
     { "pattern": "^https?://(www\\.)?sentineldb360\\.com" },
@@ -30,7 +31,7 @@
     { "pattern": "^https?://(www\\.)?postgres\\.ai" },
     { "pattern": "^https?://(www\\.)?percona\\.com" },
     { "pattern": "^https?://(www\\.)?erinstellato\\.com" },
-    { "pattern": "^https?://(www\\.)?sqlauthority\\.com" },
+    { "pattern": "^https?://(www\\.|blog\\.)?sqlauthority\\.com" },
     { "pattern": "^https?://(www\\.)?sqlserverfast\\.com" },
     { "pattern": "^https?://(www\\.)?niko-neugebauer\\.com" },
     { "pattern": "^https?://(www\\.)?scarydba\\.com" },
