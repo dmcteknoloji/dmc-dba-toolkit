@@ -42,9 +42,12 @@ case "$engine" in
     CID=dmc-mysql
     docker run -d --name "$CID" -p 3306:3306 \
       -e "MYSQL_ROOT_PASSWORD=$PW" mysql:8 >/dev/null
-    # mysqladmin ping answers "alive" against the temporary init server before
-    # the root password is set, so gate on a real authenticated query instead.
-    wait_for "MySQL" docker exec "$CID" mysql -uroot -p"$PW" -e "SELECT 1"
+    # During init MySQL runs a temporary server with --skip-networking that
+    # already accepts socket logins, then restarts the real server. A socket
+    # SELECT 1 can therefore pass against the temp server, in the gap before
+    # the real one is up. Gate over TCP instead: only the real, networked
+    # server answers on the port, so this clears the whole init dance.
+    wait_for "MySQL" docker exec "$CID" mysql -h127.0.0.1 -P3306 --protocol=TCP -uroot -p"$PW" -e "SELECT 1"
     echo "export DMC_MYSQL_CMD='docker exec -i $CID mysql -uroot -p$PW --table mysql'" > /tmp/dmc-engine.env
     ;;
   mongodb)
