@@ -42,7 +42,9 @@ case "$engine" in
     CID=dmc-mysql
     docker run -d --name "$CID" -p 3306:3306 \
       -e "MYSQL_ROOT_PASSWORD=$PW" mysql:8 >/dev/null
-    wait_for "MySQL" docker exec "$CID" mysqladmin ping -uroot -p"$PW" --silent
+    # mysqladmin ping answers "alive" against the temporary init server before
+    # the root password is set, so gate on a real authenticated query instead.
+    wait_for "MySQL" docker exec "$CID" mysql -uroot -p"$PW" -e "SELECT 1"
     echo "export DMC_MYSQL_CMD='docker exec -i $CID mysql -uroot -p$PW --table mysql'" > /tmp/dmc-engine.env
     ;;
   mongodb)
