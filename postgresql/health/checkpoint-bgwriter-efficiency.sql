@@ -114,7 +114,7 @@ SELECT
         WHEN round(100.0 * bg.checkpoints_req
                    / nullif(bg.checkpoints_timed + bg.checkpoints_req, 0), 2) > 30
             THEN '🟠 > 30% of checkpoints are requested (max_wal_size hits) — raise max_wal_size or shorten checkpoint_timeout'
-        WHEN bg.maxwritten_clean > bg.checkpoints_total
+        WHEN bg.maxwritten_clean > (bg.checkpoints_timed + bg.checkpoints_req)
             THEN '🟠 bgwriter saturating frequently — raise bgwriter_lru_maxpages'
         ELSE '🟢 checkpoint vs bgwriter balance looks healthy'
     END                                                           AS verdict,

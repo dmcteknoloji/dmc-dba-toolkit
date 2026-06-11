@@ -53,15 +53,23 @@ FROM performance_schema.replication_connection_configuration
 JOIN performance_schema.replication_connection_status USING (CHANNEL_NAME);
 
 -- ── 2. APPLIER (coordinator + workers) ─────────────────────────────
+-- Coordinator state lives on replication_applier_status; the last applier
+-- error is per-worker (replication_applier_status_by_worker), so pull it in
+-- with a correlated subquery rather than from the coordinator view.
 SELECT
     'APPLIER'                                                     AS section,
-    CHANNEL_NAME,
-    SERVICE_STATE                                                 AS coord_state,
-    REMAINING_DELAY                                               AS remaining_delay,
-    LAST_ERROR_NUMBER                                             AS last_error_no,
-    LAST_ERROR_MESSAGE                                            AS last_error_msg
-FROM performance_schema.replication_applier_status
-ORDER BY CHANNEL_NAME;
+    a.CHANNEL_NAME                                                AS CHANNEL_NAME,
+    a.SERVICE_STATE                                               AS coord_state,
+    a.REMAINING_DELAY                                             AS remaining_delay,
+    (SELECT IFNULL(MAX(w.LAST_ERROR_NUMBER), 0)
+     FROM performance_schema.replication_applier_status_by_worker AS w
+     WHERE w.CHANNEL_NAME = a.CHANNEL_NAME)                       AS last_error_no,
+    (SELECT MAX(w.LAST_ERROR_MESSAGE)
+     FROM performance_schema.replication_applier_status_by_worker AS w
+     WHERE w.CHANNEL_NAME = a.CHANNEL_NAME
+       AND w.LAST_ERROR_NUMBER <> 0)                             AS last_error_msg
+FROM performance_schema.replication_applier_status AS a
+ORDER BY a.CHANNEL_NAME;
 
 -- ── 3. APPLIER LAG (worker view, MySQL 8.0+) ───────────────────────
 SELECT

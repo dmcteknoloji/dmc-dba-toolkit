@@ -12,6 +12,7 @@ Open one script — get a clear answer in 30 seconds.
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![SQL Lint](https://img.shields.io/badge/lint-sqlfluff-1f6feb)](./.sqlfluff)
 [![CI](https://img.shields.io/badge/ci-github%20actions-2088FF?logo=githubactions&logoColor=white)](./.github/workflows/lint.yml)
+[![Execution tests](https://github.com/dmcteknoloji/dmc-dba-toolkit/actions/workflows/test.yml/badge.svg)](./.github/workflows/test.yml)
 [![Engines](https://img.shields.io/badge/engines-MSSQL%20%C2%B7%20PostgreSQL%20%C2%B7%20MySQL%20%C2%B7%20MongoDB-success)](./docs/COMPATIBILITY_MATRIX.md)
 [![Public docs only](https://img.shields.io/badge/sources-public%20vendor%20docs%20only-7c3aed)](./docs/HEADER_STANDARD.md#sources-policy-the-line-we-dont-cross)
 [![Made by DMC](https://img.shields.io/badge/made%20by-DMC%20Bilgi%20Teknolojileri-0a0a0a)](https://linkedin.com/company/dmcteknoloji)
@@ -59,6 +60,28 @@ cd dmc-dba-toolkit
 Open any `.sql` (or `.js` for MongoDB) file in your favourite client. Read the header. Run.
 
 That's it. No installer, no stored procedures dropped on your instance, no CLR, no extensions. **Pure vendor-native, copy-paste safe.**
+
+---
+
+## ⚡ Run the whole suite in one command
+
+Open-one-script is perfect for a 3 AM incident. When you want the full picture, point the runner at a live instance and get a single report instead.
+
+```bash
+bin/dmc-dba mssql all --report html
+# or one category: bin/dmc-dba postgresql health
+# engines: mssql · postgresql · mysql · mongodb
+```
+
+It runs every matching script read-only against the engine, then writes a self-contained HTML report (and Markdown) you can hand to a colleague or attach to a ticket.
+
+<p align="center"><img src="./assets/runner-report.png" alt="DMC DBA Toolkit one-command runner report" width="620"></p>
+
+Connection is standard env vars (`DMC_MSSQL_*`, `DMC_PG_*`, `DMC_MYSQL_*`, `DMC_MONGO_URI`), or a full client-command override so it also works with a containerised client. The runner never writes: it only executes the shipped read-only scripts, and exits non-zero if any script fails.
+
+### Tested, not just linted
+
+Most toolkits that say "tested" mean linted. This one runs **every script against a real, freshly-started engine on every push** (SQL Server 2022, PostgreSQL 16, MySQL 8, MongoDB 7) through the same runner. If a script stops running on a supported engine, the badge turns red before you ever copy it into a production session. See [`.github/workflows/test.yml`](./.github/workflows/test.yml).
 
 ---
 

@@ -110,5 +110,5 @@ LEFT JOIN sys.dm_exec_sessions          AS s ON s.session_id = g.session_id
 LEFT JOIN sys.dm_exec_requests          AS r ON r.session_id = g.session_id
                                               AND r.request_id = g.request_id
 OUTER APPLY sys.dm_exec_sql_text(g.sql_handle) AS st
-ORDER BY (g.grant_time IS NULL) DESC,
+ORDER BY CASE WHEN g.grant_time IS NULL THEN 1 ELSE 0 END DESC,
          g.request_time ASC;

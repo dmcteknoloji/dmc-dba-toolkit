@@ -1,0 +1,323 @@
+#!/usr/bin/env python3
+"""DMC DBA Toolkit — one-command runner.
+
+Run a whole category of read-only diagnostic scripts against a live engine and
+get one combined report (terminal + Markdown + a self-contained HTML page).
+
+    bin/dmc-dba <engine> <category|all|path> [options]
+
+Examples
+--------
+    bin/dmc-dba postgresql health --report html --out ./out
+    bin/dmc-dba mssql all --report both
+    bin/dmc-dba mongodb monitoring
+
+Connection
+----------
+Each engine reads standard env vars (all optional, sane localhost defaults):
+
+    SQL Server   DMC_MSSQL_HOST DMC_MSSQL_PORT DMC_MSSQL_USER DMC_MSSQL_PASSWORD DMC_MSSQL_DB
+    PostgreSQL   DMC_PG_HOST DMC_PG_PORT DMC_PG_USER DMC_PG_PASSWORD DMC_PG_DB
+    MySQL        DMC_MYSQL_HOST DMC_MYSQL_PORT DMC_MYSQL_USER DMC_MYSQL_PASSWORD DMC_MYSQL_DB
+    MongoDB      DMC_MONGO_URI
+
+For containerised clients (CI, no local binary) override the whole command and
+the script is piped to its stdin, e.g.
+
+    DMC_MSSQL_CMD='docker exec -i sql sqlcmd -S localhost -U sa -P pass -C -b'
+
+This runner never writes: it only executes the shipped read-only scripts.
+"""
+from __future__ import annotations
+
+import argparse
+import html
+import os
+import re
+import shlex
+import subprocess
+import sys
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+ENGINES = {
+    "mssql": {"label": "SQL Server", "glob": "*.sql", "color": "#cc2927"},
+    "postgresql": {"label": "PostgreSQL", "glob": "*.sql", "color": "#336791"},
+    "mysql": {"label": "MySQL", "glob": "*.sql", "color": "#00758f"},
+    "mongodb": {"label": "MongoDB", "glob": "*.js", "color": "#00ed64"},
+}
+
+HEADER_FIELD = re.compile(r"^(?:--|//)\s*║\s*([A-Za-z][A-Za-z ]+?)\s*:\s*(.+?)\s*║\s*$")
+
+
+def env(name: str, default: str) -> str:
+    return os.environ.get(name, default)
+
+
+# Full client-command override per engine: when set, the value is run as a
+# shell command and the script is piped to its stdin. Lets CI / users point at
+# a containerised client (e.g. `docker exec -i ... psql ...`).
+CMD_OVERRIDE = {
+    "mssql": "DMC_MSSQL_CMD",
+    "postgresql": "DMC_PG_CMD",
+    "mysql": "DMC_MYSQL_CMD",
+    "mongodb": "DMC_MONGO_CMD",
+}
+
+
+def client_command(engine: str) -> tuple[list[str] | str, bool]:
+    """Return (command, is_shell). Script is piped to the command's stdin."""
+    override = os.environ.get(CMD_OVERRIDE[engine])
+    if override:
+        return override, True
+    if engine == "mssql":
+        return [
+            "sqlcmd", "-S", f"{env('DMC_MSSQL_HOST', 'localhost')},{env('DMC_MSSQL_PORT', '1433')}",
+            "-U", env("DMC_MSSQL_USER", "sa"), "-P", env("DMC_MSSQL_PASSWORD", ""),
+            "-d", env("DMC_MSSQL_DB", "master"), "-C", "-b",
+        ], False
+    if engine == "postgresql":
+        dsn = f"postgresql://{env('DMC_PG_USER', 'postgres')}:{env('DMC_PG_PASSWORD', '')}" \
+              f"@{env('DMC_PG_HOST', 'localhost')}:{env('DMC_PG_PORT', '5432')}/{env('DMC_PG_DB', 'postgres')}"
+        return ["psql", dsn, "-v", "ON_ERROR_STOP=1", "-P", "pager=off"], False
+    if engine == "mysql":
+        return [
+            "mysql", f"-h{env('DMC_MYSQL_HOST', 'localhost')}", f"-P{env('DMC_MYSQL_PORT', '3306')}",
+            f"-u{env('DMC_MYSQL_USER', 'root')}", f"-p{env('DMC_MYSQL_PASSWORD', '')}",
+            "--table", env("DMC_MYSQL_DB", "mysql"),
+        ], False
+    if engine == "mongodb":
+        return ["mongosh", env("DMC_MONGO_URI", "mongodb://localhost:27017"), "--quiet"], False
+    raise SystemExit(f"unknown engine: {engine}")
+
+
+def version_probe(engine: str) -> str:
+    probes = {
+        "mssql": "SET NOCOUNT ON;\nSELECT @@VERSION;",
+        "postgresql": "SELECT version();",
+        "mysql": "SELECT VERSION();",
+        "mongodb": "print(db.version())",
+    }
+    res = run_one(engine, probes[engine])
+    if not res["ok"]:
+        return "unknown"
+    # Pick the most informative line: skip column headers, separators and row
+    # counts that psql/mysql/sqlcmd print around the value.
+    noise = re.compile(r"^(version|@@version|-+|\(\d+ rows?\)|rows? affected.*)$", re.I)
+    candidates = [l.strip() for l in res["output"].splitlines() if l.strip() and not noise.match(l.strip())]
+    line = max(candidates, key=len) if candidates else "unknown"
+    return (line[:90] + "…") if len(line) > 90 else line
+
+
+def run_one(engine: str, script_text: str) -> dict:
+    cmd, is_shell = client_command(engine)
+    started = time.monotonic()
+    try:
+        proc = subprocess.run(
+            cmd, input=script_text, shell=is_shell, text=True,
+            capture_output=True, timeout=120,
+        )
+        out = (proc.stdout or "") + (("\n" + proc.stderr) if proc.stderr.strip() else "")
+        return {"ok": proc.returncode == 0, "output": out.strip(), "secs": time.monotonic() - started}
+    except subprocess.TimeoutExpired:
+        return {"ok": False, "output": "TIMEOUT after 120s", "secs": time.monotonic() - started}
+    except FileNotFoundError as e:
+        raise SystemExit(f"client binary not found: {e}. Set DMC_<ENGINE>_CMD to override.")
+
+
+def parse_header(path: Path) -> dict:
+    meta = {"Script": path.stem, "Impact": "", "Level": "", "Category": path.parent.name}
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines()[:40]:
+        m = HEADER_FIELD.match(line)
+        if m:
+            meta[m.group(1)] = m.group(2)
+    return meta
+
+
+def collect_scripts(engine: str, target: str) -> list[Path]:
+    base = REPO_ROOT / engine
+    glob = ENGINES[engine]["glob"]
+    p = REPO_ROOT / target
+    if p.is_file():
+        return [p]
+    if target == "all":
+        return sorted(base.rglob(glob))
+    cat = base / target
+    if not cat.is_dir():
+        raise SystemExit(f"no such category '{target}' for {engine}. Looked in {cat}")
+    return sorted(cat.glob(glob))
+
+
+# ── rendering ────────────────────────────────────────────────────────────────
+
+def status_pill(ok: bool) -> str:
+    return "PASS" if ok else "FAIL"
+
+
+def render_markdown(engine, version, results, when) -> str:
+    label = ENGINES[engine]["label"]
+    passed = sum(1 for r in results if r["ok"])
+    total = len(results)
+    out = [
+        f"# DMC DBA Toolkit — {label} health report",
+        "",
+        f"- **Engine:** {label}",
+        f"- **Server:** `{version}`",
+        f"- **Generated:** {when} UTC",
+        f"- **Scripts run:** {total} &nbsp;·&nbsp; **passed:** {passed} &nbsp;·&nbsp; **failed:** {total - passed}",
+        "",
+        "| Script | Category | Impact | Status | Time |",
+        "| ------ | -------- | ------ | ------ | ---- |",
+    ]
+    for r in results:
+        out.append(
+            f"| `{r['meta']['Script']}` | {r['meta']['Category']} | {r['meta'].get('Impact', '')} "
+            f"| {'✅ PASS' if r['ok'] else '❌ FAIL'} | {r['secs']:.2f}s |"
+        )
+    out.append("")
+    for r in results:
+        out += [
+            f"## {'✅' if r['ok'] else '❌'} {r['meta']['Script']}  ·  {r['meta']['Category']}",
+            "",
+            "```",
+            r["output"][:6000] or "(no rows)",
+            "```",
+            "",
+        ]
+    out.append("---")
+    out.append("_Generated by `bin/dmc-dba` — DMC DBA Toolkit. Read-only by design._")
+    return "\n".join(out)
+
+
+def render_html(engine, version, results, when) -> str:
+    label = ENGINES[engine]["label"]
+    accent = ENGINES[engine]["color"]
+    passed = sum(1 for r in results if r["ok"])
+    total = len(results)
+    failed = total - passed
+    avg = (sum(r["secs"] for r in results) / total) if total else 0
+    cards = []
+    for r in results:
+        ok = r["ok"]
+        body = html.escape(r["output"][:8000] or "(no rows)")
+        cards.append(f"""
+        <details class="card {'ok' if ok else 'bad'}" {'open' if not ok else ''}>
+          <summary>
+            <span class="pill {'ok' if ok else 'bad'}">{'PASS' if ok else 'FAIL'}</span>
+            <span class="name">{html.escape(r['meta']['Script'])}</span>
+            <span class="cat">{html.escape(r['meta']['Category'])}</span>
+            <span class="impact">{html.escape(r['meta'].get('Impact', ''))}</span>
+            <span class="time">{r['secs']:.2f}s</span>
+          </summary>
+          <pre>{body}</pre>
+        </details>""")
+    rows = "\n".join(cards)
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMC DBA Toolkit — {label} report</title>
+<style>
+  :root {{ --accent: {accent}; --bg:#0b0e14; --panel:#121722; --line:#1f2733;
+           --txt:#e6edf3; --mut:#8b98a9; --ok:#2ea043; --bad:#e5534b; }}
+  * {{ box-sizing:border-box; }}
+  body {{ margin:0; background:var(--bg); color:var(--txt);
+          font:15px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }}
+  .wrap {{ max-width:1040px; margin:0 auto; padding:32px 20px 64px; }}
+  header.hero {{ background:linear-gradient(135deg, var(--accent) 0%, #0b0e14 75%);
+                 border:1px solid var(--line); border-radius:16px; padding:28px 30px; margin-bottom:24px; }}
+  .brand {{ font-weight:800; letter-spacing:.3px; font-size:13px; text-transform:uppercase;
+            color:#fff; opacity:.85; }}
+  h1 {{ margin:6px 0 4px; font-size:26px; }}
+  .meta {{ color:#dfe7f0; font-size:13px; opacity:.9; }}
+  .meta code {{ background:rgba(255,255,255,.12); padding:2px 7px; border-radius:6px; }}
+  .stats {{ display:flex; gap:14px; flex-wrap:wrap; margin:22px 0 26px; }}
+  .stat {{ flex:1; min-width:130px; background:var(--panel); border:1px solid var(--line);
+           border-radius:12px; padding:16px 18px; }}
+  .stat .n {{ font-size:30px; font-weight:800; }}
+  .stat .l {{ color:var(--mut); font-size:12px; text-transform:uppercase; letter-spacing:.5px; }}
+  .stat.ok .n {{ color:var(--ok); }} .stat.bad .n {{ color:var(--bad); }}
+  details.card {{ background:var(--panel); border:1px solid var(--line);
+                  border-left:4px solid var(--ok); border-radius:10px; margin:10px 0; overflow:hidden; }}
+  details.card.bad {{ border-left-color:var(--bad); }}
+  summary {{ list-style:none; cursor:pointer; display:flex; align-items:center; gap:12px;
+             padding:13px 16px; }}
+  summary::-webkit-details-marker {{ display:none; }}
+  .pill {{ font-size:11px; font-weight:800; padding:3px 9px; border-radius:20px; color:#fff; }}
+  .pill.ok {{ background:var(--ok); }} .pill.bad {{ background:var(--bad); }}
+  .name {{ font-weight:700; }} .cat {{ color:var(--mut); font-size:12px; }}
+  .impact {{ margin-left:auto; font-size:12px; color:var(--mut); }}
+  .time {{ color:var(--mut); font-size:12px; min-width:48px; text-align:right; }}
+  pre {{ margin:0; padding:14px 16px; background:#0a0d13; border-top:1px solid var(--line);
+         overflow:auto; font:12.5px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace; color:#c9d4e1; }}
+  footer {{ color:var(--mut); font-size:12px; margin-top:28px; text-align:center; }}
+  a {{ color:var(--accent); }}
+</style></head><body><div class="wrap">
+  <header class="hero">
+    <div class="brand">🛡️ DMC DBA Toolkit</div>
+    <h1>{label} health report</h1>
+    <div class="meta">Server <code>{html.escape(version)}</code> &nbsp;·&nbsp; generated {when} UTC</div>
+  </header>
+  <div class="stats">
+    <div class="stat"><div class="n">{total}</div><div class="l">scripts run</div></div>
+    <div class="stat ok"><div class="n">{passed}</div><div class="l">passed</div></div>
+    <div class="stat bad"><div class="n">{failed}</div><div class="l">failed</div></div>
+    <div class="stat"><div class="n">{avg:.2f}s</div><div class="l">avg time</div></div>
+  </div>
+  {rows}
+  <footer>Generated by <code>bin/dmc-dba</code> — every script is read-only by design.<br>
+  DMC Bilgi Teknolojileri · <a href="https://github.com/dmcteknoloji/dmc-dba-toolkit">dmc-dba-toolkit</a></footer>
+</div></body></html>"""
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="dmc-dba", description="Run a category of read-only scripts against a live engine.")
+    ap.add_argument("engine", choices=list(ENGINES))
+    ap.add_argument("target", help="category name, 'all', or a path to one script")
+    ap.add_argument("--report", choices=["none", "md", "html", "both"], default="none")
+    ap.add_argument("--out", default="reports", help="output directory for reports")
+    args = ap.parse_args()
+
+    scripts = collect_scripts(args.engine, args.target)
+    if not scripts:
+        print(f"no scripts found for {args.engine}/{args.target}", file=sys.stderr)
+        return 2
+
+    when = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
+    version = version_probe(args.engine)
+    label = ENGINES[args.engine]["label"]
+    print(f"\n  🛡️  DMC DBA Toolkit · {label}\n  {version}\n  {len(scripts)} script(s) · {when} UTC\n")
+
+    results = []
+    for path in scripts:
+        meta = parse_header(path)
+        res = run_one(args.engine, path.read_text(encoding="utf-8", errors="replace"))
+        res["meta"] = meta
+        results.append(res)
+        mark = "\033[32mPASS\033[0m" if res["ok"] else "\033[31mFAIL\033[0m"
+        print(f"  [{mark}] {meta['Script']:<34} {res['secs']:>6.2f}s  {meta['Category']}")
+
+    passed = sum(1 for r in results if r["ok"])
+    print(f"\n  {passed}/{len(results)} passed\n")
+
+    if args.report != "none":
+        out_dir = REPO_ROOT / args.out if not os.path.isabs(args.out) else Path(args.out)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+        base = out_dir / f"{args.engine}-{args.target.replace('/', '_')}-{stamp}"
+        if args.report in ("md", "both"):
+            (base.with_suffix(".md")).write_text(render_markdown(args.engine, version, results, when), encoding="utf-8")
+            print(f"  report: {base.with_suffix('.md')}")
+        if args.report in ("html", "both"):
+            (base.with_suffix(".html")).write_text(render_html(args.engine, version, results, when), encoding="utf-8")
+            print(f"  report: {base.with_suffix('.html')}")
+        print()
+
+    # exit non-zero if anything failed — lets CI gate on it
+    return 0 if passed == len(results) else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

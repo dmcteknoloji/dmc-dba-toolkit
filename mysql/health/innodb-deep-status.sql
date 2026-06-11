@@ -75,8 +75,8 @@ SELECT
     PAGES_MADE_YOUNG                                                    AS pages_made_young_cum,
     PAGES_NOT_MADE_YOUNG                                                AS pages_not_made_young_cum,
     -- LRU read-ahead efficiency
-    READ_AHEAD                                                          AS read_ahead_cum,
-    READ_AHEAD_EVICTED                                                  AS read_ahead_evicted_cum
+    NUMBER_PAGES_READ_AHEAD                                             AS read_ahead_cum,
+    NUMBER_READ_AHEAD_EVICTED                                           AS read_ahead_evicted_cum
 FROM information_schema.INNODB_BUFFER_POOL_STATS
 ORDER BY POOL_ID;
 

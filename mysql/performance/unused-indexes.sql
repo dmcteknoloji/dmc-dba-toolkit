@@ -44,9 +44,9 @@ SELECT
     CASE
         WHEN sui.index_name = 'PRIMARY'
             THEN 'PRIMARY KEY — required, do not drop'
-        WHEN (SELECT VARIABLE_VALUE
+        WHEN CAST((SELECT VARIABLE_VALUE
               FROM performance_schema.global_status
-              WHERE VARIABLE_NAME = 'Uptime')::unsigned < 7 * 86400
+              WHERE VARIABLE_NAME = 'Uptime') AS UNSIGNED) < 7 * 86400
             THEN 'flagged unused but server uptime < 7 days — wait for a full week'
         ELSE
             CONCAT(
