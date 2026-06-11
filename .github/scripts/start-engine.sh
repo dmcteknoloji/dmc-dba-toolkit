@@ -32,10 +32,14 @@ case "$engine" in
     docker run -d --name "$CID" -p 5432:5432 \
       -e "POSTGRES_PASSWORD=$PW" postgres:16 \
       -c shared_preload_libraries=pg_stat_statements >/dev/null
-    wait_for "PostgreSQL" docker exec "$CID" pg_isready -U postgres
+    # The official image runs a socket-only temporary server during init, then
+    # restarts the real one. A socket pg_isready can pass against the temp
+    # server, in the gap before the restart. Gate over TCP (-h 127.0.0.1):
+    # only the real, networked server answers there.
+    wait_for "PostgreSQL" docker exec "$CID" pg_isready -h 127.0.0.1 -U postgres
     # pg_stat_statements is the canonical query-stats source; several scripts
     # read it. Enable it so the suite exercises them instead of skipping.
-    docker exec "$CID" psql -U postgres -c "CREATE EXTENSION IF NOT EXISTS pg_stat_statements;" >/dev/null
+    docker exec "$CID" psql -h 127.0.0.1 -U postgres -c "CREATE EXTENSION IF NOT EXISTS pg_stat_statements;" >/dev/null
     echo "export DMC_PG_CMD='docker exec -i $CID psql -U postgres -d postgres -v ON_ERROR_STOP=1 -P pager=off'" > /tmp/dmc-engine.env
     ;;
   mysql)
