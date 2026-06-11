@@ -21,3 +21,9 @@ venv/
 # Local test scratch
 scratch/
 sandbox/
+
+# Generated site (built in CI by scripts/build_site.py, published to Pages)
+site/
+
+# Runner reports
+reports/
