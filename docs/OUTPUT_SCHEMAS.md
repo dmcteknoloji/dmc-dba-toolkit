@@ -99,6 +99,44 @@ Returns the top resource-consuming queries currently in the plan cache, ranked b
 | `value`          | `nvarchar(256)` | Stringified value.                                                                             |
 | `note`           | `nvarchar(256)` | Optional context (e.g. `last full backup is 8 days old — review`).                            |
 
+## index-fragmentation
+
+Lists indexes over a page-count threshold with their fragmentation and a concrete REORGANIZE/REBUILD verdict. Read-only; the suggested command is text.
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `database_name` | `sysname` | Current database. |
+| `schema_name` | `sysname` | Schema of the table. |
+| `table_name` | `sysname` | Table the index belongs to. |
+| `index_name` | `sysname` | Index name. |
+| `index_type` | `nvarchar(60)` | CLUSTERED / NONCLUSTERED. |
+| `page_count` | `bigint` | Pages in the index (8 KB each). |
+| `size_mb` | `decimal(18,1)` | Index size in MB. |
+| `frag_pct` | `decimal(5,2)` | Average fragmentation percent (LIMITED scan). |
+| `fragment_count` | `bigint` | Number of fragments. |
+| `fill_factor` | `int` | Configured fill factor (0 = server default). |
+| `suggested_action` | `nvarchar(max)` | REORGANIZE/REBUILD statement, or NULL. Text only. |
+| `verdict` | `nvarchar(200)` | Plain-language recommendation. |
+
+## statistics-health
+
+Ranks statistics by staleness (rows modified since last update versus table size) and flags UPDATE STATISTICS candidates. Read-only.
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `database_name` | `sysname` | Current database. |
+| `schema_name` | `sysname` | Schema of the table. |
+| `table_name` | `sysname` | Table the statistics object belongs to. |
+| `stats_name` | `sysname` | Statistics object name. |
+| `last_updated` | `datetime2` | When statistics were last updated (NULL = never). |
+| `days_since_update` | `int` | Days since the last update. |
+| `table_rows` | `bigint` | Row count at last update. |
+| `rows_sampled` | `bigint` | Rows sampled for the histogram. |
+| `rows_modified` | `bigint` | Modification counter since last update. |
+| `pct_modified` | `decimal(6,2)` | Modified rows as percent of table rows. |
+| `suggested_action` | `nvarchar(max)` | UPDATE STATISTICS statement, or NULL. Text only. |
+| `verdict` | `nvarchar(200)` | Plain-language recommendation. |
+
 ---
 
 # 🟪 PostgreSQL
@@ -187,6 +225,26 @@ Single union-shaped table, sectioned by `section` discriminator.
 | `value`    | `text` | Value as a string.                                           |
 | `note`     | `text` | Optional context (e.g. autovacuum-off warning).              |
 
+## pg-autovacuum-and-analyze-health
+
+One row per user table: dead-tuple ratio, rows changed since last analyze, last (auto)vacuum / (auto)analyze times, and a verdict on tables falling behind. Read-only.
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `schema_name` | `name` | Schema. |
+| `table_name` | `name` | Table. |
+| `live_tuples` | `bigint` | Estimated live rows (n_live_tup). |
+| `dead_tuples` | `bigint` | Estimated dead rows (n_dead_tup). |
+| `dead_pct` | `numeric` | Dead tuples as percent of live + dead. |
+| `rows_changed_since_analyze` | `bigint` | n_mod_since_analyze. |
+| `last_autovacuum` | `timestamptz` | Last autovacuum run. |
+| `last_manual_vacuum` | `timestamptz` | Last manual VACUUM. |
+| `last_autoanalyze` | `timestamptz` | Last autoanalyze run. |
+| `last_manual_analyze` | `timestamptz` | Last manual ANALYZE. |
+| `autovacuum_runs` | `bigint` | Cumulative autovacuum count. |
+| `autoanalyze_runs` | `bigint` | Cumulative autoanalyze count. |
+| `verdict` | `text` | Plain-language recommendation. |
+
 ---
 
 # 🟧 MySQL
@@ -267,6 +325,22 @@ Multi-section: `CONNECTION`, `APPLIER`, `APPLIER_LAG`, `GROUP_REPL`. Each sectio
 | `metric`   | `varchar` | Metric within the section.                             |
 | `value`    | `varchar` | Stringified value.                                     |
 | `note`     | `varchar` | Optional context.                                      |
+
+## mysql-table-fragmentation
+
+Ranks tables by reclaimable space (data_free), absolute and as a share of the table, with an OPTIMIZE TABLE suggestion. Read-only; data_free is an estimate for file-per-table tablespaces.
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `schema_name` | `varchar` | Database (schema). |
+| `table_name` | `varchar` | Table. |
+| `engine` | `varchar` | Storage engine. |
+| `approx_rows` | `bigint` | Approximate row count (information_schema estimate). |
+| `size_mb` | `decimal` | data_length + index_length, in MB. |
+| `free_mb` | `decimal` | data_free in MB (reclaimable estimate). |
+| `free_pct` | `decimal` | Free space as percent of total. |
+| `suggested_action` | `text` | OPTIMIZE TABLE statement, or NULL. Text only. |
+| `verdict` | `varchar` | Plain-language recommendation. |
 
 ---
 
@@ -368,3 +442,16 @@ Plus an `oplog window` line (minutes), `oplog size`, and the election config tab
     STORAGE_ENGINE: { name, supportsCommittedReads, readOnly }
 }
 ```
+
+## mongo-compaction-candidates
+
+Ranks collections by WiredTiger fragmentation (freeStorageSize / storageSize) and flags compaction candidates. Read-only; the suggested command is text and assumes a rolling secondary operation.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `collection` | `string` | Collection name. |
+| `storage_size_mb` | `number` | On-disk storage size (MB). |
+| `free_storage_mb` | `number` | Reclaimable free storage (MB, WiredTiger). |
+| `fragmentation_pct` | `number` | free / storage as a percent. |
+| `suggested_action` | `string \| null` | compact command (run on a secondary), or null. |
+| `verdict` | `string` | Plain-language recommendation. |

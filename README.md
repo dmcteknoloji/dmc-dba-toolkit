@@ -26,7 +26,7 @@ Open one script — get a clear answer in 30 seconds.
 [![DMC Bilgi Teknolojileri on LinkedIn](https://img.shields.io/badge/LinkedIn-DMC%20Bilgi%20Teknolojileri-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/company/dmcteknoloji)
 
 _Created and maintained by **[Çağlar Özenç](https://linkedin.com/in/caglarozenc)** — Microsoft MVP, [DMC Bilgi Teknolojileri](https://linkedin.com/company/dmcteknoloji)._
-_Started April 2025. **72 production-grade scripts** across four engines — three skill levels (🌱 Newborn · 🌳 Middle · 🦅 Expert), all built on public vendor documentation._
+_Started April 2025. **77 production-grade scripts** across four engines — three skill levels (🌱 Newborn · 🌳 Middle · 🦅 Expert), all built on public vendor documentation._
 
 🌐 **English** · [Türkçe içerik scriptlerin içinde](./docs/PLAYBOOKS.md) · [Español](./README.es.md) · [Deutsch](./README.de.md) · [日本語](./README.ja.md)
 
@@ -114,6 +114,8 @@ Most toolkits that say "tested" mean linted. This one runs **every script agains
 | [`page-life-and-memory-pressure`](./mssql/health/page-life-and-memory-pressure.sql) | Per-NUMA-node PLE + top memory clerks + workspace headline. | 🟢 |
 | [`deadlock-graph-parser`](./mssql/blocking/deadlock-graph-parser.sql) | system_health XE ring buffer XML → tabular deadlock rows. | 🟡 |
 | [`getting-started`](./mssql/health/getting-started.sql) | 🌱 Newborn: what is a DMV, where am I? Tutorial style. | 🟢 |
+| [`index-fragmentation`](./mssql/maintenance/index-fragmentation.sql) | Which indexes are fragmented enough to REORGANIZE vs REBUILD? | 🟡 |
+| [`statistics-health`](./mssql/maintenance/statistics-health.sql) | Which statistics are stale enough to skew plans? | 🟢 |
 
 ### 🟪 PostgreSQL (`postgresql/`)
 
@@ -136,6 +138,7 @@ Most toolkits that say "tested" mean linted. This one runs **every script agains
 | [`checkpoint-bgwriter-efficiency`](./postgresql/health/checkpoint-bgwriter-efficiency.sql) | Checkpoint vs bgwriter vs backend write ratios + tuning verdicts. | 🟢 |
 | [`lock-mode-conflict-matrix`](./postgresql/blocking/lock-mode-conflict-matrix.sql) | pg_locks self-join with the 8×8 conflict matrix. | 🟢 |
 | [`getting-started`](./postgresql/health/getting-started.sql) | 🌱 Newborn: pg_stat_*, pg_is_in_recovery() tutorial. | 🟢 |
+| [`autovacuum-and-analyze-health`](./postgresql/maintenance/autovacuum-and-analyze-health.sql) | Which tables is autovacuum falling behind on? | 🟢 |
 
 ### 🟧 MySQL (`mysql/`)
 
@@ -157,6 +160,7 @@ Most toolkits that say "tested" mean linted. This one runs **every script agains
 | [`innodb-deep-status`](./mysql/health/innodb-deep-status.sql) | Semaphores, buffer pool deep, redo log, history list, AHI. | 🟡 |
 | [`innodb-trx-deep`](./mysql/performance/innodb-trx-deep.sql) | INNODB_TRX × data_locks × processlist for every live txn. | 🟡 |
 | [`getting-started`](./mysql/health/getting-started.sql) | 🌱 Newborn: system vs status variables tutorial. | 🟢 |
+| [`table-fragmentation`](./mysql/maintenance/table-fragmentation.sql) | Which tables hold reclaimable space worth an OPTIMIZE? | 🟢 |
 
 ### 🟩 MongoDB (`mongodb/`, mongosh `.js`)
 
@@ -178,6 +182,7 @@ Most toolkits that say "tested" mean linted. This one runs **every script agains
 | [`role-graph`](./mongodb/security/role-graph.js) | Full role inheritance graph + transitive privilege rollup. | 🟢 |
 | [`oplog-tailing-pattern`](./mongodb/performance/oplog-tailing-pattern.js) | Oplog window analysis — write-pattern decoding. | 🟡 |
 | [`getting-started`](./mongodb/health/getting-started.js) | 🌱 Newborn: admin commands tutorial, where am I? | 🟢 |
+| [`compaction-candidates`](./mongodb/maintenance/compaction-candidates.js) | Which collections are fragmented enough to compact? | 🟡 |
 
 > Every script is **read-only**. Every script is **safe on production**. Every script tells you, in its header, exactly what it does and where the technique came from.
 
