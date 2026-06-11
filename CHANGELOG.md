@@ -9,7 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Planned
+- v2.8 — JSON output mode for monitoring scripts (`--json` parameter pattern).
+- v3.0 — runbooks per symptom, linked to the relevant scripts.
+
+---
+
+## [2.7.0] — 2026-06-12
+
+The execution-tested release. A one-command runner, real execution CI across all
+four engines, the `maintenance` and `security` tiers filled out, and a published
+searchable catalogue — plus the 14 bugs that proving it surfaced. 72 → 81 scripts.
+
 ### Added
+- **Searchable catalogue site** (`scripts/build_site.py` + `.github/workflows/pages.yml`): a published, filter-by-engine/category/level catalogue of every script, generated from the headers and republished on every push. Live at https://dmcteknoloji.github.io/dmc-dba-toolkit/.
 - **Security parity** for PostgreSQL and MySQL (4 read-only scripts, 77 → 81): PostgreSQL `object-privilege-grants` (table/schema ACLs, PUBLIC flagged) and `connection-security` (TLS / scram / live SSL usage); MySQL `schema-privilege-grants` (scoped grants, re-grantable and write rights flagged) and `tls-and-transport-security` (transport posture + accounts with no SSL requirement). Brings both engines' `security` tier in line with SQL Server's depth.
 - **`maintenance` category** filled across all four engines (5 read-only scripts, 72 → 77): SQL Server `index-fragmentation` and `statistics-health`, PostgreSQL `autovacuum-and-analyze-health`, MySQL `table-fragmentation`, MongoDB `compaction-candidates`. Each diagnoses a maintenance need and prints a suggested command as text; none mutate state.
 - **One-command runner** (`bin/dmc-dba`): runs a single category or the whole suite read-only against a live engine, then writes a self-contained HTML report (and Markdown) with per-script pass/fail, impact and timing. Connection via standard env vars or a full client-command override.
@@ -20,10 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - PostgreSQL: `checkpoint-bgwriter-efficiency` (aliased column referenced as if real), `vacuum-pressure-snapshot` (`min()` on `xid`), `table-bloat-estimate` (`double % int` and `pg_size_pretty(double)`).
   - MySQL: `instance-overview` (UNION collation mix), `io-and-buffer-pool` (formatted-string view summed as numbers; reserved word `reads`), `unused-indexes` (PostgreSQL `::unsigned` cast), `innodb-deep-status` (renamed buffer-pool columns), `replication-lag-snapshot` and `replication-status` (`LAST_ERROR_NUMBER` lives on the per-worker view).
   - SQL Server: `deadlock-graph-parser` and `failed-login-analysis` (XML methods need `SET QUOTED_IDENTIFIER ON`), `page-life-and-memory-pressure` (`memory_pressure` column), `tempdb-pressure-snapshot` (wrong DMV for `resource_description`), `memory-grant-snapshot` (boolean expression in `ORDER BY`).
-
-### Planned
-- v2.7 — JSON output mode for monitoring scripts (`--json` parameter pattern).
-- v3.0 — runbooks per symptom, linked to the relevant scripts.
 
 ---
 
