@@ -104,6 +104,8 @@ TEMPLATE = r"""<!doctype html>
 <meta property="og:title" content="DMC DBA Toolkit">
 <meta property="og:description" content="__COUNT__ execution-tested, read-only DBA diagnostics across four engines.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://dmcteknoloji.github.io/dmc-dba-toolkit/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root{--bg:#0b0e14;--panel:#121722;--line:#1f2733;--txt:#e6edf3;--mut:#8b98a9;--accent:#2f81f7;--ok:#2ea043}
   *{box-sizing:border-box}
@@ -214,6 +216,9 @@ def main() -> None:
     rows = collect()
     OUT.mkdir(exist_ok=True)
     (OUT / "index.html").write_text(render(rows), encoding="utf-8")
+    card = REPO / "assets" / "social-card.png"
+    if card.exists():
+        (OUT / "social-card.png").write_bytes(card.read_bytes())
     print(f"wrote {OUT/'index.html'} with {len(rows)} scripts")
 
 
