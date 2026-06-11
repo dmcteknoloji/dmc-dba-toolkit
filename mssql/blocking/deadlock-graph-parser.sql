@@ -51,6 +51,11 @@
 -- ── 1. EXTRACT DEADLOCK XML EVENTS ─────────────────────────────────
 -- Read the system_health session's XEL file via the file target;
 -- ring buffer is faster but sometimes missing on Azure SQL MI.
+
+-- XML data-type methods (.value/.query/.nodes) below require QUOTED_IDENTIFIER
+-- ON. SSMS sets it; sqlcmd/bcp leave it OFF, so set it explicitly.
+SET QUOTED_IDENTIFIER ON;
+
 WITH ring_buffer AS (
     SELECT CAST(target_data AS XML) AS xml_data
     FROM sys.dm_xe_session_targets   AS t

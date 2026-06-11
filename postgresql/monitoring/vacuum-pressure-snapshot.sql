@@ -66,9 +66,11 @@ SELECT
      WHERE datname = current_database())                          AS oldest_xid_age,
     -- Transaction xmin — long-running transactions hold this back
     -- and prevent vacuum from removing dead tuples newer than xmin.
-    (SELECT min(backend_xmin)
+    (SELECT backend_xmin
      FROM pg_stat_activity
-     WHERE backend_xmin IS NOT NULL)::text                        AS oldest_xmin_holder,
+     WHERE backend_xmin IS NOT NULL
+     ORDER BY age(backend_xmin) DESC
+     LIMIT 1)::text                                               AS oldest_xmin_holder,
     (SELECT round(extract(epoch FROM (now() - xact_start))::numeric, 1)
      FROM pg_stat_activity
      WHERE backend_xmin IS NOT NULL

@@ -115,6 +115,6 @@ FROM (VALUES
     ('memory_pressure_signal',
      ISNULL((SELECT TOP 1 N'YES — sys.dm_os_memory_brokers reports broker pressure'
             FROM sys.dm_os_memory_brokers
-            WHERE memory_pressure > 0), N'no'),
+            WHERE last_notification = N'SHRINK'), N'no'),
      NULL)
 ) AS t(metric, value, note);

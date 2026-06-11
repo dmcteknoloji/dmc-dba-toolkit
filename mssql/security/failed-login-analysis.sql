@@ -36,6 +36,10 @@
 --   patterns from recipe 5 (Failed login burst — possible attack)
 --   in the playbooks doc.
 
+-- XML data-type methods (.value) below require QUOTED_IDENTIFIER ON. SSMS sets
+-- it; sqlcmd/bcp leave it OFF, so set it explicitly.
+SET QUOTED_IDENTIFIER ON;
+
 ;WITH login_events AS (
     SELECT
         xev.value('(@timestamp)[1]', 'datetime2(3)')                AS event_time_utc,

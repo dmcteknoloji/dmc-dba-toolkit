@@ -69,18 +69,19 @@ allocation_contention AS (
     SELECT
         SUM(CASE WHEN wait_type LIKE 'PAGELATCH_%'
                  AND resource_description LIKE '2:%:1'    -- PFS pages on tempdb
-                 THEN wait_time ELSE 0 END)                 AS pfs_wait_ms_now,
+                 THEN wait_duration_ms ELSE 0 END)                 AS pfs_wait_ms_now,
         SUM(CASE WHEN wait_type LIKE 'PAGELATCH_%'
                  AND resource_description LIKE '2:%:2'    -- GAM
-                 THEN wait_time ELSE 0 END)                 AS gam_wait_ms_now,
+                 THEN wait_duration_ms ELSE 0 END)                 AS gam_wait_ms_now,
         SUM(CASE WHEN wait_type LIKE 'PAGELATCH_%'
                  AND resource_description LIKE '2:%:3'    -- SGAM
-                 THEN wait_time ELSE 0 END)                 AS sgam_wait_ms_now,
+                 THEN wait_duration_ms ELSE 0 END)                 AS sgam_wait_ms_now,
         COUNT(CASE WHEN wait_type LIKE 'PAGELATCH_%'
                    AND resource_description LIKE '2:%'
                    THEN 1 END)                              AS pages_in_alloc_wait
-    FROM sys.dm_exec_requests
-    WHERE database_id = DB_ID(N'tempdb')
+    FROM sys.dm_os_waiting_tasks
+    -- tempdb is always database_id 2; resource_description is 'dbid:fileid:pageid'.
+    WHERE resource_description LIKE '2:%'
 )
 SELECT
     SYSUTCDATETIME()                                       AS sample_utc,

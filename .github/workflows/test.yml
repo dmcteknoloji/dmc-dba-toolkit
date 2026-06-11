@@ -1,0 +1,53 @@
+name: Execution tests
+
+# Lint proves the scripts are well-formed. THIS proves they actually run.
+# Every script is executed read-only against a real, freshly-started engine.
+# A red badge here means a script no longer runs on a supported engine version.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: SQL Server 2022
+            engine: mssql
+          - name: PostgreSQL 16
+            engine: postgresql
+          - name: MySQL 8
+            engine: mysql
+          - name: MongoDB 7
+            engine: mongodb
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Start ${{ matrix.engine }}
+        run: bash .github/scripts/start-engine.sh "${{ matrix.engine }}"
+
+      - name: Run all scripts against the live engine
+        run: |
+          source /tmp/dmc-engine.env
+          python3 bin/dmc-dba "${{ matrix.engine }}" all --report html --out reports
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-${{ matrix.engine }}
+          path: reports/*.html
+          if-no-files-found: ignore

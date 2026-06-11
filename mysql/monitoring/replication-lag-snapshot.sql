@@ -70,9 +70,9 @@ SELECT
      WHERE SERVICE_STATE = 'ON')                                    AS applier_workers_running,
     -- Last error (any channel) — surfaces "broken applier" without parsing logs
     (SELECT IFNULL(MAX(LAST_ERROR_NUMBER), 0)
-     FROM performance_schema.replication_applier_status)            AS last_applier_error_no,
+     FROM performance_schema.replication_applier_status_by_worker)  AS last_applier_error_no,
     (SELECT MAX(LAST_ERROR_MESSAGE)
-     FROM performance_schema.replication_applier_status
+     FROM performance_schema.replication_applier_status_by_worker
      WHERE LAST_ERROR_NUMBER <> 0)                                  AS last_applier_error_msg,
     -- Group replication state (NULL if not in use)
     (SELECT GROUP_CONCAT(MEMBER_STATE)
@@ -89,6 +89,6 @@ SELECT
               FROM performance_schema.replication_applier_status_by_worker) > 60
             THEN '🟠 lag > 60s'
         WHEN (SELECT IFNULL(MAX(LAST_ERROR_NUMBER), 0)
-              FROM performance_schema.replication_applier_status) <> 0
+              FROM performance_schema.replication_applier_status_by_worker) <> 0
             THEN '🟡 last applier error logged — review last_applier_error_msg'
     END                                                             AS verdict;

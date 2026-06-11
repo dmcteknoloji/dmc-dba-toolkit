@@ -100,12 +100,15 @@ ORDER BY POOL_ID;
 -- ── 4. TOP IO FILES (sys schema, 5.7+) ─────────────────────────────
 SELECT
     'TOP_IO_FILES'                                                 AS section,
-    file                                                           AS file_path,
-    count_read                                                     AS reads,
-    sys.format_bytes(total_read)                                   AS total_read,
-    count_write                                                    AS writes,
-    sys.format_bytes(total_written)                                AS total_written,
-    sys.format_bytes(total_read + total_written)                   AS total_io
-FROM sys.io_global_by_file_by_bytes
-ORDER BY total_read + total_written DESC
+    g.file                                                         AS file_path,
+    g.count_read                                                   AS `reads`,
+    sys.format_bytes(g.total_read)                                 AS total_read,
+    g.count_write                                                  AS writes,
+    sys.format_bytes(g.total_written)                              AS total_written,
+    sys.format_bytes(g.total_read + g.total_written)               AS total_io
+-- Use the x$ view: it returns raw byte counts. The plain
+-- io_global_by_file_by_bytes view pre-formats them as strings ("4.00 MiB"),
+-- which then can't be re-formatted or summed numerically.
+FROM sys.x$io_global_by_file_by_bytes AS g
+ORDER BY g.total_read + g.total_written DESC
 LIMIT 15;

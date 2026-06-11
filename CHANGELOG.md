@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **One-command runner** (`bin/dmc-dba`): runs a single category or the whole suite read-only against a live engine, then writes a self-contained HTML report (and Markdown) with per-script pass/fail, impact and timing. Connection via standard env vars or a full client-command override.
+- **Execution-test CI** (`.github/workflows/test.yml`): every script is now *executed* against a freshly-started SQL Server 2022, PostgreSQL 16, MySQL 8 and MongoDB 7 on every push, not just linted. A script that stops running on a supported engine turns the badge red.
+
+### Fixed
+- 14 scripts that passed the linter but failed to execute on a clean supported engine, surfaced by the new execution tests:
+  - PostgreSQL: `checkpoint-bgwriter-efficiency` (aliased column referenced as if real), `vacuum-pressure-snapshot` (`min()` on `xid`), `table-bloat-estimate` (`double % int` and `pg_size_pretty(double)`).
+  - MySQL: `instance-overview` (UNION collation mix), `io-and-buffer-pool` (formatted-string view summed as numbers; reserved word `reads`), `unused-indexes` (PostgreSQL `::unsigned` cast), `innodb-deep-status` (renamed buffer-pool columns), `replication-lag-snapshot` and `replication-status` (`LAST_ERROR_NUMBER` lives on the per-worker view).
+  - SQL Server: `deadlock-graph-parser` and `failed-login-analysis` (XML methods need `SET QUOTED_IDENTIFIER ON`), `page-life-and-memory-pressure` (`memory_pressure` column), `tempdb-pressure-snapshot` (wrong DMV for `resource_description`), `memory-grant-snapshot` (boolean expression in `ORDER BY`).
+
 ### Planned
 - v2.7 — JSON output mode for monitoring scripts (`--json` parameter pattern).
 - v3.0 — runbooks per symptom, linked to the relevant scripts.

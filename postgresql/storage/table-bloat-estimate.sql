@@ -68,11 +68,11 @@ table_estimates AS (
              * (constants.hdr + cs.data_width
                 + (constants.ma
                    - CASE
-                       WHEN ((constants.hdr + cs.data_width) % constants.ma) = 0
+                       WHEN (((constants.hdr + cs.data_width)::numeric % constants.ma)) = 0
                            THEN constants.ma
-                       ELSE (constants.hdr + cs.data_width) % constants.ma
+                       ELSE ((constants.hdr + cs.data_width)::numeric % constants.ma)
                      END))
-             / (constants.bs - 24))                          AS expected_pages
+             / (constants.bs - 24))::bigint                  AS expected_pages
     FROM pg_class                                            AS c
     JOIN pg_namespace                                        AS n ON n.oid = c.relnamespace
     JOIN columns_stats                                       AS cs
