@@ -54,7 +54,8 @@
     { "pattern": "^https?://(www\\.)?cwe\\.mitre\\.org" },
     { "pattern": "^https?://(www\\.)?capec\\.mitre\\.org" },
     { "pattern": "^https?://(www\\.)?destek\\.nebim\\.com\\.tr" },
-    { "pattern": "^https?://(www\\.)?learn\\.microsoft\\.com" }
+    { "pattern": "^https?://(www\\.)?learn\\.microsoft\\.com" },
+    { "pattern": "^https?://techcommunity\\.microsoft\\.com" }
   ],
   "timeout": "20s",
   "retryOn429": true,
